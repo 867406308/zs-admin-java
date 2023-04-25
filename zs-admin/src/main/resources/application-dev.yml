@@ -3,9 +3,9 @@ spring:
     druid:
       type: com.alibaba.druid.pool.DruidDataSource
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/zs_admin?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-      username: root
-      password: root
+      url: jdbc:mysql://39.101.95.100:3306/zs_admin?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      username: zs-admin
+      password: Zs@123..
       # 初始连接数
       initialSize: 5
       # 最小连接池数量
