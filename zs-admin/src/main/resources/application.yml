@@ -8,7 +8,7 @@ spring:
   main:
     allow-bean-definition-overriding: true
   redis:
-    host: 172.27.159.121
+    host: 39.101.195.100
     port: 6379
     password: Zs@123..
     database: 0
