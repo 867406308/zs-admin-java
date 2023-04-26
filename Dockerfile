@@ -1,9 +1,6 @@
 #基础镜像
 FROM openjdk:8
 
-# 作者
-MAINTAINER zs
-
 #RUN mvn clean package
 WORKDIR /app
 COPY ./zs-admin/target/zs-admin.jar /app/
