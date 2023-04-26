@@ -10,7 +10,6 @@ spring:
   redis:
     host: 172.27.159.121
     port: 6379
-    username: default
     password: Zs@123..
     database: 0
     # 毫秒
