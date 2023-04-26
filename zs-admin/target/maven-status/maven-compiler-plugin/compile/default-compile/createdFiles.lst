@@ -19,4 +19,3 @@ com\zs\ZsAdminApplication.class
 com\zs\modules\sys\menu\domain\dto\SysMenuDTO.class
 com\zs\modules\sys\menu\service\impl\SysMenuServiceImpl.class
 com\zs\modules\demo\controller\DemoController.class
-generator\domain\SysOrg.class
