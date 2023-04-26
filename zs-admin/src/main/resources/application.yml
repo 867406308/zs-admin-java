@@ -8,7 +8,7 @@ spring:
   main:
     allow-bean-definition-overriding: true
   redis:
-    host: 39.101.195.100
+    host: 172.27.159.121
     port: 6379
     username: default
     password: Zs@123..
