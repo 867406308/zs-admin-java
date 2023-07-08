@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8080
   servlet:
     context-path: /api
 spring:
@@ -8,9 +8,11 @@ spring:
   main:
     allow-bean-definition-overriding: true
   redis:
-    host: 39.101.195.100
+    host: localhost
+#    host: 39.101.195.100
     port: 6379
-    password: zs@123..
+    password:
+    #    password: zs@123..
     database: 0
     # 毫秒
     timeout: 10000
@@ -35,10 +37,7 @@ mybatis-plus:
     # 驼峰
     map-underscore-to-camel-case: true
     call-setters-on-nulls: true
-# 日志配置
-logging:
-  level:
-    org.apache.ibatis: DEBUG
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 security:
   white:
@@ -46,3 +45,9 @@ security:
       - /login
       - /hello
       - /list
+jwt:
+  # 密钥 长度256
+  secret: QxXJ18vaaiH0781h6rzMurcyJNzcGtsWYfzc/OyqKBI=
+  # 有效时间单位毫秒 当前为24小时
+  expiration: 86400000
+

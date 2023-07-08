@@ -4,7 +4,9 @@ package com.zs.modules.sys.menu.controller;
 import cn.hutool.core.convert.Convert;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zs.common.annotation.Log;
 import com.zs.common.core.Result;
+import com.zs.common.enums.OperationTypeEnum;
 import com.zs.common.page.PageResult;
 import com.zs.modules.sys.menu.domain.dto.SysMenuDTO;
 import com.zs.modules.sys.menu.domain.entity.SysMenuEntity;
@@ -37,6 +39,7 @@ public class SysMenuController {
         return new Result().ok(list);
     }
 
+    @Log(module = "菜单管理-新增", type = OperationTypeEnum.ADD, description = "新增菜单信息")
     @PostMapping("save")
     public Result save(@RequestBody SysMenuDTO sysMenuDTO){
 
@@ -44,6 +47,7 @@ public class SysMenuController {
         return new Result().ok();
     }
 
+    @Log(module = "菜单管理-修改", type = OperationTypeEnum.EDIT, description = "新增菜单信息")
     @PutMapping("update")
     public Result update(@RequestBody SysMenuDTO sysMenuDTO){
         iSysMenuService.update(sysMenuDTO);

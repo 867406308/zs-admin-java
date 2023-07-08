@@ -9,6 +9,7 @@ public class DemoController
     @GetMapping("hello")
     public String hello(){
         Integer nu = 0/0;
+        System.out.println();
         return "123";
     }
 

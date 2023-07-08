@@ -14,16 +14,7 @@ import java.util.Arrays;
 @SpringBootApplication
 public class ZsAdminApplication  {
 
-
-
     public static void main(String[] args) {
         SpringApplication.run(ZsAdminApplication.class, args);
-
     }
-
-
-
-
-
-
-    }
+}

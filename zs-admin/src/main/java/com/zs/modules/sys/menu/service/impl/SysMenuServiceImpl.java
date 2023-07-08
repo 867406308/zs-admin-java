@@ -32,12 +32,12 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenuEntity
         QueryWrapper<SysMenuEntity> wrapper = new QueryWrapper(params);
         List<SysMenuVo> list = BeanUtil.copyToList(baseMapper.page(page, wrapper), SysMenuVo.class);
 
-        return new PageResult(list, page.getTotal(), SysMenuVo.class);
+        return new PageResult<>(list, page.getTotal(), SysMenuVo.class);
     }
 
     @Override
     public List<SysMenuVo> getList() {
-        List<SysMenuVo> list = BeanUtil.copyToList(baseMapper.selectList(new QueryWrapper()), SysMenuVo.class);
+        List<SysMenuVo> list = BeanUtil.copyToList(baseMapper.selectList(new QueryWrapper<>()), SysMenuVo.class);
         return TreeUtil.build(list, 0L);
     }
 
