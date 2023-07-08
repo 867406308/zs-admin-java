@@ -5,22 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="338f835b-8e6d-4daf-b157-ee1b66fa219f" name="Changes" comment="修复pom">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/intellij-javadocs-4.0.1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2bc8721b-9c03-452c-944d-2ad8adc6d3ac.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2bc8721b-9c03-452c-944d-2ad8adc6d3ac.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zs-admin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/role/service/ISysRoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/role/service/ISysRoleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/user/service/ISysUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/user/service/ISysUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zs-admin/target/surefire-reports/TEST-com.zs.admin.IpUtilsTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/target/surefire-reports/TEST-com.zs.admin.IpUtilsTest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zs-admin/target/surefire-reports/com.zs.admin.IpUtilsTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/target/surefire-reports/com.zs.admin.IpUtilsTest.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zs-admin/target/zs-admin.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/target/zs-admin.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zs-framework/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-framework/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -262,7 +252,7 @@
       <workItem from="1688711506789" duration="5889000" />
       <workItem from="1688777029892" duration="3316000" />
       <workItem from="1688781965179" duration="536000" />
-      <workItem from="1688782517755" duration="6018000" />
+      <workItem from="1688782517755" duration="8359000" />
     </task>
     <task id="LOCAL-00001" summary="添加参数校验">
       <created>1688777182281</created>
@@ -306,7 +296,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688782016935</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="修复pom">
+      <created>1688799313519</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1688799313519</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
