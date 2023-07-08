@@ -4,21 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="338f835b-8e6d-4daf-b157-ee1b66fa219f" name="Changes" comment="修复参数校验pom.xml依赖性重复添加">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/test/java/com/zs/admin/DemoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/test/java/com/zs/admin/DemoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/target/classes/application-dev.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/target/classes/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/target/classes/logback-spring.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/target/classes/mapper/sys/dept/SysDeptMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/target/classes/mapper/sys/menu/SysMenuMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/target/classes/mapper/sys/post/SysPostMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/target/classes/mapper/sys/role/SysRoleMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/target/classes/mapper/sys/user/SysUserMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-framework/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-framework/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+    <list default="true" id="338f835b-8e6d-4daf-b157-ee1b66fa219f" name="Changes" comment="修复mavn出错">
+      <change beforePath="$PROJECT_DIR$/zs-common/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-common/target/classes/city/ip2region.xdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-common/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-framework/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-framework/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-framework/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,7 +239,7 @@
       <workItem from="1687741660295" duration="154000" />
       <workItem from="1687914147071" duration="770000" />
       <workItem from="1688711506789" duration="5889000" />
-      <workItem from="1688777029892" duration="1592000" />
+      <workItem from="1688777029892" duration="2309000" />
     </task>
     <task id="LOCAL-00001" summary="添加参数校验">
       <created>1688777182281</created>
@@ -261,7 +255,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688778055478</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="修复mavn出错">
+      <created>1688778749424</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1688778749424</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -281,7 +282,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="添加参数校验" />
     <MESSAGE value="修复参数校验pom.xml依赖性重复添加" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复参数校验pom.xml依赖性重复添加" />
+    <MESSAGE value="修复mavn出错" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复mavn出错" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
