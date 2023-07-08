@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="338f835b-8e6d-4daf-b157-ee1b66fa219f" name="Changes" comment="添加参数校验">
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="AnnotationType" />
+        <option value="Enum" />
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../../../tools/java_setting/apache-maven-3.8.6" />
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2QENj4wMZ5Qjfo9obHyIooTIs4t" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/project/zs_project/zs/aliyun/zs-admin/zs-common/src/main/java/com/zs/common/model/params&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;database.data.views&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;a7369398e32958bff71f9b6fcf7ab985&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\project\zs_project\zs\aliyun\zs-admin\zs-common\src\main\java\com\zs\common\model\params" />
+      <recent name="D:\project\zs_project\zs\aliyun\zs-admin\zs-admin\src\main\resources\mapper\sys\role" />
+      <recent name="D:\project\zs_project\zs\aliyun\zs-admin\zs-common\src\main\resources" />
+      <recent name="D:\project\zs_project\zs\aliyun\zs-admin\zs-admin\src\main\resources\mapper\sys\post" />
+      <recent name="D:\project\zs_project\zs\aliyun\zs-admin\zs-admin\src\main\resources\mapper\sys\dept" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\project\zs_project\zs\aliyun\zs-admin\zs-common\src\main\resources\city" />
+      <recent name="D:\project\zs_project\zs\aliyun\zs-admin\zs-admin\src\main\resources\mapper\sys" />
+      <recent name="D:\project\zs_project\zs\aliyun\zs-admin\zs-admin\src\main\resources\mapper" />
+      <recent name="D:\project\zs_project\zs\aliyun\zs-admin\zs-admin\src\main\resources" />
+      <recent name="D:\project\zs_project\zs\aliyun\zs-admin" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.zs.modules.sys.log.domain.vo" />
+      <recent name="com.zs.modules.sys.log.controller" />
+      <recent name="com.zs.framework.service" />
+      <recent name="com.zs.common.model.params" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.ZsAdminApplication">
+    <configuration name="IpUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.zs.common.utils.IpUtil" />
+      <module name="zs-common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.zs.common.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DemoTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="zs-admin" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.zs.admin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.zs.admin" />
+      <option name="MAIN_CLASS_NAME" value="com.zs.admin.DemoTest" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DemoTest.test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="zs-admin" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.zs.admin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.zs.admin" />
+      <option name="MAIN_CLASS_NAME" value="com.zs.admin.DemoTest" />
+      <option name="METHOD_NAME" value="test1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IpUtilsTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="zs-admin" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.zs.admin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.zs.admin" />
+      <option name="MAIN_CLASS_NAME" value="com.zs.admin.IpUtilsTest" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ZsAdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="zs-admin" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.zs.ZsAdminApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.DemoTest.test1" />
+        <item itemvalue="JUnit.DemoTest.test" />
+        <item itemvalue="JUnit.IpUtilsTest.test" />
+        <item itemvalue="Application.IpUtil" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SQLScriptSettings">
+    <option name="matrix">
+      <map>
+        <entry key="MYSQL.CreateComplete" value="IgnoreDefiner=1, CreateOrReplace=1, CreateIfNotExists=1, CurrentSequenceValue=1, UserGrants=1, UseCompactDef=1" />
+      </map>
+    </option>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="338f835b-8e6d-4daf-b157-ee1b66fa219f" name="Changes" comment="" />
+      <created>1684914913596</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1684914913596</updated>
+      <workItem from="1684914914753" duration="14352000" />
+      <workItem from="1684930584295" duration="2109000" />
+      <workItem from="1684973384439" duration="1700000" />
+      <workItem from="1685017960282" duration="1181000" />
+      <workItem from="1685060880383" duration="662000" />
+      <workItem from="1685065560508" duration="117000" />
+      <workItem from="1685251440412" duration="1992000" />
+      <workItem from="1685339959403" duration="69000" />
+      <workItem from="1685367466658" duration="831000" />
+      <workItem from="1685408756635" duration="775000" />
+      <workItem from="1685451137149" duration="742000" />
+      <workItem from="1685495793000" duration="156000" />
+      <workItem from="1685495959284" duration="13000" />
+      <workItem from="1685692637612" duration="2311000" />
+      <workItem from="1685696101565" duration="669000" />
+      <workItem from="1685753590065" duration="1013000" />
+      <workItem from="1685801543626" duration="10233000" />
+      <workItem from="1685927774042" duration="108000" />
+      <workItem from="1685974080036" duration="2511000" />
+      <workItem from="1686013336801" duration="959000" />
+      <workItem from="1686097768172" duration="1617000" />
+      <workItem from="1686357874630" duration="1312000" />
+      <workItem from="1686447092926" duration="4970000" />
+      <workItem from="1686487769900" duration="4058000" />
+      <workItem from="1686550844213" duration="433000" />
+      <workItem from="1686577332759" duration="816000" />
+      <workItem from="1686615926328" duration="5651000" />
+      <workItem from="1686622497634" duration="14000" />
+      <workItem from="1686702293223" duration="4997000" />
+      <workItem from="1686746692395" duration="1616000" />
+      <workItem from="1686789188173" duration="2229000" />
+      <workItem from="1686962592115" duration="3229000" />
+      <workItem from="1686993436899" duration="1843000" />
+      <workItem from="1687048261815" duration="17076000" />
+      <workItem from="1687134429323" duration="7175000" />
+      <workItem from="1687220865718" duration="4400000" />
+      <workItem from="1687225585047" duration="185000" />
+      <workItem from="1687307432616" duration="704000" />
+      <workItem from="1687311541875" duration="336000" />
+      <workItem from="1687311891509" duration="63000" />
+      <workItem from="1687396757085" duration="16525000" />
+      <workItem from="1687741660295" duration="154000" />
+      <workItem from="1687914147071" duration="770000" />
+      <workItem from="1688711506789" duration="5889000" />
+      <workItem from="1688777029892" duration="960000" />
+    </task>
+    <task id="LOCAL-00001" summary="添加参数校验">
+      <created>1688777182281</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1688777182281</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="添加参数校验" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加参数校验" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/role/service/impl/SysRoleServiceImpl.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/dept/service/impl/SysDeptServiceImpl.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/zs-admin/src/test/java/com/zs/admin/IpUtilsTest.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/handler/CustomLogoutSuccessHandler.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/handler/CustomAuthenticationFailureHandler.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/zs-admin/src/test/java/com/zs/admin/DemoTest.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/zs-admin/src/test/java/com/zs/admin/DemoTest.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="35" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation" memberName="arguments" />
+        <PinnedItemInfo parentTag="org.springframework.security.web.header.HeaderWriterFilter$HeaderWriterResponse" memberName="response" />
+        <PinnedItemInfo parentTag="java.util.concurrent.atomic.AtomicInteger" memberName="value" />
+        <PinnedItemInfo parentTag="org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint$MethodSignatureImpl" memberName="this$0" />
+        <PinnedItemInfo parentTag="com.baomidou.mybatisplus.core.conditions.query.QueryWrapper" memberName="lastSql" />
+        <PinnedItemInfo parentTag="org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation" memberName="interceptorsAndDynamicMethodMatchers" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
