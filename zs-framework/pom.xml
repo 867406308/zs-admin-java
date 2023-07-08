@@ -6,9 +6,6 @@
         <artifactId>zs</artifactId>
         <version>1.0.0</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>zs-framework</artifactId>
-    <description>框架</description>
     <dependencies>
         <dependency>
             <groupId>com.zs</groupId>
@@ -17,6 +14,10 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>zs-framework</artifactId>
+    <description>框架</description>
+
 
 
 

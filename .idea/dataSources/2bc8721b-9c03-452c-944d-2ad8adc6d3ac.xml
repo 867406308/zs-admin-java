@@ -1,72 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="@39.101.195.100">
   <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.48">
-    <root id="1">
-      <DefaultCasing>exact</DefaultCasing>
-      <DefaultEngine>InnoDB</DefaultEngine>
-      <DefaultTmpEngine>InnoDB</DefaultTmpEngine>
-      <Grants>|root||root|localhost|ALTER|G
-|root||zs-admin||ALTER|G
-|root||root|localhost|ALTER ROUTINE|G
-|root||zs-admin||ALTER ROUTINE|G
-|root||root|localhost|CREATE|G
-|root||zs-admin||CREATE|G
-|root||root|localhost|CREATE ROUTINE|G
-|root||zs-admin||CREATE ROUTINE|G
-|root||root|localhost|CREATE TABLESPACE|G
-|root||zs-admin||CREATE TABLESPACE|G
-|root||root|localhost|CREATE TEMPORARY TABLES|G
-|root||zs-admin||CREATE TEMPORARY TABLES|G
-|root||root|localhost|CREATE USER|G
-|root||zs-admin||CREATE USER|G
-|root||root|localhost|CREATE VIEW|G
-|root||zs-admin||CREATE VIEW|G
-|root||root|localhost|DELETE|G
-|root||zs-admin||DELETE|G
-|root||root|localhost|DROP|G
-|root||zs-admin||DROP|G
-|root||root|localhost|EVENT|G
-|root||zs-admin||EVENT|G
-|root||root|localhost|EXECUTE|G
-|root||zs-admin||EXECUTE|G
-|root||root|localhost|FILE|G
-|root||zs-admin||FILE|G
-|root||root|localhost|INDEX|G
-|root||zs-admin||INDEX|G
-|root||root|localhost|INSERT|G
-|root||zs-admin||INSERT|G
-|root||root|localhost|LOCK TABLES|G
-|root||zs-admin||LOCK TABLES|G
-|root||root|localhost|PROCESS|G
-|root||zs-admin||PROCESS|G
-|root||root|localhost|REFERENCES|G
-|root||zs-admin||REFERENCES|G
-|root||root|localhost|RELOAD|G
-|root||zs-admin||RELOAD|G
-|root||root|localhost|REPLICATION CLIENT|G
-|root||zs-admin||REPLICATION CLIENT|G
-|root||root|localhost|REPLICATION SLAVE|G
-|root||zs-admin||REPLICATION SLAVE|G
-|root||root|localhost|SELECT|G
-|root||zs-admin||SELECT|G
-|root||root|localhost|SHOW DATABASES|G
-|root||zs-admin||SHOW DATABASES|G
-|root||root|localhost|SHOW VIEW|G
-|root||zs-admin||SHOW VIEW|G
-|root||root|localhost|SHUTDOWN|G
-|root||zs-admin||SHUTDOWN|G
-|root||mysql.session|localhost|SUPER|G
-|root||root|localhost|SUPER|G
-|root||zs-admin||SUPER|G
-|root||root|localhost|TRIGGER|G
-|root||zs-admin||TRIGGER|G
-|root||root|localhost|UPDATE|G
-|root||zs-admin||UPDATE|G
-|root||root|localhost|grant option|G
-performance_schema|schema||mysql.session|localhost|SELECT|G
-sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
-      <ServerVersion>5.7.42</ServerVersion>
-    </root>
+    <root id="1"/>
     <collation id="2" parent="1" name="armscii8_bin">
       <Charset>armscii8</Charset>
     </collation>
