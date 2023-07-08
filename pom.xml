@@ -7,7 +7,7 @@
     <groupId>com.zs</groupId>
     <artifactId>zs</artifactId>
     <version>1.0.0</version>
-    <name>zs-enterprise</name>
+    <name>zs-project-java</name>
     <description>zs专业版</description>
     <packaging>pom</packaging>
     <parent>
