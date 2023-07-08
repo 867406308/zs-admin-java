@@ -4,8 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="338f835b-8e6d-4daf-b157-ee1b66fa219f" name="Changes" comment="添加参数校验">
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    <list default="true" id="338f835b-8e6d-4daf-b157-ee1b66fa219f" name="Changes" comment="修复参数校验pom.xml依赖性重复添加">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/src/test/java/com/zs/admin/DemoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/test/java/com/zs/admin/DemoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/target/classes/application-dev.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/target/classes/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/target/classes/logback-spring.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/target/classes/mapper/sys/dept/SysDeptMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/target/classes/mapper/sys/menu/SysMenuMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/target/classes/mapper/sys/post/SysPostMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/target/classes/mapper/sys/role/SysRoleMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/target/classes/mapper/sys/user/SysUserMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-framework/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-framework/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,7 +245,7 @@
       <workItem from="1687741660295" duration="154000" />
       <workItem from="1687914147071" duration="770000" />
       <workItem from="1688711506789" duration="5889000" />
-      <workItem from="1688777029892" duration="960000" />
+      <workItem from="1688777029892" duration="1592000" />
     </task>
     <task id="LOCAL-00001" summary="添加参数校验">
       <created>1688777182281</created>
@@ -241,7 +254,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688777182281</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="修复参数校验pom.xml依赖性重复添加">
+      <created>1688778055477</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1688778055478</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,7 +280,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="添加参数校验" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加参数校验" />
+    <MESSAGE value="修复参数校验pom.xml依赖性重复添加" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复参数校验pom.xml依赖性重复添加" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -292,12 +313,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/zs-admin/src/test/java/com/zs/admin/DemoTest.java</url>
-          <line>33</line>
+          <line>12</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/zs-admin/src/test/java/com/zs/admin/DemoTest.java</url>
-          <line>43</line>
+          <line>13</line>
           <option name="timeStamp" value="36" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
