@@ -5,9 +5,9 @@
     <!-- 父项目描述 -->
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.zs</groupId>
-    <artifactId>zs</artifactId>
+    <artifactId>zs-admin-java</artifactId>
     <version>1.0.0</version>
-    <name>zs-project-java</name>
+    <name>zs-admin-java</name>
     <description>zs专业版</description>
     <packaging>pom</packaging>
     <parent>
