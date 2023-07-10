@@ -10,7 +10,6 @@ import com.zs.common.page.PageInfo;
 import com.zs.common.page.PageResult;
 import com.zs.framework.service.ILogErrorAspectService;
 import com.zs.modules.sys.log.domain.entity.SysLogErrorEntity;
-import com.zs.modules.sys.log.domain.entity.SysLogLoginEntity;
 import com.zs.modules.sys.log.domain.params.SysLogErrorQueryParams;
 import com.zs.modules.sys.log.domain.vo.SysLogErrorVo;
 import com.zs.modules.sys.log.mapper.SysLogErrorMapper;
@@ -19,6 +18,9 @@ import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Service;
 
 
+/**
+ * @author 86740
+ */
 @Service
 public class SysLogErrorServiceImpl extends ServiceImpl<SysLogErrorMapper, SysLogErrorEntity>
         implements ISysLogErrorService, ILogErrorAspectService {

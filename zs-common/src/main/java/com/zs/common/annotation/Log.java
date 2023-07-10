@@ -10,12 +10,12 @@ import java.lang.annotation.*;
 public @interface Log {
 
     /** 功能模块 */
-    public String module() default "";
+    String module() default "";
 
     /** 操作类型 */
-    public OperationTypeEnum type() default OperationTypeEnum.OTHER;
+    OperationTypeEnum type() default OperationTypeEnum.OTHER;
 
     /** 功能描述 */
-    public String description() default  "";
+    String description() default  "";
 
 }

@@ -8,10 +8,10 @@ import com.zs.modules.sys.role.domain.query.SysRoleQueryParams;
 import com.zs.modules.sys.role.domain.vo.SysRoleVo;
 
 import java.util.List;
-import java.util.Map;
 
 /**
- * The interface Sys role service.
+ *
+ * @author 86740
  */
 public interface ISysRoleService extends IService<SysRoleEntity> {
 

@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 
+/**
+ * @author 86740
+ */
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class SysLogLoginQueryParams extends BasePageParams {

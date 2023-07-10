@@ -2,10 +2,14 @@ package com.zs.modules.sys.menu.domain.vo;
 
 import com.zs.common.utils.TreeNode;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-import java.util.List;
 
+/**
+ * @author 86740
+ */
+@EqualsAndHashCode(callSuper = true)
 @Data
 public class SysMenuVo extends TreeNode<SysMenuVo> implements Serializable {
 

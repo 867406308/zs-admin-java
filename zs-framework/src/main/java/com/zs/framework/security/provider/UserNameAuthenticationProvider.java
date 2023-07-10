@@ -1,9 +1,7 @@
 package com.zs.framework.security.provider;
 
 
-import com.zs.common.utils.JwtUtil;
 import com.zs.framework.security.service.CustomUserDetailsService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -26,6 +24,7 @@ import java.util.Objects;
 
 /**
  * 用户名密码认证器
+ * @author 86740
  */
 @Configuration
 @Component

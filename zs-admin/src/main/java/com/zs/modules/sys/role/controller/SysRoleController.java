@@ -4,18 +4,18 @@ import com.zs.common.annotation.Log;
 import com.zs.common.core.Result;
 import com.zs.common.enums.OperationTypeEnum;
 import com.zs.common.page.PageResult;
-import com.zs.modules.sys.post.domain.query.SysPostAddParams;
 import com.zs.modules.sys.role.domain.query.SysRoleAddParams;
 import com.zs.modules.sys.role.domain.query.SysRoleQueryParams;
 import com.zs.modules.sys.role.domain.vo.SysRoleVo;
 import com.zs.modules.sys.role.service.ISysRoleService;
-import org.apache.ibatis.annotations.Delete;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.Map;
 
+/**
+ * @author 86740
+ */
 @RestController
 @RequestMapping("sys/role")
 public class SysRoleController {

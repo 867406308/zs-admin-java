@@ -6,9 +6,11 @@ import com.zs.common.model.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
 
 
+/**
+ * @author 86740
+ */
 @Data
 @TableName("sys_post")
 @EqualsAndHashCode(callSuper = false)

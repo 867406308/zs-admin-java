@@ -1,9 +1,14 @@
-package com.zs.modules.sys.menu.domain.dto;
+package com.zs.modules.sys.menu.domain.params;
 
+import com.zs.common.page.BasePageParams;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+import java.io.Serializable;
+
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class SysMenuDTO {
+public class SysMenuQueryParams  extends BasePageParams implements Serializable {
 
 
     private Long sysMenuId;

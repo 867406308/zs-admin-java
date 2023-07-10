@@ -11,5 +11,5 @@ public @interface LoginLog {
      * 登录状态 1 成功 2 失败
      * 默认为1-成功
      */
-    public int value() default  1;
+    int value() default  1;
 }

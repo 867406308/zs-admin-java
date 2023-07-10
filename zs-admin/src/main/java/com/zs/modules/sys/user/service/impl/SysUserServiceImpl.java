@@ -7,12 +7,13 @@ import com.zs.modules.sys.user.domain.dto.SysUserDTO;
 import com.zs.modules.sys.user.domain.entity.SysUserEntity;
 import com.zs.modules.sys.user.mapper.SysUserMapper;
 import com.zs.modules.sys.user.service.ISysUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+/**
+ * @author 86740
+ */
 @Configuration
 @Service
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity> implements ISysUserService {

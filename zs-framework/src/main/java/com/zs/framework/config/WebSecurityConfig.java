@@ -5,37 +5,28 @@ import com.zs.framework.security.filter.JwtAuthenticationTokenFilter;
 import com.zs.framework.security.handler.*;
 import com.zs.framework.security.propetties.WhiteUrlProperties;
 import com.zs.framework.security.provider.UserNameAuthenticationProvider;
-import com.zs.framework.security.service.CustomUserDetailsService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.Customizer;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.authentication.preauth.AbstractPreAuthenticatedProcessingFilter;
-import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import javax.annotation.Resource;
-import javax.servlet.Filter;
-import java.util.Arrays;
 import java.util.List;
 
 
+/**
+ * @author 86740
+ */
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)    // 启用方法级别的权限认证
@@ -47,8 +38,7 @@ public class WebSecurityConfig {
     @Resource
     private CustomLogoutSuccessHandler logoutSuccessHandler;
 
-    //    @Resource
-//    private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
+
     @Resource
     private CustomAccessDeniedHandler customAccessDeniedHandler;
 
@@ -65,14 +55,7 @@ public class WebSecurityConfig {
     @Resource
     private WhiteUrlProperties whiteUrlProperties;
 
-    //    /**
-//     * 密码明文加密方式配置
-//     * @return
-//     */
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
+
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
@@ -85,7 +68,7 @@ public class WebSecurityConfig {
     }
 
     @Bean
-    public MyAuthenticationFilter myAuthenticationFilter(AuthenticationManager authenticationManager) throws Exception {
+    public MyAuthenticationFilter myAuthenticationFilter(AuthenticationManager authenticationManager) {
         MyAuthenticationFilter myAuthenticationFilter = new MyAuthenticationFilter("/login");
         myAuthenticationFilter.setAuthenticationManager(authenticationManager);
         myAuthenticationFilter.setAuthenticationSuccessHandler(customAuthenticationSuccessHandler);
@@ -114,6 +97,7 @@ public class WebSecurityConfig {
                         .anyRequest().authenticated()
 
                 )
+                .logout().logoutSuccessHandler(logoutSuccessHandler).and()
                 // 把token校验过滤器添加到过滤器链中
                 .addFilterBefore(jwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(myAuthenticationFilter(http.getSharedObject(AuthenticationManager.class)), UsernamePasswordAuthenticationFilter.class)
@@ -123,7 +107,8 @@ public class WebSecurityConfig {
                 // 认证失败
                 .authenticationEntryPoint(customAuthenticationEntryPoint)
                 // 鉴权失败
-                .accessDeniedHandler(customAccessDeniedHandler);
+                .accessDeniedHandler(customAccessDeniedHandler)
+                ;
         return http.build();
     }
 

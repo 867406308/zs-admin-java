@@ -6,7 +6,5 @@
     <select id="getList" resultType="com.zs.modules.sys.menu.domain.entity.SysMenuEntity">
         select * from sys_menu
     </select>
-    <select id="page" resultType="com.zs.modules.sys.menu.domain.entity.SysMenuEntity">
-        select * from sys_menu
-    </select>
+
 </mapper>

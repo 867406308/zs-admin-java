@@ -1,8 +1,10 @@
 package com.zs.common.model.params;
 
-import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
+/**
+ * @author 86740
+ */
 @Data
 public class SysLogLoginAddParams {
 

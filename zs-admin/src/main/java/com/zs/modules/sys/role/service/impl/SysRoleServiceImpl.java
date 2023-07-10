@@ -7,9 +7,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zs.common.page.PageInfo;
 import com.zs.common.page.PageResult;
-import com.zs.modules.sys.dept.service.ISysDeptService;
-import com.zs.modules.sys.post.domain.entity.SysPostEntity;
-import com.zs.modules.sys.post.domain.vo.SysPostVo;
 import com.zs.modules.sys.role.domain.entity.SysRoleEntity;
 import com.zs.modules.sys.role.domain.query.SysRoleAddParams;
 import com.zs.modules.sys.role.domain.query.SysRoleQueryParams;
@@ -19,17 +16,14 @@ import com.zs.modules.sys.role.service.ISysRoleService;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
+/**
+ * @author 86740
+ */
 @Service
 public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRoleEntity> implements ISysRoleService {
 
-    @Resource
-    private ISysDeptService iSysDeptService;
 
     @Override
     public PageResult<SysRoleVo> page(SysRoleQueryParams sysRoleQueryParams) {

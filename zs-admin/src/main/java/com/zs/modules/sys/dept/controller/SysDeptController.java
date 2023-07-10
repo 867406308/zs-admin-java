@@ -3,7 +3,6 @@ package com.zs.modules.sys.dept.controller;
 import com.zs.common.annotation.Log;
 import com.zs.common.core.Result;
 import com.zs.common.enums.OperationTypeEnum;
-import com.zs.common.page.PageResult;
 import com.zs.modules.sys.dept.domain.query.SysDeptAddParams;
 import com.zs.modules.sys.dept.domain.vo.SysDeptVo;
 import com.zs.modules.sys.dept.service.ISysDeptService;
@@ -12,8 +11,10 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Map;
 
+/**
+ * @author 86740
+ */
 @RestController
 @RequestMapping("sys/dept")
 public class SysDeptController {

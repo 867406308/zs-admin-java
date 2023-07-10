@@ -8,8 +8,10 @@ import com.zs.modules.sys.post.domain.query.SysPostQueryParams;
 import com.zs.modules.sys.post.domain.vo.SysPostVo;
 
 import java.util.List;
-import java.util.Map;
 
+/**
+ * @author 86740
+ */
 public interface ISysPostService extends IService<SysPostEntity> {
 
     PageResult<SysPostVo> page(SysPostQueryParams sysPostQueryParams);

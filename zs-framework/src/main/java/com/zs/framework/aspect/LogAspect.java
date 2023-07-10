@@ -8,7 +8,6 @@ import cn.hutool.json.JSONUtil;
 import com.zs.common.annotation.Log;
 import com.zs.common.annotation.LoginLog;
 import com.zs.common.core.Result;
-import com.zs.common.model.LoginUserInfo;
 import com.zs.common.model.params.SysLogErrorAddParams;
 import com.zs.common.model.params.SysLogLoginAddParams;
 import com.zs.common.model.params.SysLogOperationAddParams;
@@ -29,11 +28,13 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * @author 86740
+ */
 @Aspect
 @Component
 public class LogAspect {
@@ -51,15 +52,14 @@ public class LogAspect {
      */
     @Pointcut("@annotation(com.zs.common.annotation.LoginLog)")
     public void loginPointCut() {
-
     }
 
     /** 操作日志切入点 */
     @Pointcut("@annotation(com.zs.common.annotation.Log)")
-    public void LogOperationPointCut() {
+    public void logOperationPointCut() {
     }
 
-    @Before("LogOperationPointCut()")
+    @Before("logOperationPointCut()")
     public void before(){
         beginTime = System.currentTimeMillis();
     }
@@ -67,7 +67,7 @@ public class LogAspect {
     /**
      * 记录操作日志
      */
-    @AfterReturning(value = "LogOperationPointCut()", returning = "obj")
+    @AfterReturning(value = "logOperationPointCut()", returning = "obj")
     public void afterReturning(JoinPoint point, Object obj) {
         saveLogOperation(point, obj);
     }
@@ -80,7 +80,7 @@ public class LogAspect {
      * 目标方法抛出异常后
      * 常用场景：处理异常、回滚事务
      */
-    @AfterThrowing(value = "LogOperationPointCut()", throwing = "e")
+    @AfterThrowing(value = "logOperationPointCut()", throwing = "e")
     public void afterThrowing(JoinPoint point, Exception e) {
         saveLogError(point,e);
     }
@@ -110,7 +110,7 @@ public class LogAspect {
         Object[] args = point.getArgs();
         return JSONUtil.toJsonStr(args[0]);
     }
-    void saveLoginLog(ProceedingJoinPoint proceedingJoinPoint) throws IOException {
+    void saveLoginLog(ProceedingJoinPoint proceedingJoinPoint) {
         Object[] objects = proceedingJoinPoint.getArgs();
         Throwable failureReason = null;
         if (objects[2] instanceof BadCredentialsException) {

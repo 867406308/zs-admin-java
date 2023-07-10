@@ -4,9 +4,10 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
 
+/**
+ * @author 86740
+ */
 @Data
 public class SysDeptAddParams {
 

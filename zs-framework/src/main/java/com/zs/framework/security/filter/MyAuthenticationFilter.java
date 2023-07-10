@@ -1,45 +1,37 @@
 package com.zs.framework.security.filter;
 
 import cn.hutool.core.io.IoUtil;
-import cn.hutool.http.HttpRequest;
-import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import lombok.SneakyThrows;
-import org.springframework.lang.Nullable;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.security.web.util.matcher.RequestMatcher;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import java.util.stream.Collectors;
 
 /**
  * 用户名密码过滤器
+ * @author 86740
  */
 
 public class MyAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
     /**
      * 是否 仅仅post方式
      */
-    private boolean postOnly = true;
-    private String usernameParameter = "username";
-    private String passwordParameter = "password";
+    private final static boolean POST_ONLY = true;
+    private final static  String POST = "POST";
+    private final static String USERNAME_PARAMETER = "username";
+    private final static String PASSWORD_PARAMETER = "password";
 
     public MyAuthenticationFilter(String defaultFilterProcessesUrl) {
         super(defaultFilterProcessesUrl);
@@ -55,16 +47,16 @@ public class MyAuthenticationFilter extends AbstractAuthenticationProcessingFilt
 
 
     @Override
-    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
-        if (this.postOnly && !request.getMethod().equals("POST")) {
+    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException {
+        if (POST_ONLY && !request.getMethod().equals(POST)) {
             throw new AuthenticationServiceException("Authentication method not supported: " + request.getMethod());
         } else {
 
             JSONObject jsonObject = getBodyParams(request);
 
 
-            String username = jsonObject.getStr(this.usernameParameter);
-            String password = jsonObject.getStr(this.passwordParameter);
+            String username = jsonObject.getStr(USERNAME_PARAMETER);
+            String password = jsonObject.getStr(PASSWORD_PARAMETER);
             if (!StringUtils.hasText(username)) {
                 throw new RuntimeException("用户名不能为空!");
             }

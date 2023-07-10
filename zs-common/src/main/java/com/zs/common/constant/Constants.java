@@ -3,7 +3,6 @@ package com.zs.common.constant;
 public class Constants {
 
 
-    public static  final String JWT_KEY = "jwt_key";
     public static  final String PAGE = "page";
     public static  final String SIZE = "size";
     /** 排序方式，可选 ASC、DESC**/

@@ -1,26 +1,27 @@
 package com.zs.modules.sys.menu.service;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.zs.common.core.Result;
 import com.zs.common.page.PageResult;
-import com.zs.modules.sys.menu.domain.dto.SysMenuDTO;
+import com.zs.modules.sys.menu.domain.params.SysMenuAddParams;
 import com.zs.modules.sys.menu.domain.entity.SysMenuEntity;
+import com.zs.modules.sys.menu.domain.params.SysMenuQueryParams;
 import com.zs.modules.sys.menu.domain.vo.SysMenuVo;
 
 import java.util.List;
-import java.util.Map;
 
+/**
+ * @author 86740
+ */
 public interface ISysMenuService extends IService<SysMenuEntity> {
 
 
-    PageResult<SysMenuVo> page(Map<String, Object> params);
+    PageResult<SysMenuVo> page(SysMenuQueryParams sysMenuQueryParams);
 
     List<SysMenuVo> getList();
 
-    void save(SysMenuDTO sysMenuDTO);
+    void save(SysMenuAddParams sysMenuAddParams);
 
-    void update(SysMenuDTO sysMenuDTO);
+    void update(SysMenuAddParams sysMenuAddParams);
 
     SysMenuVo getById(Long id);
 }

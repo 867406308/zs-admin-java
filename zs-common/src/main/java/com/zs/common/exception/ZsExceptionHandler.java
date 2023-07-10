@@ -21,8 +21,8 @@ public class ZsExceptionHandler {
 
     /**
      * 自定义业务异常
-     * @param e
-     * @return
+     * @params e
+     * @return Result
      */
     @ExceptionHandler(ZsException.class)
     public Result handleZsException(ZsException e){
@@ -59,7 +59,7 @@ public class ZsExceptionHandler {
     public Result handleRuntimeException(RuntimeException e, HttpServletRequest request)
     {
         logger.error(e.getMessage(), e);
-        String requestURI = request.getRequestURI();
+//        String requestURI = request.getRequestURI();
         return new Result().error(e.getMessage());
     }
 

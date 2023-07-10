@@ -1,5 +1,9 @@
 package com.zs.common.enums;
 
+/**
+ * @author 86740
+ */
+
 public enum OperationTypeEnum {
 
     /** 新增 */
@@ -13,7 +17,7 @@ public enum OperationTypeEnum {
     /** 导入 */
     IMPORT,
     /** 其他 */
-    OTHER;
+    OTHER
 
 
 }

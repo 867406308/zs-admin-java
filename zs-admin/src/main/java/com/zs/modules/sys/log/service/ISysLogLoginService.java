@@ -6,6 +6,9 @@ import com.zs.modules.sys.log.domain.entity.SysLogLoginEntity;
 import com.zs.modules.sys.log.domain.params.SysLogLoginQueryParams;
 import com.zs.modules.sys.log.domain.vo.SysLogLoginVo;
 
+/**
+ * @author 86740
+ */
 public interface ISysLogLoginService extends IService<SysLogLoginEntity> {
 
     PageResult<SysLogLoginVo> page(SysLogLoginQueryParams sysLogLoginQueryParams);

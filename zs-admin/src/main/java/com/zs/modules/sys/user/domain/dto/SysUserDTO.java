@@ -1,8 +1,11 @@
 package com.zs.modules.sys.user.domain.dto;
 
-import com.baomidou.mybatisplus.annotation.TableName;
+
 import lombok.Data;
 
+/**
+ * @author 86740
+ */
 @Data
 public class SysUserDTO {
 

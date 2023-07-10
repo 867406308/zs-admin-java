@@ -7,16 +7,15 @@ import com.zs.common.enums.OperationTypeEnum;
 import com.zs.common.model.LoginUserInfo;
 import com.zs.framework.security.utils.SecurityUtil;
 import com.zs.modules.sys.user.domain.dto.SysUserDTO;
-import com.zs.modules.sys.user.domain.entity.SysUserEntity;
 import com.zs.modules.sys.user.domain.vo.SysUserVo;
 import com.zs.modules.sys.user.service.ISysUserService;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
+/**
+ * @author 86740
+ */
 @RestController
 @RequestMapping("sys/user")
 public class SysUserController {

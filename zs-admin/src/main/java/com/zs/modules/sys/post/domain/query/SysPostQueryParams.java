@@ -5,8 +5,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-import java.util.List;
 
+/**
+ * @author 86740
+ */
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class SysPostQueryParams extends BasePageParams implements Serializable{

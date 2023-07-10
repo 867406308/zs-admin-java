@@ -2,6 +2,9 @@ package com.zs.modules.sys.log.domain.params;
 
 import lombok.Data;
 
+/**
+ * @author 86740
+ */
 @Data
 public class SysLogErrorAddParams {
 

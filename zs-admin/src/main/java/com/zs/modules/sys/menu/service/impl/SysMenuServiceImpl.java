@@ -2,8 +2,6 @@ package com.zs.modules.sys.menu.service.impl;
 
 
 import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.core.convert.Convert;
-import com.alibaba.fastjson2.util.BeanUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -11,28 +9,37 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zs.common.page.PageInfo;
 import com.zs.common.page.PageResult;
 import com.zs.common.utils.TreeUtil;
-import com.zs.modules.sys.menu.domain.dto.SysMenuDTO;
+import com.zs.modules.sys.menu.domain.params.SysMenuAddParams;
 import com.zs.modules.sys.menu.domain.entity.SysMenuEntity;
+import com.zs.modules.sys.menu.domain.params.SysMenuQueryParams;
 import com.zs.modules.sys.menu.domain.vo.SysMenuVo;
 import com.zs.modules.sys.menu.mapper.SysMenuMapper;
 import com.zs.modules.sys.menu.service.ISysMenuService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
+
+/**
+ * @author 86740
+ */
 
 @Service
 public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenuEntity> implements ISysMenuService {
 
 
     @Override
-    public PageResult<SysMenuVo> page(Map<String, Object> params) {
-        Page<SysMenuEntity> page = new PageInfo<>(params);
-        QueryWrapper<SysMenuEntity> wrapper = new QueryWrapper(params);
-        List<SysMenuVo> list = BeanUtil.copyToList(baseMapper.page(page, wrapper), SysMenuVo.class);
+    public PageResult<SysMenuVo> page(SysMenuQueryParams sysMenuQueryParams) {
+        Page<SysMenuEntity> page = new PageInfo<>(sysMenuQueryParams);
+        QueryWrapper<SysMenuEntity> wrapper = new QueryWrapper<>();
+
+        IPage<SysMenuEntity> iPage = baseMapper.selectPage(page, wrapper);
+        List<SysMenuVo> list = BeanUtil.copyToList(iPage.getRecords(), SysMenuVo.class);
 
         return new PageResult<>(list, page.getTotal(), SysMenuVo.class);
+
+
+
     }
 
     @Override
@@ -42,13 +49,13 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenuEntity
     }
 
     @Override
-    public void save(SysMenuDTO sysMenuDTO) {
-        baseMapper.insert(BeanUtil.copyProperties(sysMenuDTO, SysMenuEntity.class));
+    public void save(SysMenuAddParams sysMenuAddParams) {
+        baseMapper.insert(BeanUtil.copyProperties(sysMenuAddParams, SysMenuEntity.class));
     }
 
     @Override
-    public void update(SysMenuDTO sysMenuDTO) {
-        baseMapper.updateById(BeanUtil.copyProperties(sysMenuDTO, SysMenuEntity.class));
+    public void update(SysMenuAddParams sysMenuAddParams) {
+        baseMapper.updateById(BeanUtil.copyProperties(sysMenuAddParams, SysMenuEntity.class));
     }
 
     @Override

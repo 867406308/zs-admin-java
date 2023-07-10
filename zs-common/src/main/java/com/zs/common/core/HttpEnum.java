@@ -1,5 +1,9 @@
 package com.zs.common.core;
 
+/**
+ * @author 86740
+ */
+
 public enum HttpEnum {
 
     /**
@@ -40,7 +44,7 @@ public enum HttpEnum {
 
     private int code;
 
-    private HttpEnum(int code, String msg) {
+    HttpEnum(int code, String msg) {
         this.msg = msg;
         this.code = code;
     }

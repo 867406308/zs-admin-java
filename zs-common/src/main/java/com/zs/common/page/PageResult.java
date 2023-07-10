@@ -6,6 +6,9 @@ import lombok.Data;
 
 import java.util.List;
 
+/**
+ * @author 86740
+ */
 @Data
 public class PageResult<T> {
 

@@ -1,11 +1,12 @@
 package com.zs.modules.sys.post.domain.vo;
 
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
 
+/**
+ * @author 86740
+ */
 @Data
 public class SysPostVo implements Serializable {
 

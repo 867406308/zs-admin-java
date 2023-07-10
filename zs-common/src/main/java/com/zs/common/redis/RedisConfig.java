@@ -11,6 +11,7 @@ import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactor
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
+
 @Configuration
 public class RedisConfig {
 
@@ -32,8 +33,9 @@ public class RedisConfig {
         LettuceClientConfiguration clientConfig = LettuceClientConfiguration.builder().build();
 
         return new LettuceConnectionFactory(redisConfig, clientConfig);
-//        return new LettuceConnectionFactory();
     }
+
+
 
     @Bean
     RedisTemplate<String, String> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
@@ -42,7 +44,8 @@ public class RedisConfig {
         template.setConnectionFactory(redisConnectionFactory);
         // 定义 String 序列化器
         StringRedisSerializer keySerializer = new StringRedisSerializer();
-        FastJson2JsonRedisSerializer valueSerializer = new FastJson2JsonRedisSerializer(Object.class);
+
+        FastJson2JsonRedisSerializer<Object> valueSerializer = new FastJson2JsonRedisSerializer<>(Object.class);
 
         template.setKeySerializer(keySerializer);
         template.setValueSerializer(valueSerializer);

@@ -4,11 +4,10 @@ import com.zs.common.model.LoginUserInfo;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * springSecurity工具类
+ * @author 86740
  */
 public class SecurityUtil {
 

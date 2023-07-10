@@ -3,26 +3,21 @@ package com.zs.modules.sys.dept.service.impl;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zs.common.exception.ZsException;
-import com.zs.common.page.PageInfo;
-import com.zs.common.page.PageResult;
 import com.zs.common.utils.TreeUtil;
-import com.zs.modules.sys.dept.domain.query.SysDeptQueryParams;
 import com.zs.modules.sys.dept.mapper.SysDeptMapper;
 import com.zs.modules.sys.dept.service.ISysDeptService;
-import com.zs.modules.sys.menu.domain.vo.SysMenuVo;
 import com.zs.modules.sys.dept.domain.entity.SysDeptEntity;
 import com.zs.modules.sys.dept.domain.query.SysDeptAddParams;
 import com.zs.modules.sys.dept.domain.vo.SysDeptVo;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
+/**
+ * @author 86740
+ */
 @Service
 public class SysDeptServiceImpl extends ServiceImpl<SysDeptMapper, SysDeptEntity> implements ISysDeptService {
 

@@ -1,9 +1,10 @@
 package com.zs.framework.service;
 
-import com.zs.common.model.params.SysLogErrorAddParams;
 import com.zs.common.model.params.SysLogLoginAddParams;
-import com.zs.common.model.params.SysLogOperationAddParams;
 
+/**
+ * @author 86740
+ */
 public interface ILogLoginAspectService {
     void save(SysLogLoginAddParams sysLogLoginAddParams);
 

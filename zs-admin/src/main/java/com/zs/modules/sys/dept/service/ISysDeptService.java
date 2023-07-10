@@ -1,15 +1,15 @@
 package com.zs.modules.sys.dept.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.zs.common.page.PageResult;
 import com.zs.modules.sys.dept.domain.entity.SysDeptEntity;
 import com.zs.modules.sys.dept.domain.query.SysDeptAddParams;
-import com.zs.modules.sys.dept.domain.query.SysDeptQueryParams;
 import com.zs.modules.sys.dept.domain.vo.SysDeptVo;
 
 import java.util.List;
-import java.util.Map;
 
+/**
+ * @author 86740
+ */
 public interface ISysDeptService extends IService<SysDeptEntity> {
 
     List<SysDeptVo> getList();

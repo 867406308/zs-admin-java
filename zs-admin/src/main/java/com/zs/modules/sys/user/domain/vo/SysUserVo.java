@@ -1,8 +1,10 @@
 package com.zs.modules.sys.user.domain.vo;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+/**
+ * @author 86740
+ */
 @Data
 public class SysUserVo {
 

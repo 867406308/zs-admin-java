@@ -4,6 +4,9 @@ import lombok.Data;
 
 import java.io.Serializable;
 
+/**
+ * @author 86740
+ */
 @Data
 public class SysRoleMenuVo implements Serializable {
 
