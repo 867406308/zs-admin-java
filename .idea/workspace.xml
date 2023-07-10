@@ -8,99 +8,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="338f835b-8e6d-4daf-b157-ee1b66fa219f" name="Changes" comment="修复pom">
-      <change afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/domain/params/SysMenuAddParams.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/smartfox_info.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/ZsAdminApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/ZsAdminApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/demo/controller/DemoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/demo/controller/DemoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/dept/controller/SysDeptController.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/dept/controller/SysDeptController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/dept/domain/entity/SysDeptEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/dept/domain/entity/SysDeptEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/dept/domain/query/SysDeptAddParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/dept/domain/query/SysDeptAddParams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/dept/domain/query/SysDeptQueryParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/dept/domain/query/SysDeptQueryParams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/dept/service/ISysDeptService.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/dept/service/ISysDeptService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/dept/service/impl/SysDeptServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/dept/service/impl/SysDeptServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/controller/SysLogErrorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/controller/SysLogErrorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/domain/params/SysLogErrorAddParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/domain/params/SysLogErrorAddParams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/domain/params/SysLogLoginAddParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/domain/params/SysLogLoginAddParams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/domain/params/SysLogLoginQueryParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/domain/params/SysLogLoginQueryParams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/domain/params/SysLogOperationAddParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/domain/params/SysLogOperationAddParams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/domain/params/SysLogOperationQueryParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/domain/params/SysLogOperationQueryParams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/domain/vo/SysLogLoginVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/domain/vo/SysLogLoginVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/domain/vo/SysLogOperationVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/domain/vo/SysLogOperationVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/service/ISysLogErrorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/service/ISysLogErrorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/service/ISysLogLoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/service/ISysLogLoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/service/ISysLogOperationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/service/ISysLogOperationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/service/impl/SysLogErrorServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/service/impl/SysLogErrorServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/controller/SysMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/controller/SysMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/domain/dto/SysMenuDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/domain/params/SysMenuQueryParams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/domain/vo/SysMenuVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/domain/vo/SysMenuVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/domain/vo/SysMetaVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/domain/vo/SysMetaVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/mapper/SysMenuMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/mapper/SysMenuMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/service/ISysMenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/service/ISysMenuService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/service/impl/SysMenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/service/impl/SysMenuServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/post/controller/SysPostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/post/controller/SysPostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/post/domain/entity/SysPostEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/post/domain/entity/SysPostEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/post/domain/query/SysPostQueryParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/post/domain/query/SysPostQueryParams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/post/domain/vo/SysPostVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/post/domain/vo/SysPostVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/post/mapper/SysPostMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/post/mapper/SysPostMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/post/service/ISysPostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/post/service/ISysPostService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/post/service/impl/SysPostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/post/service/impl/SysPostServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/role/controller/SysRoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/role/controller/SysRoleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/role/domain/query/SysRoleMenuAddParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/role/domain/query/SysRoleMenuAddParams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/role/domain/query/SysRoleQueryParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/role/domain/query/SysRoleQueryParams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/role/domain/vo/SysRoleMenuVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/role/domain/vo/SysRoleMenuVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/role/service/ISysRoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/role/service/ISysRoleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/role/service/impl/SysRoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/role/service/impl/SysRoleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/user/controller/SysUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/user/controller/SysUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/user/domain/dto/SysUserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/user/domain/dto/SysUserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/user/domain/vo/SysUserVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/user/domain/vo/SysUserVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/user/service/ISysUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/user/service/ISysUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/user/service/impl/SysUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/user/service/impl/SysUserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/security/service/CustomUserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/security/service/CustomUserDetailsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/resources/mapper/sys/menu/SysMenuMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/resources/mapper/sys/menu/SysMenuMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/test/java/com/zs/admin/DemoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/test/java/com/zs/admin/DemoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/target/classes/application-dev.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/target/classes/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/target/classes/logback-spring.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/target/classes/mapper/sys/dept/SysDeptMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/target/classes/mapper/sys/menu/SysMenuMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/target/classes/mapper/sys/post/SysPostMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/target/classes/mapper/sys/role/SysRoleMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/target/classes/mapper/sys/user/SysUserMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/target/surefire-reports/TEST-com.zs.admin.IpUtilsTest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/target/surefire-reports/com.zs.admin.IpUtilsTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/target/zs-admin.jar.original" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/zs-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/annotation/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/annotation/Log.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/annotation/LoginLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/annotation/LoginLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/constant/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/constant/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/core/HttpEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/core/HttpEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/core/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/core/Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/enums/OperationTypeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/enums/OperationTypeEnum.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/exception/ZsExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/exception/ZsExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/model/BaseVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/model/BaseVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/model/params/SysLogLoginAddParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/model/params/SysLogLoginAddParams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/page/BasePageParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/page/BasePageParams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/page/PageInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/page/PageInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/page/PageResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/page/PageResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/redis/FastJson2JsonRedisSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/redis/FastJson2JsonRedisSerializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/redis/RedisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/redis/RedisConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/redis/RedisUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/redis/RedisUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/utils/IpUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/utils/IpUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/utils/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/utils/JwtUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/utils/TreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/utils/TreeNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/utils/TreeUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/utils/TreeUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-common/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-common/target/classes/city/ip2region.xdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-common/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/zs-framework/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/aspect/LogAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/aspect/LogAspect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/config/MyFastJsonConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/config/MyFastJsonConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/config/MybatisPlusConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/config/MybatisPlusConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/config/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/filter/LoginFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/filter/MyAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/filter/MyAuthenticationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/handler/CustomAccessDeniedHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/handler/CustomAccessDeniedHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/handler/CustomAuthenticationEntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/handler/CustomAuthenticationEntryPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/handler/CustomAuthenticationFailureHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/handler/CustomAuthenticationFailureHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/handler/CustomAuthenticationSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/handler/CustomAuthenticationSuccessHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/handler/CustomLogoutSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/handler/CustomLogoutSuccessHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/provider/UserNameAuthenticationProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/provider/UserNameAuthenticationProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/service/CustomUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/service/CustomUserDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/utils/SecurityUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/utils/SecurityUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/service/ILogErrorAspectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/service/ILogErrorAspectService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/service/ILogLoginAspectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/service/ILogLoginAspectService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/service/ILogOperationAspectService.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/service/ILogOperationAspectService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-framework/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-framework/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,40 +77,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Notification.DisplayName-DoNotAsk-Inspection Results": "Code inspection completed",
-    "Notification.DoNotAsk-Inspection Results": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/project/zs_project/zs/aliyun/zs-project-java",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.5264368",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "com.alibabacloud.intellij.config.RootConfigurable",
-    "show.migrate.to.gradle.popup": "false",
-    "spring.configuration.checksum": "1d6ee063f206f9b65d0843610ec92f06",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Notification.DisplayName-DoNotAsk-Inspection Results&quot;: &quot;Code inspection completed&quot;,
+    &quot;Notification.DoNotAsk-Inspection Results&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/project/zs_project/zs/aliyun/zs-project-java&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.65977013&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;1d6ee063f206f9b65d0843610ec92f06&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -355,7 +292,8 @@
       <workItem from="1688782517755" duration="8923000" />
       <workItem from="1688803249693" duration="369000" />
       <workItem from="1688803649534" duration="4676000" />
-      <workItem from="1688949112369" duration="1268000" />
+      <workItem from="1688949112369" duration="2612000" />
+      <workItem from="1688951746543" duration="429000" />
     </task>
     <task id="LOCAL-00001" summary="添加参数校验">
       <created>1688777182281</created>
@@ -413,7 +351,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688802714847</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="修复pom">
+      <created>1688950486520</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1688950486520</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
