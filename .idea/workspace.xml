@@ -7,7 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="338f835b-8e6d-4daf-b157-ee1b66fa219f" name="Changes" comment="修复springboot版本">
+    <list default="true" id="338f835b-8e6d-4daf-b157-ee1b66fa219f" name="Changes" comment="修改redis链接配置文件">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zs-admin/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/resources/application.yml" afterDir="false" />
     </list>
@@ -266,7 +266,7 @@
       <workItem from="1688803649534" duration="4676000" />
       <workItem from="1688949112369" duration="2612000" />
       <workItem from="1688951746543" duration="1915000" />
-      <workItem from="1689033020396" duration="738000" />
+      <workItem from="1689033020396" duration="1179000" />
     </task>
     <task id="LOCAL-00001" summary="添加参数校验">
       <created>1688777182281</created>
@@ -345,7 +345,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688952934653</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="修改redis链接配置文件">
+      <created>1689033876164</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1689033876164</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -374,7 +381,8 @@
     <MESSAGE value="修复mavn出错" />
     <MESSAGE value="修复pom" />
     <MESSAGE value="修复springboot版本" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复springboot版本" />
+    <MESSAGE value="修改redis链接配置文件" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改redis链接配置文件" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
