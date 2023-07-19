@@ -30,6 +30,12 @@ public class SysMenuController {
         return new Result().ok(iPage);
     }
 
+    @GetMapping("nav")
+    public Result nav(){
+        List<SysMenuVo> list =  iSysMenuService.getNavList();
+        return new Result().ok(list);
+    }
+
     @GetMapping("list")
     public Result list(){
         List<SysMenuVo> list =  iSysMenuService.getList();

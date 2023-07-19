@@ -6,6 +6,7 @@ import org.mybatis.spring.MyBatisSystemException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.Order;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -62,7 +63,7 @@ public class ZsExceptionHandler {
     public Result handleRuntimeException(RuntimeException e, HttpServletRequest request)
     {
         logger.error(e.getMessage(), e);
-//        String requestURI = request.getRequestURI();
+        String requestURI = request.getRequestURI();
         return new Result().error(e.getMessage());
     }
 
@@ -72,5 +73,9 @@ public class ZsExceptionHandler {
         return new Result().error();
     }
 
+    @ExceptionHandler(AccessDeniedException.class)
+    public void accessDeniedException(AccessDeniedException e) throws AccessDeniedException {
+        throw e;
+    }
 
 }

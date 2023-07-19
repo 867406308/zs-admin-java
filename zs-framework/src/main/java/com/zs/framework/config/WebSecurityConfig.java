@@ -39,6 +39,7 @@ public class WebSecurityConfig {
     private CustomLogoutSuccessHandler logoutSuccessHandler;
 
 
+    // 无权限失败处理
     @Resource
     private CustomAccessDeniedHandler customAccessDeniedHandler;
 
@@ -97,17 +98,18 @@ public class WebSecurityConfig {
                         .anyRequest().authenticated()
 
                 )
-                .logout().logoutSuccessHandler(logoutSuccessHandler).and()
-                // 把token校验过滤器添加到过滤器链中
-                .addFilterBefore(jwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(myAuthenticationFilter(http.getSharedObject(AuthenticationManager.class)), UsernamePasswordAuthenticationFilter.class)
-                .authenticationProvider(userNameAuthenticationProvider)
                 // 自定义异常处理
                 .exceptionHandling()
                 // 认证失败
                 .authenticationEntryPoint(customAuthenticationEntryPoint)
                 // 鉴权失败
-                .accessDeniedHandler(customAccessDeniedHandler)
+                .accessDeniedHandler(customAccessDeniedHandler).and()
+                .logout().logoutSuccessHandler(logoutSuccessHandler).and()
+                // 把token校验过滤器添加到过滤器链中
+                .addFilterBefore(jwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(myAuthenticationFilter(http.getSharedObject(AuthenticationManager.class)), UsernamePasswordAuthenticationFilter.class)
+                .authenticationProvider(userNameAuthenticationProvider)
+
                 ;
         return http.build();
     }

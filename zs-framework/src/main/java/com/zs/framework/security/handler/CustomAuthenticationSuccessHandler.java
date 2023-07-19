@@ -32,7 +32,5 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         String s = JSON.toJSONString(new Result().ok(200, "登录成功", jwtUtil.createToken(loginUserInfo)));
         response.getWriter().println(s);
 
-        
-
     }
 }

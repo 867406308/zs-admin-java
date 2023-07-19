@@ -6,6 +6,7 @@ import com.zs.common.enums.OperationTypeEnum;
 import com.zs.modules.sys.dept.domain.query.SysDeptAddParams;
 import com.zs.modules.sys.dept.domain.vo.SysDeptVo;
 import com.zs.modules.sys.dept.service.ISysDeptService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -24,6 +25,7 @@ public class SysDeptController {
 
 
     @GetMapping("tree")
+    @PreAuthorize("hasAuthority('sys:dept:list')")
     public Result list(){
         List<SysDeptVo> list =  iSysDeptService.getList();
         return new Result().ok(list);

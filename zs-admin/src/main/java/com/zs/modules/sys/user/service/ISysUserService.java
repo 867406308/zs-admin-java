@@ -13,7 +13,6 @@ public interface ISysUserService extends IService<SysUserEntity> {
      * @param userName 用户名
      * @return 用户对象
      */
-
     SysUserDTO selectByUserName(String userName);
 
 

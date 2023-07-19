@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * @author 86740
@@ -31,6 +32,7 @@ public class CustomUserDetailsServiceImpl  implements CustomUserDetailsService, 
         if(Objects.isNull(sysUserDTO)){
             throw new UsernameNotFoundException("用户不存在");
         }
-        return new LoginUserInfo(BeanUtil.toBean(sysUserDTO, SysUser.class), new HashSet<>());
+        Set<String> roleList = new HashSet<>();
+        return new LoginUserInfo(BeanUtil.toBean(sysUserDTO, SysUser.class), roleList);
     }
 }
