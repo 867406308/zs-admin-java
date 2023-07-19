@@ -25,7 +25,7 @@ public class SysDeptController {
 
 
     @GetMapping("tree")
-    @PreAuthorize("hasAuthority('sys:dept:list')")
+//    @PreAuthorize("hasAuthority('sys:dept:list')")
     public Result list(){
         List<SysDeptVo> list =  iSysDeptService.getList();
         return new Result().ok(list);

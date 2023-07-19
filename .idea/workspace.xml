@@ -8,12 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="338f835b-8e6d-4daf-b157-ee1b66fa219f" name="Changes" comment="添加菜单导航接口">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/service/impl/SysMenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/service/impl/SysMenuServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/test/java/com/zs/admin/DemoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/test/java/com/zs/admin/DemoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/exception/ZsExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/exception/ZsExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/aspect/LogAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/aspect/LogAspect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/dept/controller/SysDeptController.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/dept/controller/SysDeptController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -276,7 +271,7 @@
       <workItem from="1689405393604" duration="8408000" />
       <workItem from="1689580677871" duration="677000" />
       <workItem from="1689723615131" duration="2924000" />
-      <workItem from="1689752873934" duration="181000" />
+      <workItem from="1689752873934" duration="445000" />
     </task>
     <task id="LOCAL-00001" summary="添加参数校验">
       <created>1688777182281</created>
@@ -377,7 +372,15 @@
       <option name="project" value="LOCAL" />
       <updated>1689730605133</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="添加菜单导航接口">
+      <option name="closed" value="true" />
+      <created>1689753080736</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1689753080736</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
