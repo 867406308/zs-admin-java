@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="EntryPointsManager">
+    <entry_points version="2.0">
+      <entry_point TYPE="field" FQNAME="com.zs.common.core.HttpEnum INVALID_REQUEST" />
+      <entry_point TYPE="field" FQNAME="com.zs.common.core.HttpEnum METHOD_NOT_ALLOWED" />
+      <entry_point TYPE="field" FQNAME="com.zs.common.core.HttpEnum NOTFOUND" />
+    </entry_points>
     <pattern value="com.zs.modules.sys.role.domain.vo.SysRoleMenuVo" />
+    <pattern value="com.zs.common.core.HttpEnum" method="setCode" />
+    <pattern value="com.zs.common.core.HttpEnum" method="setMsg" />
+    <pattern value="com.zs.framework.aspect.LogAspect" method="loginPointCut" />
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="MavenProjectsManager">

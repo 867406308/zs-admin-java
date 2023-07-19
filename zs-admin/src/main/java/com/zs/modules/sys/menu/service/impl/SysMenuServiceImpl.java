@@ -43,7 +43,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenuEntity
 
     @Override
     public List<SysMenuVo> getNavList() {
-        List<SysMenuVo> list = BeanUtil.copyToList(baseMapper.selectList(new QueryWrapper<SysMenuEntity>().eq("type", 1).eq("type", 2)), SysMenuVo.class);
+        List<SysMenuVo> list = BeanUtil.copyToList(baseMapper.selectList(new QueryWrapper<SysMenuEntity>().in("type", 1, 2)), SysMenuVo.class);
         return TreeUtil.build(list, 0L);
     }
 

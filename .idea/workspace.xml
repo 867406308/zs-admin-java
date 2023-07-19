@@ -8,17 +8,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="338f835b-8e6d-4daf-b157-ee1b66fa219f" name="Changes" comment="添加菜单导航接口">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/dept/controller/SysDeptController.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/dept/controller/SysDeptController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/controller/SysMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/controller/SysMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/service/ISysMenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/service/ISysMenuService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/service/impl/SysMenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/service/impl/SysMenuServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/user/service/ISysUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/user/service/ISysUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/security/service/CustomUserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/security/service/CustomUserDetailsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/src/test/java/com/zs/admin/DemoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/test/java/com/zs/admin/DemoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/exception/ZsExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/exception/ZsExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/config/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/handler/CustomAuthenticationSuccessHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/handler/CustomAuthenticationSuccessHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/aspect/LogAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/aspect/LogAspect.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +76,7 @@
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.65977013&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;025d8abc2e62590459bc015f3b018242&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -280,7 +275,8 @@
       <workItem from="1689323031502" duration="1152000" />
       <workItem from="1689405393604" duration="8408000" />
       <workItem from="1689580677871" duration="677000" />
-      <workItem from="1689723615131" duration="1647000" />
+      <workItem from="1689723615131" duration="2924000" />
+      <workItem from="1689752873934" duration="181000" />
     </task>
     <task id="LOCAL-00001" summary="添加参数校验">
       <created>1688777182281</created>
@@ -373,7 +369,15 @@
       <option name="project" value="LOCAL" />
       <updated>1689034214219</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="添加菜单导航接口">
+      <option name="closed" value="true" />
+      <created>1689730605133</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1689730605133</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -431,12 +435,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/zs-admin/src/test/java/com/zs/admin/DemoTest.java</url>
-          <line>4</line>
+          <line>8</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/zs-admin/src/test/java/com/zs/admin/DemoTest.java</url>
-          <line>5</line>
+          <line>13</line>
           <option name="timeStamp" value="36" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

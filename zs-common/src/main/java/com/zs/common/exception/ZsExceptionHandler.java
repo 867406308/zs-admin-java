@@ -64,6 +64,7 @@ public class ZsExceptionHandler {
     {
         logger.error(e.getMessage(), e);
         String requestURI = request.getRequestURI();
+        logger.error(requestURI);
         return new Result().error(e.getMessage());
     }
 
