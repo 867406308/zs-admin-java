@@ -19,11 +19,11 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.Collections;
 import java.util.Objects;
 
 /**
  * 用户名密码认证器
+ *
  * @author 86740
  */
 @Configuration
@@ -40,7 +40,6 @@ public class UserNameAuthenticationProvider implements AuthenticationProvider {
     }
 
 
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -50,20 +49,26 @@ public class UserNameAuthenticationProvider implements AuthenticationProvider {
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
+
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+
         String username = (String) authentication.getPrincipal();
         String password = (String) authentication.getCredentials();
         // 1、去调用自己实现的UserDetailsService，返回UserDetails
         UserDetails userDetails = customUserDetailsService.loadUserByUsername(username);
+
+
         // 2、密码进行检查，这里调用了PasswordEncoder，检查 UserDetails 是否可用。
         if (Objects.isNull(userDetails) || !passwordEncoder().matches(password, userDetails.getPassword())) {
             // 将用户名存储在HttpServletRequest的属性中
-            HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
             request.setAttribute("username", username);
 
             throw new BadCredentialsException("账号或密码错误");
         }
+        // 将用户名存储在HttpServletRequest的属性中
+        request.setAttribute("username", username);
         // 3、返回经过认证的Authentication
-        UsernamePasswordAuthenticationToken result = new UsernamePasswordAuthenticationToken(userDetails, null, Collections.emptyList());
+        UsernamePasswordAuthenticationToken result = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
         result.setDetails(authentication.getDetails());
         // 将 Authentication 认证信息对象绑定到 SecurityContext即安全上下文中
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -71,8 +76,6 @@ public class UserNameAuthenticationProvider implements AuthenticationProvider {
 //        String token = JwtUtil.createToken();
         return result;
     }
-
-
 
 
 }

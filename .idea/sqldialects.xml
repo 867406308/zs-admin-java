@@ -2,6 +2,7 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/zs-admin/src/main/resources/mapper/sys/dept/SysDeptMapper.xml" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/zs-admin/src/main/resources/mapper/sys/menu/SysMenuMapper.xml" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/zs-admin/src/main/resources/mapper/sys/post/SysPostMapper.xml" dialect="GenericSQL" />
   </component>
 </project>

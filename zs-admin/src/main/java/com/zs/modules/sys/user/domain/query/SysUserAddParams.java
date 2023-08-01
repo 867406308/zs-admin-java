@@ -1,11 +1,9 @@
-package com.zs.modules.sys.user.domain.dto;
+package com.zs.modules.sys.user.domain.query;
 
 import lombok.Data;
 
-import java.util.Set;
-
 @Data
-public class SysUserDTO {
+public class SysUserAddParams {
 
     private Long sysUserId;
     private String username;
@@ -16,5 +14,4 @@ public class SysUserDTO {
     private Integer age;
     private Integer sex;
     private Integer isAdmin;
-
 }

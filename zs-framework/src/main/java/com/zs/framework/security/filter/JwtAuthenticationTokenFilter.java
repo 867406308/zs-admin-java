@@ -26,7 +26,7 @@ import java.util.Objects;
  * token认证过滤器
  */
 @Component
-public class JwtAuthenticationTokenFilter extends OncePerRequestFilter   {
+public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
     @Autowired
     private RedisUtil redisUtil;
@@ -39,22 +39,23 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter   {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
 
         String Authorization = request.getHeader(Constants.TOKEN_PREFIX);
-        if(whiteUrlProperties.getUrl().contains(request.getServletPath()) || !StringUtils.hasText(Authorization)){
+        if (whiteUrlProperties.getUrl().contains(request.getServletPath()) || !StringUtils.hasText(Authorization)) {
             chain.doFilter(request, response);
             return;
         }
 
-        String token = request.getHeader(Constants.TOKEN_PREFIX).replace("Bearer ","");
+        String token = request.getHeader(Constants.TOKEN_PREFIX).replace("Bearer ", "");
         Claims claims = jwtUtil.parseToken(token);
-        if(Objects.isNull(claims)){
+        if (Objects.isNull(claims)) {
             chain.doFilter(request, response);
             return;
         }
         String loginInfo = claims.getSubject();
         LoginUserInfo loginUserInfo = JSONUtil.toBean(JSONUtil.parseObj(redisUtil.get(loginInfo)), LoginUserInfo.class);
+        // 根据用户获取权限集合
         // 获取权限信息封装到Authentication中
         UsernamePasswordAuthenticationToken authenticationToken =
-                new UsernamePasswordAuthenticationToken(loginUserInfo, null, null);
+                new UsernamePasswordAuthenticationToken(loginUserInfo, null, loginUserInfo.getAuthorities());
         // 存入SecurityContextHolder
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
 

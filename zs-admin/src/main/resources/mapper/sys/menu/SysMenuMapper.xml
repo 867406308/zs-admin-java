@@ -4,7 +4,17 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zs.modules.sys.menu.mapper.SysMenuMapper">
     <select id="getList" resultType="com.zs.modules.sys.menu.domain.entity.SysMenuEntity">
-        select * from sys_menu
+        select *
+        from sys_menu
+    </select>
+    <select id="getPermissions" resultType="java.lang.String">
+        SELECT d.permissions
+        FROM `sys_user` a
+                 LEFT JOIN sys_user_role b ON b.sys_user_id = a.sys_user_id
+                 LEFT JOIN sys_role_menu c ON c.sys_role_id = b.sys_role_id
+                 LEFT JOIN sys_menu d ON d.sys_menu_id = c.sys_menu_id
+        WHERE a.sys_user_id = #{sysUserId}
+
     </select>
 
 </mapper>

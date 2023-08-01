@@ -8,14 +8,18 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zs.common.page.PageInfo;
 import com.zs.common.page.PageResult;
 import com.zs.modules.sys.role.domain.entity.SysRoleEntity;
+import com.zs.modules.sys.role.domain.entity.SysRoleMenuEntity;
 import com.zs.modules.sys.role.domain.query.SysRoleAddParams;
 import com.zs.modules.sys.role.domain.query.SysRoleQueryParams;
 import com.zs.modules.sys.role.domain.vo.SysRoleVo;
 import com.zs.modules.sys.role.mapper.SysRoleMapper;
+import com.zs.modules.sys.role.service.ISysRoleMenuService;
 import com.zs.modules.sys.role.service.ISysRoleService;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -24,6 +28,8 @@ import java.util.List;
 @Service
 public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRoleEntity> implements ISysRoleService {
 
+    @Resource
+    private ISysRoleMenuService iSysRoleMenuService;
 
     @Override
     public PageResult<SysRoleVo> page(SysRoleQueryParams sysRoleQueryParams) {
@@ -58,5 +64,12 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRoleEntity
     @Override
     public SysRoleVo getById(Long id) {
         return BeanUtil.copyProperties(baseMapper.selectById(id), SysRoleVo.class);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void deleteById(Long id) {
+        baseMapper.deleteById(id);
+        iSysRoleMenuService.remove(new QueryWrapper<SysRoleMenuEntity>().eq("sys_role_id", id));
     }
 }

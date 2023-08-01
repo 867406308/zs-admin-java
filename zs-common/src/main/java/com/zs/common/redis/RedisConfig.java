@@ -45,6 +45,7 @@ public class RedisConfig {
         // 定义 String 序列化器
         StringRedisSerializer keySerializer = new StringRedisSerializer();
 
+
         FastJson2JsonRedisSerializer<Object> valueSerializer = new FastJson2JsonRedisSerializer<>(Object.class);
 
         template.setKeySerializer(keySerializer);

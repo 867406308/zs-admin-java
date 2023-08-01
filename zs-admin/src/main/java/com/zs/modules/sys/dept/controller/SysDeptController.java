@@ -3,6 +3,8 @@ package com.zs.modules.sys.dept.controller;
 import com.zs.common.annotation.Log;
 import com.zs.common.core.Result;
 import com.zs.common.enums.OperationTypeEnum;
+import com.zs.common.model.LoginUserInfo;
+import com.zs.framework.security.utils.SecurityUtil;
 import com.zs.modules.sys.dept.domain.query.SysDeptAddParams;
 import com.zs.modules.sys.dept.domain.vo.SysDeptVo;
 import com.zs.modules.sys.dept.service.ISysDeptService;
@@ -25,7 +27,7 @@ public class SysDeptController {
 
 
     @GetMapping("tree")
-//    @PreAuthorize("hasAuthority('sys:dept:list')")
+    @PreAuthorize("hasAuthority('sys:dept:list')")
     public Result list(){
         List<SysDeptVo> list =  iSysDeptService.getList();
         return new Result().ok(list);
@@ -33,6 +35,7 @@ public class SysDeptController {
 
     @Log(module = "部门管理-新增", type = OperationTypeEnum.ADD, description = "新增部门信息")
     @PostMapping("save")
+    @PreAuthorize("hasAuthority('sys:dept:save')")
     public Result save(@RequestBody SysDeptAddParams sysOrgAddParams){
         iSysDeptService.save(sysOrgAddParams);
         return new Result().ok();
@@ -40,6 +43,7 @@ public class SysDeptController {
 
     @Log(module = "部门管理-修改", type = OperationTypeEnum.EDIT, description = "修改部门信息")
     @PutMapping("update")
+    @PreAuthorize("hasAuthority('sys:dept:update')")
     public Result update(@Valid @RequestBody SysDeptAddParams sysOrgAddParams){
         iSysDeptService.update(sysOrgAddParams);
         return new Result().ok();
@@ -47,6 +51,7 @@ public class SysDeptController {
 
 
     @GetMapping("{id}")
+    @PreAuthorize("hasAuthority('sys:dept:info')")
     public Result get(@PathVariable("id") Long id){
         SysDeptVo sysOrgVo =  iSysDeptService.getById(id);
         return new Result().ok(sysOrgVo);
@@ -54,6 +59,7 @@ public class SysDeptController {
 
     @Log(module = "部门管理-删除", type = OperationTypeEnum.DELETE, description = "删除部门信息")
     @DeleteMapping("{id}")
+    @PreAuthorize("hasAuthority('sys:dept:delete')")
     public Result delete(@PathVariable("id") Long id){
         iSysDeptService.removeById(id);
         return new Result().ok();

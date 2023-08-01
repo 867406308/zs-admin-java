@@ -8,6 +8,7 @@ import com.zs.modules.sys.menu.domain.params.SysMenuAddParams;
 import com.zs.modules.sys.menu.domain.params.SysMenuQueryParams;
 import com.zs.modules.sys.menu.domain.vo.SysMenuVo;
 import com.zs.modules.sys.menu.service.ISysMenuService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -25,6 +26,7 @@ public class SysMenuController {
     private ISysMenuService iSysMenuService;
 
     @GetMapping("page")
+//    @PreAuthorize("hasAuthority('sys:menu:page')")
     public Result page(SysMenuQueryParams sysMenuQueryParams){
         PageResult<SysMenuVo> iPage =  iSysMenuService.page(sysMenuQueryParams);
         return new Result().ok(iPage);
@@ -37,6 +39,7 @@ public class SysMenuController {
     }
 
     @GetMapping("list")
+//    @PreAuthorize("hasAuthority('sys:menu:list')")
     public Result list(){
         List<SysMenuVo> list =  iSysMenuService.getList();
         return new Result().ok(list);
@@ -44,6 +47,7 @@ public class SysMenuController {
 
     @Log(module = "菜单管理-新增", type = OperationTypeEnum.ADD, description = "新增菜单信息")
     @PostMapping("save")
+//    @PreAuthorize("hasAuthority('sys:menu:save')")
     public Result save(@RequestBody SysMenuAddParams sysMenuAddParams){
 
         iSysMenuService.save(sysMenuAddParams);
@@ -52,6 +56,7 @@ public class SysMenuController {
 
     @Log(module = "菜单管理-修改", type = OperationTypeEnum.EDIT, description = "新增菜单信息")
     @PutMapping("update")
+//    @PreAuthorize("hasAuthority('sys:menu:update')")
     public Result update(@RequestBody SysMenuAddParams sysMenuAddParams){
         iSysMenuService.update(sysMenuAddParams);
         return new Result().ok();
@@ -59,9 +64,17 @@ public class SysMenuController {
 
 
     @GetMapping("{id}")
+//    @PreAuthorize("hasAuthority('sys:menu:info')")
     public Result get(@PathVariable("id") Long id){
         SysMenuVo sysMenuVo =  iSysMenuService.getById(id);
         return new Result().ok(sysMenuVo);
     }
 
+    @Log(module = "菜单管理-删除", type = OperationTypeEnum.DELETE, description = "删除菜单信息")
+    @DeleteMapping("{id}")
+    @PreAuthorize("hasAuthority('sys:menu:delete')")
+    public Result delete(@PathVariable("id") Long id){
+        iSysMenuService.removeById(id);
+        return new Result().ok();
+    }
 }

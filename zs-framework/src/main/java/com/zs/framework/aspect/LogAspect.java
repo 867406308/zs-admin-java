@@ -55,13 +55,16 @@ public class LogAspect {
     public void loginPointCut() {
     }
 
-    /** 操作日志切入点 */
+    /**
+     * 操作日志切入点
+     */
     @Pointcut("@annotation(com.zs.common.annotation.Log)")
     public void logOperationPointCut() {
     }
 
     @Before("logOperationPointCut()")
-    public void before(){
+    public void before() {
+
         beginTime = System.currentTimeMillis();
     }
 
@@ -74,7 +77,6 @@ public class LogAspect {
     }
 
 
-
     /**
      * 记录异常日志
      * 异常通知，可传递异常对象
@@ -83,7 +85,7 @@ public class LogAspect {
      */
     @AfterThrowing(value = "logOperationPointCut()", throwing = "e")
     public void afterThrowing(JoinPoint point, Exception e) {
-        saveLogError(point,e);
+        saveLogError(point, e);
     }
 
 
@@ -91,26 +93,30 @@ public class LogAspect {
      * 记录登录日志
      * 环绕通知
      * 用于目标方法的整个调用流程
-     *
      */
     @Around("loginPointCut()")
     public Object around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-            Object object = proceedingJoinPoint.proceed();
-            saveLoginLog(proceedingJoinPoint);
-            return object;
+        Object object = proceedingJoinPoint.proceed();
+        saveLoginLog(proceedingJoinPoint);
+        return object;
     }
 
 
-    /** 获取HttpServletRequest */
+    /**
+     * 获取HttpServletRequest
+     */
     private HttpServletRequest getRequest() {
         return ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
     }
 
-    /** 获取请求体参数 */
+    /**
+     * 获取请求体参数
+     */
     private String getRequestBody(JoinPoint point) {
         Object[] args = point.getArgs();
         return JSONUtil.toJsonStr(args[0]);
     }
+
     void saveLoginLog(ProceedingJoinPoint proceedingJoinPoint) {
         Object[] objects = proceedingJoinPoint.getArgs();
         Throwable failureReason = null;
@@ -139,7 +145,9 @@ public class LogAspect {
     }
 
 
-    /** 操作日志 */
+    /**
+     * 操作日志
+     */
     public void saveLogOperation(JoinPoint point, Object obj) {
         HttpServletRequest request = getRequest();
         String params = getRequestBody(point);
@@ -154,8 +162,10 @@ public class LogAspect {
         iLogOperationAspectService.save(addParams);
     }
 
-    /** 错误日志 */
-    public void saveLogError(JoinPoint point, Exception e){
+    /**
+     * 错误日志
+     */
+    public void saveLogError(JoinPoint point, Exception e) {
         HttpServletRequest request = getRequest();
         String params = getRequestBody(point);
 
@@ -168,7 +178,9 @@ public class LogAspect {
         iLogErrorAspectService.save(sysLogErrorAddParams);
     }
 
-    /** 创建操作日志参数 */
+    /**
+     * 创建操作日志参数
+     */
     private SysLogOperationAddParams createLogOperationParams(Log annotation, HttpServletRequest request, String params, Result result) {
         SysLogOperationAddParams addParams = new SysLogOperationAddParams();
         addParams.setUsername(SecurityUtil.getUserInfo().getSysUser().getUsername());
@@ -186,7 +198,9 @@ public class LogAspect {
         return addParams;
     }
 
-    /** 创建异常日志参数 */
+    /**
+     * 创建异常日志参数
+     */
     private SysLogErrorAddParams createLogErrorParams(Log annotation, HttpServletRequest request, String params, Exception e) {
         SysLogErrorAddParams addParams = new SysLogErrorAddParams();
         addParams.setUsername(SecurityUtil.getUserInfo().getSysUser().getUsername());
@@ -202,7 +216,9 @@ public class LogAspect {
     }
 
 
-    /** 创建登录日志参数 */
+    /**
+     * 创建登录日志参数
+     */
     private SysLogLoginAddParams createLogLoginParams(String username, String ipAddr, String city, String userAgentString, LoginLog annotation, Throwable failureReason, String browser, String os) {
         SysLogLoginAddParams sysLogLoginAddParams = new SysLogLoginAddParams();
         sysLogLoginAddParams.setUsername(username);
@@ -211,7 +227,7 @@ public class LogAspect {
         sysLogLoginAddParams.setCity(city);
         sysLogLoginAddParams.setUserAgent(userAgentString);
         sysLogLoginAddParams.setLoginStatus(annotation.value());
-        sysLogLoginAddParams.setFailureReason(failureReason != null ? failureReason.getMessage() : null);
+        sysLogLoginAddParams.setFailureReason(failureReason != null ? failureReason.getMessage() : "登录成功");
         sysLogLoginAddParams.setLoginMethod(1);
         sysLogLoginAddParams.setLoginSource(null);
         sysLogLoginAddParams.setBrowser(browser);

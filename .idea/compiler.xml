@@ -7,17 +7,22 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="zs-common" />
         <module name="zs-framework" />
+        <module name="zs-common" />
+        <module name="zs-monitor" />
         <module name="zs-admin" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="zs-monitor" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="zs-admin" options="-parameters" />
       <module name="zs-common" options="-parameters" />
       <module name="zs-framework" options="-parameters" />
+      <module name="zs-monitor" options="-parameters" />
     </option>
   </component>
 </project>

@@ -9,15 +9,16 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zs.common.page.PageInfo;
 import com.zs.common.page.PageResult;
 import com.zs.common.utils.TreeUtil;
-import com.zs.modules.sys.menu.domain.params.SysMenuAddParams;
 import com.zs.modules.sys.menu.domain.entity.SysMenuEntity;
+import com.zs.modules.sys.menu.domain.params.SysMenuAddParams;
 import com.zs.modules.sys.menu.domain.params.SysMenuQueryParams;
 import com.zs.modules.sys.menu.domain.vo.SysMenuVo;
 import com.zs.modules.sys.menu.mapper.SysMenuMapper;
 import com.zs.modules.sys.menu.service.ISysMenuService;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 /**
@@ -66,5 +67,20 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenuEntity
     @Override
     public SysMenuVo getById(Long id) {
         return BeanUtil.copyProperties(baseMapper.selectById(id), SysMenuVo.class);
+    }
+
+    @Override
+    public Set<String> getAllPermissions() {
+        List<SysMenuEntity> sysMenuEntityList = baseMapper.selectList(new QueryWrapper<SysMenuEntity>().eq("type", 3));
+        return sysMenuEntityList.stream()
+                .map(SysMenuEntity::getPermissions)
+                .filter(Objects::nonNull)
+                .flatMap(permissions -> Arrays.stream(permissions.trim().split(",")))
+                .collect(Collectors.toSet());
+    }
+
+    @Override
+    public Set<String> getPermissions(Long sysUserId) {
+        return baseMapper.getPermissions(sysUserId);
     }
 }

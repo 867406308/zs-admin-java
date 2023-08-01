@@ -1,7 +1,7 @@
 package com.zs.framework.config;
 
-import com.zs.framework.security.filter.MyAuthenticationFilter;
 import com.zs.framework.security.filter.JwtAuthenticationTokenFilter;
+import com.zs.framework.security.filter.MyAuthenticationFilter;
 import com.zs.framework.security.handler.*;
 import com.zs.framework.security.propetties.WhiteUrlProperties;
 import com.zs.framework.security.provider.UserNameAuthenticationProvider;
@@ -92,6 +92,7 @@ public class WebSecurityConfig {
 
                 // 白名单url，匿名访问
                 .authorizeHttpRequests(auth -> auth
+                        .mvcMatchers("/**").permitAll() // 允许对其他端点进行公共访问
                         .mvcMatchers(urls).permitAll()
                         .mvcMatchers(HttpMethod.OPTIONS).permitAll() // 对option不校验
                         // 不在白名单的请求都需要身份认证
@@ -110,7 +111,7 @@ public class WebSecurityConfig {
                 .addFilterBefore(myAuthenticationFilter(http.getSharedObject(AuthenticationManager.class)), UsernamePasswordAuthenticationFilter.class)
                 .authenticationProvider(userNameAuthenticationProvider)
 
-                ;
+        ;
         return http.build();
     }
 

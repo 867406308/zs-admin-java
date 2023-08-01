@@ -117,5 +117,8 @@ public class IpUtils {
         return null;
     }
 
+    public static void main(String[] args) {
+        System.out.println(getCityInfo("220.248.12.158"));
+    }
 
 }

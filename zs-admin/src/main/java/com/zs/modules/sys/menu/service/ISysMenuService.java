@@ -8,6 +8,7 @@ import com.zs.modules.sys.menu.domain.params.SysMenuQueryParams;
 import com.zs.modules.sys.menu.domain.vo.SysMenuVo;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author 86740
@@ -40,4 +41,8 @@ public interface ISysMenuService extends IService<SysMenuEntity> {
     void update(SysMenuAddParams sysMenuAddParams);
 
     SysMenuVo getById(Long id);
+
+    Set<String> getAllPermissions();
+
+    Set<String> getPermissions(Long sysUserId);
 }

@@ -8,7 +8,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="338f835b-8e6d-4daf-b157-ee1b66fa219f" name="Changes" comment="添加菜单导航接口">
+      <change afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/user/domain/query/SysUserAddParams.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/user/domain/query/SysUserQueryParams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2bc8721b-9c03-452c-944d-2ad8adc6d3ac.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2bc8721b-9c03-452c-944d-2ad8adc6d3ac.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/ZsAdminApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/ZsAdminApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/dept/controller/SysDeptController.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/dept/controller/SysDeptController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/controller/SysLogErrorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/controller/SysLogErrorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/controller/SysLogLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/controller/SysLogLoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/controller/SysLogOperationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/log/controller/SysLogOperationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/controller/SysMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/controller/SysMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/mapper/SysMenuMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/mapper/SysMenuMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/service/ISysMenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/service/ISysMenuService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/service/impl/SysMenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/menu/service/impl/SysMenuServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/post/controller/SysPostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/post/controller/SysPostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/role/controller/SysRoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/role/controller/SysRoleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/role/service/ISysRoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/role/service/ISysRoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/role/service/impl/SysRoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/role/service/impl/SysRoleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/user/controller/SysUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/user/controller/SysUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/user/domain/dto/SysUserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/user/domain/dto/SysUserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/user/service/ISysUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/user/service/ISysUserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/user/service/impl/SysUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/user/service/impl/SysUserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/security/service/CustomUserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/java/com/zs/security/service/CustomUserDetailsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-admin/src/main/resources/mapper/sys/menu/SysMenuMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/zs-admin/src/main/resources/mapper/sys/menu/SysMenuMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/model/LoginUserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/model/LoginUserInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/redis/FastJson2JsonRedisSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/redis/FastJson2JsonRedisSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/redis/RedisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/redis/RedisConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/utils/IpUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/utils/IpUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/aspect/LogAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/aspect/LogAspect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/filter/JwtAuthenticationTokenFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/filter/JwtAuthenticationTokenFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/handler/CustomAccessDeniedHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/handler/CustomAccessDeniedHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/handler/CustomAuthenticationEntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/handler/CustomAuthenticationEntryPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/provider/UserNameAuthenticationProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/provider/UserNameAuthenticationProvider.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +66,9 @@
       </list>
     </option>
   </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -36,13 +79,18 @@
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="mavenHome" value="$PROJECT_DIR$/../../../../../tools/java_setting/apache-maven-3.8.6" />
-        <option name="useMavenConfig" value="true" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="ProjectErrors" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2QENj4wMZ5Qjfo9obHyIooTIs4t" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -59,21 +107,28 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
     &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;1.8&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/project/zs_project/zs/aliyun/zs-project-java&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.65977013&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;025d8abc2e62590459bc015f3b018242&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;05bfd53b40b114df899a117f827e9bc6&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -108,9 +163,30 @@
       <recent name="com.zs.common.model.params" />
     </key>
   </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="GradleRunConfiguration" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
   <component name="RunManager" selected="Spring Boot.ZsAdminApplication">
     <configuration name="IpUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.zs.common.utils.IpUtil" />
+      <module name="zs-common" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.zs.common.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IpUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.zs.common.utils.IpUtils" />
       <module name="zs-common" />
       <extension name="coverage">
         <pattern>
@@ -190,8 +266,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ZsMonitorApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="zs-monitor" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="zs.monitor.ZsMonitorApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="应用程序.IpUtils" />
         <item itemvalue="JUnit.DemoTest.test1" />
         <item itemvalue="JUnit.DemoTest.test" />
         <item itemvalue="JUnit.IpUtilsTest.test" />
@@ -272,6 +356,29 @@
       <workItem from="1689580677871" duration="677000" />
       <workItem from="1689723615131" duration="2924000" />
       <workItem from="1689752873934" duration="445000" />
+      <workItem from="1689820216480" duration="247000" />
+      <workItem from="1689904393226" duration="522000" />
+      <workItem from="1689906654441" duration="1262000" />
+      <workItem from="1689910857448" duration="1430000" />
+      <workItem from="1689984375850" duration="4907000" />
+      <workItem from="1690155973508" duration="303000" />
+      <workItem from="1690156288044" duration="16042000" />
+      <workItem from="1690182665932" duration="653000" />
+      <workItem from="1690183338033" duration="166000" />
+      <workItem from="1690183526463" duration="365000" />
+      <workItem from="1690183916779" duration="489000" />
+      <workItem from="1690184424288" duration="960000" />
+      <workItem from="1690186271670" duration="3464000" />
+      <workItem from="1690267130042" duration="12216000" />
+      <workItem from="1690328830447" duration="4829000" />
+      <workItem from="1690417554410" duration="1482000" />
+      <workItem from="1690424279019" duration="624000" />
+      <workItem from="1690425280975" duration="269000" />
+      <workItem from="1690425650751" duration="600000" />
+      <workItem from="1690506908211" duration="829000" />
+      <workItem from="1690593040544" duration="1066000" />
+      <workItem from="1690765871871" duration="200000" />
+      <workItem from="1690848464407" duration="853000" />
     </task>
     <task id="LOCAL-00001" summary="添加参数校验">
       <created>1688777182281</created>
@@ -416,60 +523,75 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/dept/service/impl/SysDeptServiceImpl.java</url>
           <line>34</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/zs-admin/src/test/java/com/zs/admin/IpUtilsTest.java</url>
           <line>21</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/handler/CustomLogoutSuccessHandler.java</url>
           <line>20</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/handler/CustomAuthenticationFailureHandler.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/zs-admin/src/test/java/com/zs/admin/DemoTest.java</url>
           <line>8</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/zs-admin/src/test/java/com/zs/admin/DemoTest.java</url>
           <line>13</line>
           <option name="timeStamp" value="36" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/handler/CustomAccessDeniedHandler.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="37" />
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/utils/SecurityUtil.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="47" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/user/controller/SysUserController.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/zs-admin/src/main/java/com/zs/modules/sys/dept/controller/SysDeptController.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/aspect/LogAspect.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/handler/CustomAuthenticationEntryPoint.java</url>
-          <line>22</line>
-          <option name="timeStamp" value="38" />
+          <line>27</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/filter/JwtAuthenticationTokenFilter.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/provider/UserNameAuthenticationProvider.java</url>
+          <line>61</line>
+          <option name="timeStamp" value="62" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/zs-common/src/main/java/com/zs/common/redis/FastJson2JsonRedisSerializer.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="65" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/handler/CustomAuthenticationSuccessHandler.java</url>
-          <line>29</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/handler/CustomAccessDeniedHandler.java</url>
-          <line>25</line>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/security/handler/CustomAccessDeniedHandler.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="41" />
+          <url>file://$PROJECT_DIR$/zs-framework/src/main/java/com/zs/framework/aspect/LogAspect.java</url>
+          <line>127</line>
+          <option name="timeStamp" value="66" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />
@@ -485,6 +607,7 @@
         <PinnedItemInfo parentTag="org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint$MethodSignatureImpl" memberName="this$0" />
         <PinnedItemInfo parentTag="com.baomidou.mybatisplus.core.conditions.query.QueryWrapper" memberName="lastSql" />
         <PinnedItemInfo parentTag="org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation" memberName="interceptorsAndDynamicMethodMatchers" />
+        <PinnedItemInfo parentTag="org.springframework.security.authentication.UsernamePasswordAuthenticationToken" memberName="details" />
       </pinned-members>
     </pin-to-top-manager>
   </component>

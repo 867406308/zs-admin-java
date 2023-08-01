@@ -6,15 +6,19 @@ import com.zs.framework.security.service.CustomUserDetailsService;
 import  com.zs.common.model.SysUser;
 import com.zs.modules.sys.user.domain.dto.SysUserDTO;
 import com.zs.modules.sys.user.service.ISysUserService;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @author 86740
@@ -32,7 +36,8 @@ public class CustomUserDetailsServiceImpl  implements CustomUserDetailsService, 
         if(Objects.isNull(sysUserDTO)){
             throw new UsernameNotFoundException("用户不存在");
         }
-        Set<String> roleList = new HashSet<>();
-        return new LoginUserInfo(BeanUtil.toBean(sysUserDTO, SysUser.class), roleList);
+        // 根据用户信息查询用户权限信息
+        Set<String> permissions = iSysUserService.getPermissions(sysUserDTO);
+        return new LoginUserInfo(BeanUtil.toBean(sysUserDTO, SysUser.class), permissions);
     }
 }

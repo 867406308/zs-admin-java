@@ -27,4 +27,6 @@ public interface ISysRoleService extends IService<SysRoleEntity> {
 
 
     SysRoleVo getById(Long id);
+
+    void deleteById(Long id);
 }
