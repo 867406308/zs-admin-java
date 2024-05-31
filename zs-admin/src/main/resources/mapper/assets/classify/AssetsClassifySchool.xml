@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zs.assets.classify.mapper.AssetsClassifySchoolMapper">
+
+    <select id="getList" resultType="com.zs.assets.classify.domain.entity.AssetsClassifySchoolEntity">
+        SELECT a.*,b.`name` gbName
+        FROM `assets_classify_school` a
+        LEFT JOIN assets_classify_gb b ON b.id = a.gbc_id
+        <where>
+            <if test="name!= null and name!= ''">
+                and a.name like CONCAT('%',#{name},'%')
+            </if>
+        </where>
+    </select>
+    <select id="getById" resultType="com.zs.assets.classify.domain.entity.AssetsClassifySchoolEntity">
+        SELECT a.*,b.`name` gbName
+        FROM `assets_classify_school` a
+        LEFT JOIN assets_classify_gb b ON b.id = a.gbc_id
+        <where>
+            <if test="id != null and id != ''">
+                a.id = #{id}
+            </if>
+        </where>
+
+    </select>
+</mapper>

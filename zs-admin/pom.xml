@@ -4,7 +4,7 @@
 
     <parent>
         <groupId>com.zs</groupId>
-        <artifactId>zs-admin-java</artifactId>
+        <artifactId>zs-project-java</artifactId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -12,21 +12,35 @@
     <description>系统模块</description>
     <packaging>jar</packaging>
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>17</java.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.zs</groupId>
-            <artifactId>zs-common</artifactId>
-            <version>1.0.0</version>
+            <artifactId>zs-common-aop</artifactId>
         </dependency>
         <dependency>
             <groupId>com.zs</groupId>
-            <artifactId>zs-framework</artifactId>
-            <version>1.0.0</version>
+            <artifactId>zs-common-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.zs</groupId>
+            <artifactId>zs-common-mybatis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.zs</groupId>
+            <artifactId>zs-common-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.zs</groupId>
+            <artifactId>zs-common-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.zs</groupId>
+            <artifactId>zs-common-websocket</artifactId>
         </dependency>
     </dependencies>
-
 
     <build>
         <finalName>${project.artifactId}</finalName>
@@ -36,7 +50,6 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <mainClass>com.zs.ZsAdminApplication</mainClass>
-
                 </configuration>
                 <executions>
                     <execution>
@@ -55,10 +68,16 @@
                     <warName>${project.artifactId}</warName>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
-
-
 
 
 </project>
