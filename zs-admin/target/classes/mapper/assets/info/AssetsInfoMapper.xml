@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zs.assets.info.mapper.AssetsInfoMapper">
+    <update id="update">
+        update assets_info
+        set use_status_code = #{useStatusCode}
+        where serial_no = #{serialNo}
+    </update>
+
+
+    <!--    <sql id="Base_Column_List">-->
+    <!--        id,serial_no,pid,-->
+    <!--        rfid,top_level_gb_classic_id,classic_id,-->
+    <!--        stock_code,name,description,-->
+    <!--        spec,unit,brand,-->
+    <!--        manufacturer,factory_no,production_date,-->
+    <!--        quality_date,buy_org_id,buy_user_id,-->
+    <!--        buy_date,buy_price,depreciation_months,-->
+    <!--        monthly_depreciation_price,depreciated_months,depreciated_price,-->
+    <!--        current_period_depreciated_price,funds_id,accept_org_id,-->
+    <!--        accept_user_id,accept_date,manage_org_id,-->
+    <!--        manage_user_id,use_org_id,use_user_id,-->
+    <!--        storage_location,useful_id,assets_status_code,-->
+    <!--        use_status_code,borrow_dept,borrow_user,-->
+    <!--        borrow_start,borrow_end,borrow_reason,-->
+    <!--        borrow_expire,recall_company,recall_reason,-->
+    <!--        recall_type,recall_price,attached_file,-->
+    <!--        pic,create_datetime,create_user,-->
+    <!--        update_datetime,update_user,remark,-->
+    <!--        storage_location_description,level_id,form_of_procurement_code,-->
+    <!--        depreciation_code,save_state,accounting_voucher,-->
+    <!--        entry_date,bop_depreciation_price,bop_depreciation_months,-->
+    <!--        scrap_d,scrap_date-->
+    <!--    </sql>-->
+    <select id="page" resultType="com.zs.assets.info.domain.entity.AssetsInfoEntity">
+
+        SELECT
+        a.*,
+        b.`name` AS levelName,
+        c.`name` topClassifyName,
+        d.`name` classifyName
+        FROM `assets_info` a
+        LEFT JOIN assets_level b ON b.assets_level_id = a.level_id
+        LEFT JOIN assets_classify_gb c ON c.id = a.top_level_gb_classic_id
+        LEFT JOIN assets_classify_school d ON d.id = a.classic_id
+        <where>
+            <if test="params.saveState != null and params.saveState != ''">
+                and a.save_state = #{params.saveState}
+            </if>
+            <if test="params.name!= null and params.name!= ''">
+                and a.`name` like CONCAT('%',#{params.name},'%')
+            </if>
+            <if test="params.levelId != null and params.levelId != ''">
+                and a.level_id = #{params.levelId}
+            </if>
+            <if test="params.classicIdList != null and params.classicIdList.size > 0">
+                and a.classic_id in
+                <foreach collection="params.classicIdList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="params.serialNoStart != null and params.serialNoStart != '' and params.serialNoEnd != null and params.serialNoEnd != ''">
+                and a.serial_no between #{params.serialNoStart} and #{params.serialNoEnd}
+            </if>
+            <if test="params.priceStart!= null and params.priceStart!= '' and params.priceEnd!= null and params.priceEnd!= ''">
+                and a.buy_price between #{params.priceStart} and #{params.priceEnd}
+            </if>
+            <if test="params.manageOrgId!= null and params.manageOrgId!= ''">
+                and a.manage_org_id = #{params.manageOrgId}
+            </if>
+            <if test="params.useOrgId!= null and params.useOrgId!= ''">
+                and a.use_org_id = #{params.useOrgId}
+            </if>
+            <if test="params.useUserId!= null and params.useUserId!= ''">
+                and a.use_user_id = #{params.useUserId}
+            </if>
+            <if test="params.storageLocationDescription!= null and params.storageLocationDescription!= ''">
+                and a.storage_location_description like CONCAT('%',#{params.storageLocationDescription},'%')
+            </if>
+            <if test="params.entryDateStart!= null and params.entryDateStart!= '' and params.entryDateEnd!= null and params.entryDateEnd!= ''">
+                and a.entry_date between #{params.entryDateStart} and #{params.entryDateEnd}
+            </if>
+            <if test="params.manufacturer!= null and params.manufacturer!= ''">
+                and a.manufacturer like CONCAT('%',#{params.manufacturer},'%')
+            </if>
+        </where>
+        order by a.entry_date DESC
+    </select>
+    <select id="getBySerialNoList" resultType="com.zs.assets.info.domain.entity.AssetsInfoEntity">
+        SELECT a.*,
+        b.`name` AS levelName,
+        c.`name` topClassifyName,
+        d.`name` classifyName
+        FROM `assets_info` a
+        LEFT JOIN assets_level b ON b.assets_level_id = a.level_id
+        LEFT JOIN assets_classify_gb c ON c.id = a.top_level_gb_classic_id
+        LEFT JOIN assets_classify_school d ON d.id = a.classic_id
+        <where>
+            <if test="serialNoList != null and serialNoList.size > 0">
+                and a.serial_no in
+                <foreach collection="serialNoList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </select>
+    <!-- 获取最大的入库单号 -->
+    <select id="getMaxInNo" resultType="java.lang.String">
+        SELECT in_no
+        FROM assets_info
+        ORDER BY CAST(in_no AS UNSIGNED) DESC
+        LIMIT 1;
+    </select>
+    <select id="getById" resultType="com.zs.assets.info.domain.entity.AssetsInfoEntity">
+        SELECT a.*,
+               b.`name` AS levelName,
+               c.`name`    topClassifyName,
+               d.`name`    classifyName
+        FROM `assets_info` a
+                 LEFT JOIN assets_level b ON b.assets_level_id = a.level_id
+                 LEFT JOIN assets_classify_gb c ON c.id = a.top_level_gb_classic_id
+                 LEFT JOIN assets_classify_school d ON d.id = a.classic_id
+        WHERE a.id = #{id}
+
+    </select>
+</mapper>

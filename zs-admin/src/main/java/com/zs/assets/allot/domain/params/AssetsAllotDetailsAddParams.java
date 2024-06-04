@@ -1,20 +1,11 @@
-package com.zs.assets.allot.domain.entity;
+package com.zs.assets.allot.domain.params;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-/**
- * @author 86740
- */
 @Data
-@TableName("assets_allot_details")
-public class AssetsAllotDetailsEntity {
+public class AssetsAllotDetailsAddParams {
 
-    @TableId
-    private Long id;
+
     private Long allotId;
     private String assetsSerialNo;
     /**
@@ -57,7 +48,4 @@ public class AssetsAllotDetailsEntity {
      * 新存放位置ID
      **/
     private String currentStorageLocation;
-
-    @TableField(exist = false)
-    private String assetsName;
 }

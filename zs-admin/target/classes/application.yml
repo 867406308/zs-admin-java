@@ -1,0 +1,66 @@
+server:
+  port: 8080
+spring:
+  profiles:
+    active: dev
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  main:
+    allow-bean-definition-overriding: true
+  data:
+    redis:
+      host: 127.0.0.1 #39.101.195.100
+      port: 6379
+      password: #zs@123..
+      database: 0
+      # 毫秒
+      timeout: 10000
+      lettuce:
+        pool:
+          max-active: 10
+          max-wait: -1
+          max-idle: 5
+          min-idle: 0
+# mybatis-plus
+mybatis-plus:
+  type-aliases-package: com.zs.modules.*.entity
+  mapper-locations: classpath*:/mapper/**/*.xml
+  global-config:
+    db-config:
+      #主键类型  AUTO:"数据库ID自增", INPUT:"用户输入ID", ID_WORKER:"全局唯一ID (数字类型唯一ID)", UUID:"全局唯一ID UUID";
+      id-type: assign_id
+    # 控制台是否开启mybatis-plus logo
+    banner: false
+  configuration:
+    # 驼峰
+    map-underscore-to-camel-case: true
+    call-setters-on-nulls: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+security:
+  white:
+    url:
+      - /auth/login
+      #- /auth/logout
+      - /actuator/** # 允许访问执行器端点
+      - /instances/** # 允许访问 Spring Boot Admin 实例
+      - /assets/** # 允许访问静态资产（CSS、JS 等）
+      - /druid/**
+      - /doc.html
+      - /websocket/**
+jwt:
+  # 密钥 长度256
+  secret: QxXJ18vaaiH0781h6rzMurcyJNzcGtsWYfzc/OyqKBI=
+  # 有效时间单位毫秒 当前为24小时
+  expiration: 86400000
+
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+    # 是否显示界面中"文档管理"功能
+    enable-document-manage: true
+    enable-version: true
+    # 开启动态请求参数，true-开启，false-关闭
+    enable-dynamic-parameter: true
