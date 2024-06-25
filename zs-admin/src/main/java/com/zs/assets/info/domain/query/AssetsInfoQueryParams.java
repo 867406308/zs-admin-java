@@ -47,6 +47,10 @@ public class AssetsInfoQueryParams extends BasePageParams {
      * 管理部门id
      */
     private Long manageOrgId;
+    /**
+     * 管理人员id
+     */
+    private Long manageUserId;
 
     /**
      * 使用部门id

@@ -12,6 +12,7 @@ public class SysRoleAddParams {
 
     private Long sysRoleId;
     private String roleName;
+    private Integer dataScope;
     private Integer sort;
     private Integer status;
     private String remark;

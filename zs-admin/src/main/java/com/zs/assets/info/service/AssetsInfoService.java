@@ -53,5 +53,9 @@ public interface AssetsInfoService extends IService<AssetsInfoEntity> {
      */
     List<AssetsInfoEntity> getDepreciationList();
 
+    /**
+     * 根据资产编号更新资产分配信息(更改管理部门、管理部门负责人和使用部门、使用人)
+     */
+    void updateAssetsInfoBySerialNo(AssetsInfoDTO assetsInfoDTO);
 
 }

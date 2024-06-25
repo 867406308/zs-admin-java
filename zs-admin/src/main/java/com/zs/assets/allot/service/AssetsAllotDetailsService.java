@@ -2,6 +2,7 @@ package com.zs.assets.allot.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zs.assets.allot.domain.entity.AssetsAllotDetailsEntity;
+import com.zs.assets.allot.domain.params.AssetsAllotDetailsAddParams;
 import com.zs.assets.allot.domain.vo.AssetsAllotDetailsVo;
 
 import java.util.List;
@@ -12,4 +13,6 @@ import java.util.List;
 public interface AssetsAllotDetailsService extends IService<AssetsAllotDetailsEntity> {
 
     List<AssetsAllotDetailsVo> getAllotDetails(Long allotId);
+
+    void  saveAllotDetails(Long allotId, List<AssetsAllotDetailsAddParams> assetsAllotDetailsEntityList);
 }

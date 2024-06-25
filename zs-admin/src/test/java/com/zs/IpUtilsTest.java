@@ -1,8 +1,10 @@
 package com.zs;
 
 
+import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -20,4 +22,11 @@ public class IpUtilsTest {
         System.out.println(new BigDecimal(190).subtract(new BigDecimal(6)));
     }
 
+    @Resource
+    private PasswordEncoder passwordEncoder;
+
+    @Test
+    public void test1() {
+        System.out.println(passwordEncoder.encode("Zs@123.."));
+    }
 }

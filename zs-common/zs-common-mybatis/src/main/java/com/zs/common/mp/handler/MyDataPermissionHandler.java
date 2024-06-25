@@ -18,9 +18,27 @@ public class MyDataPermissionHandler implements DataPermissionHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(MyDataPermissionHandler.class);
 
+
     @Override
     public Expression getSqlSegment(Expression where, String mappedStatementId) {
-        return null;
+        try {
+            Class<?> clazz = Class.forName(mappedStatementId.substring(0, mappedStatementId.lastIndexOf(".")));
+            String methodName = mappedStatementId.substring(mappedStatementId.lastIndexOf(".") + 1);
+            Method[] methods = clazz.getDeclaredMethods();
+//            for (Method method : methods) {
+//                DataPermission annotation = method.getAnnotation(DataPermission.class);
+//                if (ObjectUtils.isNotEmpty(annotation) && (method.getName().equals(methodName) || (method.getName() + "_COUNT").equals(methodName))) {
+//                    // 获取当前的用户
+//                    LoginUser loginUser = SpringUtils.getBean(TokenService.class).getLoginUser(ServletUtils.getRequest());
+//                    if (ObjectUtils.isNotEmpty(loginUser) && ObjectUtils.isNotEmpty(loginUser.getUser()) && !loginUser.getUser().isAdmin()) {
+//                        return dataScopeFilter(loginUser.getUser(), annotation.value(), where);
+//                    }
+//                }
+//            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return where;
     }
 
 

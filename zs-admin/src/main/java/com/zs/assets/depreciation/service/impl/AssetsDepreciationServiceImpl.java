@@ -85,7 +85,6 @@ public class AssetsDepreciationServiceImpl extends ServiceImpl<AssetsDepreciatio
             // 除了无形资产、土地使用权、文物和陈列品、图书和档案。就这四类不需要提折旧吧，其他都进行折旧。
             // 只要入库的且不报废的都提折旧
             // 获取所有待提折旧的资产
-            System.out.println("开始" + DateUtil.now());
             List<AssetsInfoEntity>  assetsInfoDTOList = assetsInfoService.getDepreciationList();
             // 主表内容
             AssetsDepreciationEntity assetsDepreciationEntity = saveAssetsDepreciation(assetsInfoDTOList.size(), new BigDecimal("0.00"));
@@ -95,7 +94,6 @@ public class AssetsDepreciationServiceImpl extends ServiceImpl<AssetsDepreciatio
             assetsDepreciationEntity.setAmountPrice(amountPrice);
 
             this.baseMapper.updateById(assetsDepreciationEntity);
-            System.out.println("结束：" + DateUtil.now());
         }catch (Exception e){
             if (e instanceof DuplicateKeyException){
                 throw new ZsException("本月已经提折旧了，请勿重复提折旧11。");

@@ -3,11 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zs.assets.info.mapper.AssetsInfoMapper">
-    <update id="update">
+    <update id="updateUseStatusCodeBySerialNo">
         update assets_info
         set use_status_code = #{useStatusCode}
         where serial_no = #{serialNo}
     </update>
+
 
 
     <!--    <sql id="Base_Column_List">-->
@@ -69,6 +70,9 @@
             </if>
             <if test="params.manageOrgId!= null and params.manageOrgId!= ''">
                 and a.manage_org_id = #{params.manageOrgId}
+            </if>
+            <if test="params.manageUserId!= null and params.manageUserId!= ''">
+                and a.manage_user_id = #{params.manageUserId}
             </if>
             <if test="params.useOrgId!= null and params.useOrgId!= ''">
                 and a.use_org_id = #{params.useOrgId}

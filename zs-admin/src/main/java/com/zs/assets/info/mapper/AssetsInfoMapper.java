@@ -3,6 +3,7 @@ package com.zs.assets.info.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.zs.assets.info.domain.dto.AssetsInfoDTO;
 import com.zs.assets.info.domain.entity.AssetsInfoEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -24,7 +25,8 @@ public interface AssetsInfoMapper extends BaseMapper<AssetsInfoEntity> {
 
     AssetsInfoEntity getById(Long id);
 
-    void update(AssetsInfoEntity assetsInfoEntity);
+    void updateUseStatusCodeBySerialNo(AssetsInfoEntity assetsInfoEntity);
+
 }
 
 

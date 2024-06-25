@@ -2,6 +2,7 @@ package com.zs.assets.info.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -137,7 +138,7 @@ public class AssetsInfoServiceImpl extends ServiceImpl<AssetsInfoMapper, AssetsI
         assetsInfoEntities.forEach(it -> it.setUseStatusCode("aus3"));
 
         for (AssetsInfoEntity assetsInfoEntity : assetsInfoEntities) {
-            baseMapper.update(assetsInfoEntity);
+            baseMapper.updateUseStatusCodeBySerialNo(assetsInfoEntity);
         }
 
     }
@@ -167,6 +168,14 @@ public class AssetsInfoServiceImpl extends ServiceImpl<AssetsInfoMapper, AssetsI
         QueryWrapper<AssetsInfoEntity> wrapper = new QueryWrapper<>();
         wrapper.eq("depreciation_code", "depre1");
         return baseMapper.selectList(wrapper);
+    }
+
+    @Override
+    public void updateAssetsInfoBySerialNo(AssetsInfoDTO assetsInfoDTO) {
+        AssetsInfoEntity assetsInfoEntity = BeanUtil.copyProperties(assetsInfoDTO, AssetsInfoEntity.class);
+        UpdateWrapper<AssetsInfoEntity> wrapper = new UpdateWrapper<>();
+        wrapper.eq("serial_no", assetsInfoEntity.getSerialNo());
+        this.baseMapper.update(assetsInfoEntity, wrapper);
     }
 
 

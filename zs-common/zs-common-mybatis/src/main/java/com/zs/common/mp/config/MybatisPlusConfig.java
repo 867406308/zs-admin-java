@@ -27,6 +27,7 @@ public class MybatisPlusConfig {
         // 防止全表更新和删除
         interceptor.addInnerInterceptor(new BlockAttackInnerInterceptor());
         // 数据权限插件
+//        interceptor.addInnerInterceptor(new DataPermissionInterceptor());
 //        interceptor.addInnerInterceptor(new DataPermissionInterceptor(new MyDataPermissionHandler()));
         return interceptor;
     }
