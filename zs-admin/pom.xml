@@ -40,6 +40,12 @@
             <groupId>com.zs</groupId>
             <artifactId>zs-common-websocket</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.jeecgframework.jimureport</groupId>
+            <artifactId>jimureport-spring-boot3-starter-fastjson2</artifactId>
+            <version>1.8.0</version>
+        </dependency>
     </dependencies>
 
     <build>

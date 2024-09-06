@@ -4,13 +4,19 @@ package com.zs.common.core.exception;
 import com.zs.common.core.core.HttpEnum;
 import com.zs.common.core.core.Result;
 import jakarta.servlet.http.HttpServletRequest;
+import org.apache.coyote.BadRequestException;
+import jakarta.validation.constraints.NotNull;
 import org.mybatis.spring.MyBatisSystemException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.validation.BindException;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 
 /**
@@ -28,13 +34,13 @@ public class ZsExceptionHandler {
      * @return Result
      */
     @ExceptionHandler(ZsException.class)
-    public Result<?> handleZsException(ZsException e) {
+    public Result<?> handleZsException(@NotNull ZsException e) {
         logger.error(e.getMessage(), e);
         return new Result<>().error(e.getCode(), e.getMsg(), e.getMessage());
     }
 
     @ExceptionHandler(MyBatisSystemException.class)
-    public Result<?> handleMyBatisException(MyBatisSystemException ex) {
+    public Result<?> handleMyBatisException(@NotNull MyBatisSystemException ex) {
         // 记录MyBatis-Plus的SQL异常信息到日志
         logger.error("MyBatis-Plus SQL Exception occurred", ex);
         logger.error(ex.getMessage(), ex);
@@ -48,7 +54,7 @@ public class ZsExceptionHandler {
      * @return Result
      */
     @ExceptionHandler(BindException.class)
-    public Result<?> handleBindException(BindException e) {
+    public Result<?> handleBindException(@NotNull BindException e) {
         logger.error(e.getMessage(), e);
         String message = e.getAllErrors().get(0).getDefaultMessage();
 
@@ -59,7 +65,7 @@ public class ZsExceptionHandler {
      * 拦截未知的运行时异常
      */
     @ExceptionHandler(RuntimeException.class)
-    public Result<?> handleRuntimeException(RuntimeException e, HttpServletRequest request) {
+    public Result<?> handleRuntimeException(@NotNull RuntimeException e, @NotNull HttpServletRequest request) {
         logger.error(e.getMessage(), e);
         String requestUri = request.getRequestURI();
         logger.error(requestUri);
@@ -67,13 +73,28 @@ public class ZsExceptionHandler {
     }
 
     @ExceptionHandler(Exception.class)
-    public Result<?> handleException(Exception ex) {
+    public Result<?> handleException(@NotNull Exception ex) {
+        // 获取错误状态码
         logger.error(ex.getMessage(), ex);
-        return new Result<>().error();
+        if (ex instanceof NoResourceFoundException){
+            return new Result<>().error(HttpStatus.NOT_FOUND);
+        } else if (ex instanceof BadRequestException) {
+            return new Result<>().error( HttpStatus.BAD_REQUEST);
+        } else if(ex instanceof HttpRequestMethodNotSupportedException){
+            return new Result<>().error(HttpStatus.METHOD_NOT_ALLOWED);
+        } else if (ex instanceof MethodArgumentNotValidException) {
+            return new Result<>().error(HttpStatus.BAD_REQUEST);
+        } else if (ex instanceof AccessDeniedException) {
+            return new Result<>().error(HttpStatus.FORBIDDEN);
+        }
+        else {
+            // 默认处理其他未预料的异常
+            return new Result<>().error();
+        }
     }
 
     @ExceptionHandler(AccessDeniedException.class)
-    public void accessDeniedException(AccessDeniedException e) throws AccessDeniedException {
+    public void accessDeniedException(@NotNull AccessDeniedException e) throws AccessDeniedException {
         throw e;
     }
 

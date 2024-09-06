@@ -9,9 +9,11 @@ import com.zs.assets.info.service.AssetsInfoService;
 import com.zs.common.core.core.Result;
 import com.zs.common.core.page.PageResult;
 import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -24,10 +26,11 @@ public class AssetsInfoController {
     @Resource
     private AssetsInfoService assetsInfoService;
 
+
     @GetMapping("page")
     @PreAuthorize("hasAuthority('assets:info:page')")
-    public Result<PageResult<AssetsInfoVo>> page(AssetsInfoQueryParams assetsInfoAddParams) {
-        PageResult<AssetsInfoVo> page = assetsInfoService.page(assetsInfoAddParams);
+    public Result<PageResult<AssetsInfoVo>> page(AssetsInfoQueryParams assetsInfoQueryParams) {
+        PageResult<AssetsInfoVo> page = assetsInfoService.page(assetsInfoQueryParams);
         return new Result<PageResult<AssetsInfoVo>>().ok(page);
     }
 
@@ -57,4 +60,16 @@ public class AssetsInfoController {
     public Result<List<AssetsInfoVo>> getBySerialNoList(@RequestBody AssetsInfoSerialNoImportParams assetsInfoSerialNoImportParams) {
         return new Result<List<AssetsInfoVo>>().ok(assetsInfoService.getBySerialNoList(assetsInfoSerialNoImportParams));
     }
+
+    @GetMapping("getTotalPrice")
+    public Result<String> getTotalPrice() {
+        return new Result<String>().ok(assetsInfoService.getTotalPrice());
+    }
+
+    @GetMapping("export")
+    @PreAuthorize("hasAuthority('assets:info:export')")
+    public void export(HttpServletResponse response, AssetsInfoQueryParams assetsInfoQueryParams) throws IOException {
+        assetsInfoService.export(response, assetsInfoQueryParams);
+    }
+
 }

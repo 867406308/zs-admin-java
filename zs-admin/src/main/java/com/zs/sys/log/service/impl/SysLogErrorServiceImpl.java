@@ -15,7 +15,11 @@ import com.zs.sys.log.domain.vo.SysLogErrorVo;
 import com.zs.sys.log.mapper.SysLogErrorMapper;
 import com.zs.sys.log.service.ISysLogErrorService;
 import org.apache.logging.log4j.util.Strings;
+import jakarta.validation.constraints.NotNull;
+import jakarta.annotation.Nullable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 /**
@@ -30,8 +34,9 @@ public class SysLogErrorServiceImpl extends ServiceImpl<SysLogErrorMapper, SysLo
     }
 
 
+    @NotNull
     @Override
-    public PageResult<SysLogErrorVo> page(SysLogErrorQueryParams sysLogErrorQueryParams) {
+    public PageResult<SysLogErrorVo> page(@NotNull SysLogErrorQueryParams sysLogErrorQueryParams) {
 
         Page<SysLogErrorEntity> page = new PageInfo<>(sysLogErrorQueryParams);
         IPage<SysLogErrorEntity> iPage = baseMapper.selectPage(page, getWrapper(sysLogErrorQueryParams));
@@ -39,10 +44,19 @@ public class SysLogErrorServiceImpl extends ServiceImpl<SysLogErrorMapper, SysLo
         return new PageResult<>(BeanUtil.copyToList(iPage.getRecords(), SysLogErrorVo.class), page.getTotal(), SysLogErrorVo.class);
     }
 
-    public QueryWrapper<SysLogErrorEntity> getWrapper(SysLogErrorQueryParams sysLogErrorQueryParams) {
+    @Nullable
+    @Override
+    public List<SysLogErrorVo> list(@NotNull SysLogErrorQueryParams sysLogErrorQueryParams) {
+        return BeanUtil.copyToList(baseMapper.selectList(getWrapper(sysLogErrorQueryParams)), SysLogErrorVo.class);
+    }
+
+    @NotNull
+    public QueryWrapper<SysLogErrorEntity> getWrapper(@NotNull SysLogErrorQueryParams sysLogErrorQueryParams) {
         QueryWrapper<SysLogErrorEntity> wrapper = new QueryWrapper<>();
         wrapper.eq(Strings.isNotEmpty(sysLogErrorQueryParams.getUsername()), "username", sysLogErrorQueryParams.getUsername());
         wrapper.eq(Strings.isNotEmpty(sysLogErrorQueryParams.getIpAddress()), "ip_address", sysLogErrorQueryParams.getIpAddress());
+        wrapper.like(Strings.isNotEmpty(sysLogErrorQueryParams.getModule()), "module", sysLogErrorQueryParams.getModule());
+        wrapper.orderByDesc("create_time");
 
         return wrapper;
     }

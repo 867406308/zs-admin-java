@@ -18,6 +18,7 @@ import com.zs.sys.menu.domain.vo.SysMenuVo;
 import com.zs.sys.menu.mapper.SysMenuMapper;
 import com.zs.sys.menu.service.ISysMenuService;
 import org.apache.logging.log4j.util.Strings;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -33,8 +34,9 @@ import java.util.stream.Collectors;
 public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenuEntity> implements ISysMenuService {
 
 
+    @NotNull
     @Override
-    public PageResult<SysMenuVo> page(SysMenuQueryParams sysMenuQueryParams) {
+    public PageResult<SysMenuVo> page(@NotNull SysMenuQueryParams sysMenuQueryParams) {
         Page<SysMenuEntity> page = new PageInfo<>(sysMenuQueryParams);
         QueryWrapper<SysMenuEntity> wrapper = new QueryWrapper<>();
 
@@ -46,6 +48,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenuEntity
 
     }
 
+    @NotNull
     @Override
     public List<SysMenuVo> getNavList() {
         LoginUserInfo loginUserInfo = SecurityUtil.getUserInfo();
@@ -58,8 +61,9 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenuEntity
         return TreeUtil.build(list, 0L);
     }
 
+    @NotNull
     @Override
-    public List<SysMenuVo> getList(SysMenuQueryParams sysMenuQueryParams) {
+    public List<SysMenuVo> getList(@NotNull SysMenuQueryParams sysMenuQueryParams) {
         QueryWrapper<SysMenuEntity> queryWrapper = new QueryWrapper<>();
         queryWrapper.like(Strings.isNotEmpty(sysMenuQueryParams.getTitle()), "title", sysMenuQueryParams.getTitle());
         queryWrapper.orderByAsc("sort");
@@ -72,7 +76,8 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenuEntity
         return TreeUtil.build(list);
     }
 
-    public List<SysMenuEntity> getTreeParent(SysMenuEntity sysMenuEntity, List<SysMenuEntity> deptList) {
+    @NotNull
+    public List<SysMenuEntity> getTreeParent(@NotNull SysMenuEntity sysMenuEntity, @NotNull List<SysMenuEntity> deptList) {
         Map<Long, SysMenuEntity> map = deptList.stream().collect(Collectors.toMap(SysMenuEntity::getSysMenuId, Function.identity()));
         List<SysMenuEntity> pidList = new ArrayList<>();
         getTreePid(sysMenuEntity.getPid(), map, pidList);
@@ -80,7 +85,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenuEntity
         return pidList;
     }
 
-    public void getTreePid(Long pid, Map<Long, SysMenuEntity> map, List<SysMenuEntity> pidList) {
+    public void getTreePid(Long pid, @NotNull Map<Long, SysMenuEntity> map, @NotNull List<SysMenuEntity> pidList) {
         SysMenuEntity parent = map.get(pid);
         if (parent != null) {
             pidList.add(parent);
@@ -103,12 +108,14 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenuEntity
         return BeanUtil.copyProperties(baseMapper.selectById(id), SysMenuVo.class);
     }
 
+    @NotNull
     @Override
     public Set<String> getAllPermissions() {
         List<SysMenuEntity> sysMenuEntityList = baseMapper.selectList(new QueryWrapper<SysMenuEntity>().eq("type", 3));
         return sysMenuEntityList.stream().map(SysMenuEntity::getPermissions).filter(Objects::nonNull).flatMap(permissions -> Arrays.stream(permissions.trim().split(","))).collect(Collectors.toSet());
     }
 
+    @NotNull
     @Override
     public Set<String> getPermissions(Long sysUserId) {
         List<SysMenuEntity> sysMenuEntityList = baseMapper.getPermissions(sysUserId);

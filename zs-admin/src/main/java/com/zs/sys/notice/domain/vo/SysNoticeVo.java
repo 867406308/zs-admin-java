@@ -1,12 +1,8 @@
 package com.zs.sys.notice.domain.vo;
 
-import com.alibaba.fastjson2.annotation.JSONField;
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -42,8 +38,7 @@ public class SysNoticeVo implements Serializable {
     /**
      * 发布时间
      */
-    @JSONField(format = "yyyy-MM-dd")
-    private Date releaseTime;
+    private String releaseTime;
     /**
      * 创建人
      */

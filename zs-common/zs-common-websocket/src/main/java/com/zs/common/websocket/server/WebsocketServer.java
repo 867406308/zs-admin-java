@@ -1,7 +1,7 @@
 package com.zs.common.websocket.server;
 
 import com.zs.common.websocket.utils.UserTypeEnum;
-import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.constraints.NotNull;
 import jakarta.websocket.*;
 import jakarta.websocket.server.PathParam;
 import jakarta.websocket.server.ServerEndpoint;
@@ -9,10 +9,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Collectors;
 
 /**
  * @author 86740
@@ -56,7 +54,7 @@ public class WebsocketServer {
      * 连接建立成功调用的方法
      */
     @OnOpen
-    public void onOpen(Session session, @PathParam("userId") String userId, @PathParam("type") String type) {
+    public void onOpen(Session session, @PathParam("userId") String userId, @NotNull @PathParam("type") String type) {
         this.session = session;
         this.userId = userId;
         this.userType = UserTypeEnum.valueOf(type.toUpperCase());
@@ -109,6 +107,7 @@ public class WebsocketServer {
      */
     @OnError
     public void onError(Session session, Throwable error) {
+
     }
 
     /**
@@ -126,6 +125,7 @@ public class WebsocketServer {
         getUserClient(userId).ifPresent(client -> client.sendMessage(message));
     }
 
+    @NotNull
     private Optional<WebsocketServer> getUserClient(String userId) {
         return Optional.ofNullable(pcClients.getOrDefault(userId, bClients.get(userId)));
     }
@@ -134,13 +134,14 @@ public class WebsocketServer {
     /**
      * 发送多人自定义消息
      */
-    public void sendMessage(List<String> userIds, String message) {
+    public void sendMessage(@NotNull List<String> userIds, String message) {
         userIds.forEach(userId -> getUserClient(userId).ifPresent(client -> client.sendMessage(message)));
     }
 
     /**
      * 获取在线用户
      */
+    @NotNull
     public List<String> getOnlineUserList(UserTypeEnum type) {
         return type == UserTypeEnum.PC ? pcClients.keySet().stream().toList() : bClients.keySet().stream().toList();
     }

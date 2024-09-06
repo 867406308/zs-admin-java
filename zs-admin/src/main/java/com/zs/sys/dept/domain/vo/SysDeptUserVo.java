@@ -3,6 +3,7 @@ package com.zs.sys.dept.domain.vo;
 import com.zs.common.core.utils.TreeNode;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import jakarta.validation.constraints.NotNull;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,5 +19,6 @@ public class SysDeptUserVo extends TreeNode<SysDeptUserVo> implements Serializab
     private Long id;
     private Long pid;
     private String name;
+    @NotNull
     private List<SysDeptUserVo> children = new ArrayList<>();
 }

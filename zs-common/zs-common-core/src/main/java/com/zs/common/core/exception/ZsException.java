@@ -4,6 +4,7 @@ package com.zs.common.core.exception;
 import com.zs.common.core.core.HttpEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * @author 86740
@@ -27,7 +28,7 @@ public class ZsException extends RuntimeException {
     }
 
 
-    public ZsException(HttpEnum httpEnum, Exception e) {
+    public ZsException(@NotNull HttpEnum httpEnum, Exception e) {
         super(e);
         this.code = httpEnum.getCode();
         this.msg = httpEnum.getMsg();

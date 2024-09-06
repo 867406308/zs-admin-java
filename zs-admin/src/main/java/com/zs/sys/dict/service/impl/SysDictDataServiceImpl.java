@@ -9,8 +9,8 @@ import com.zs.common.core.constant.RedisConstants;
 import com.zs.common.core.model.domain.SysDictDataDTO;
 import com.zs.common.core.page.PageInfo;
 import com.zs.common.core.page.PageResult;
+import com.zs.common.core.utils.DictRedisUtil;
 import com.zs.common.redis.config.RedisUtil;
-import com.zs.common.redis.utils.DictRedisUtil;
 import com.zs.sys.dict.domain.entity.SysDictDataEntity;
 import com.zs.sys.dict.domain.params.SysDictDataAddParams;
 import com.zs.sys.dict.domain.params.SysDictDataQueryParams;
@@ -19,8 +19,11 @@ import com.zs.sys.dict.mapper.SysDictDataMapper;
 import com.zs.sys.dict.service.ISysDictDataService;
 import jakarta.annotation.Resource;
 import org.apache.logging.log4j.util.Strings;
+import jakarta.validation.constraints.NotNull;
+import jakarta.annotation.Nullable;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -36,8 +39,9 @@ public class SysDictDataServiceImpl extends ServiceImpl<SysDictDataMapper, SysDi
     private RedisUtil redisUtil;
 
 
+    @NotNull
     @Override
-    public PageResult<SysDictDataVo> page(SysDictDataQueryParams sysDictDataQueryParams) {
+    public PageResult<SysDictDataVo> page(@NotNull SysDictDataQueryParams sysDictDataQueryParams) {
         Page<SysDictDataEntity> page = new PageInfo<>(sysDictDataQueryParams);
 
         IPage<SysDictDataEntity> iPage = baseMapper.selectPage(page, getQueryWrapper(sysDictDataQueryParams));
@@ -46,18 +50,20 @@ public class SysDictDataServiceImpl extends ServiceImpl<SysDictDataMapper, SysDi
         return new PageResult<>(list, page.getTotal(), SysDictDataVo.class);
     }
 
+    @Nullable
     @Override
-    public List<SysDictDataVo> list(SysDictDataQueryParams sysDictDataQueryParams) {
-
+    public List<SysDictDataVo> list(@NotNull SysDictDataQueryParams sysDictDataQueryParams) {
         return BeanUtil.copyToList(baseMapper.selectList(getQueryWrapper(sysDictDataQueryParams)), SysDictDataVo.class);
     }
 
 
-    private QueryWrapper<SysDictDataEntity> getQueryWrapper(SysDictDataQueryParams sysDictDataQueryParams) {
+    @NotNull
+    private QueryWrapper<SysDictDataEntity> getQueryWrapper(@NotNull SysDictDataQueryParams sysDictDataQueryParams) {
         QueryWrapper<SysDictDataEntity> wrapper = new QueryWrapper<>();
         wrapper.eq(Objects.nonNull(sysDictDataQueryParams.getSysDictTypeId()), "sys_dict_type_id", sysDictDataQueryParams.getSysDictTypeId());
         wrapper.like(Strings.isNotEmpty(sysDictDataQueryParams.getDictType()), "dict_type", sysDictDataQueryParams.getDictType());
         wrapper.like(Strings.isNotEmpty(sysDictDataQueryParams.getDictLabel()), "dict_label", sysDictDataQueryParams.getDictLabel());
+        wrapper.like(Strings.isNotEmpty(sysDictDataQueryParams.getDictValue()), "dict_value", sysDictDataQueryParams.getDictValue());
         return wrapper;
     }
 
@@ -91,6 +97,13 @@ public class SysDictDataServiceImpl extends ServiceImpl<SysDictDataMapper, SysDi
         if (!sysDictDataEntityList.isEmpty()) {
             redisUtil.setObject(RedisConstants.SYS_DICT_KEY + sysDictDataEntityList.get(0).getDictType(), sysDictDataEntityList);
         }
+    }
+
+    @Override
+    public void batchDelById(Long[] sysDictDataIds) {
+        baseMapper.deleteByIds(Arrays.asList(sysDictDataIds));
+
+        saveCache();
     }
 
     @Override

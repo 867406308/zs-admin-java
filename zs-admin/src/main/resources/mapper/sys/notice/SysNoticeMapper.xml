@@ -19,9 +19,10 @@
             <if test="params.level != '' and params.level != null">
                 AND a.level = #{params.level}
             </if>
-            <if test="params.status != '' and params.status != null">
+            <if test="params.status != null">
                 AND a.status = #{params.status}
             </if>
+
         </where>
     </select>
     <select id="get" resultType="com.zs.sys.notice.domain.entity.SysNoticeEntity">

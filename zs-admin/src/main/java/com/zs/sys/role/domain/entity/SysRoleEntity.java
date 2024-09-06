@@ -17,6 +17,7 @@ public class SysRoleEntity extends BaseEntity {
     @TableId
     private Long sysRoleId;
     private String roleName;
+    private String roleCode;
     private Integer dataScope;
     private Integer sort;
     private Integer status;

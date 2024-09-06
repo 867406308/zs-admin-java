@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zs.sys.role.domain.entity.SysRoleMenuEntity;
 import com.zs.sys.role.mapper.SysRoleMenuMapper;
 import com.zs.sys.role.service.ISysRoleMenuService;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,7 +21,7 @@ public class SysRoleMenuServiceImpl extends ServiceImpl<SysRoleMenuMapper, SysRo
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void save(Long sysRoleId, List<Long> menuList) {
+    public void save(Long sysRoleId, @NotNull List<Long> menuList) {
         // 先删除角色菜单关系
         this.baseMapper.delete(new QueryWrapper<SysRoleMenuEntity>().eq("sys_role_id", sysRoleId));
 
@@ -35,6 +36,7 @@ public class SysRoleMenuServiceImpl extends ServiceImpl<SysRoleMenuMapper, SysRo
 
     }
 
+    @NotNull
     @Override
     public List<Long> getMenuList(Long sysRoleId) {
         List<SysRoleMenuEntity> menuEntityList = this.baseMapper.selectList(new QueryWrapper<SysRoleMenuEntity>().eq("sys_role_id", sysRoleId));

@@ -14,6 +14,8 @@ import com.zs.sys.dict.domain.vo.SysDictTypeVo;
 import com.zs.sys.dict.mapper.SysDictTypeMapper;
 import com.zs.sys.dict.service.ISysDictTypeService;
 import org.apache.logging.log4j.util.Strings;
+import jakarta.validation.constraints.NotNull;
+import jakarta.annotation.Nullable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,8 +27,9 @@ import java.util.List;
 public class SysDictTypeServiceImpl extends ServiceImpl<SysDictTypeMapper, SysDictTypeEntity> implements ISysDictTypeService {
 
 
+    @NotNull
     @Override
-    public PageResult<SysDictTypeVo> page(SysDictTypeQueryParams sysDictTypeQueryParams) {
+    public PageResult<SysDictTypeVo> page(@NotNull SysDictTypeQueryParams sysDictTypeQueryParams) {
         Page<SysDictTypeEntity> page = new PageInfo<>(sysDictTypeQueryParams);
         QueryWrapper<SysDictTypeEntity> wrapper = new QueryWrapper<>();
         wrapper.like(Strings.isNotEmpty(sysDictTypeQueryParams.getDictType()), "dict_type", sysDictTypeQueryParams.getDictType());
@@ -38,6 +41,7 @@ public class SysDictTypeServiceImpl extends ServiceImpl<SysDictTypeMapper, SysDi
         return new PageResult<>(list, page.getTotal(), SysDictTypeVo.class);
     }
 
+    @Nullable
     @Override
     public List<SysDictTypeVo> list(SysDictTypeQueryParams sysDictTypeQueryParams) {
         return BeanUtil.copyToList(baseMapper.selectList(new QueryWrapper<SysDictTypeEntity>().orderByAsc("sort")), SysDictTypeVo.class);

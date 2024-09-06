@@ -15,9 +15,9 @@ import com.zs.sys.log.domain.params.SysLogLoginQueryParams;
 import com.zs.sys.log.domain.vo.SysLogLoginVo;
 import com.zs.sys.log.mapper.SysLogLoginMapper;
 import com.zs.sys.log.service.ISysLogLoginService;
-import com.zs.sys.user.service.ISysUserService;
-import jakarta.annotation.Resource;
 import org.apache.logging.log4j.util.Strings;
+import jakarta.validation.constraints.NotNull;
+import jakarta.annotation.Nullable;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -41,25 +41,36 @@ public class SysLogLoginServiceImpl extends ServiceImpl<SysLogLoginMapper, SysLo
 
     }
 
+    @NotNull
     @Override
-    public PageResult<SysLogLoginVo> page(SysLogLoginQueryParams sysLogLoginQueryParams) {
+    public PageResult<SysLogLoginVo> page(@NotNull SysLogLoginQueryParams sysLogLoginQueryParams) {
         Page<SysLogLoginEntity> page = new PageInfo<>(sysLogLoginQueryParams);
         IPage<SysLogLoginEntity> iPage = baseMapper.selectPage(page, getWrapper(sysLogLoginQueryParams));
 
         return new PageResult<>(BeanUtil.copyToList(iPage.getRecords(), SysLogLoginVo.class), page.getTotal(), SysLogLoginVo.class);
     }
 
+    @Nullable
+    @Override
+    public List<SysLogLoginVo> list(@NotNull SysLogLoginQueryParams sysLogLoginQueryParams) {
+        List<SysLogLoginEntity> entities = baseMapper.selectList(getWrapper(sysLogLoginQueryParams));
+        return BeanUtil.copyToList(entities, SysLogLoginVo.class);
+    }
+
+    @Nullable
     @Override
     public List<SysLogLoginVo> todayList() {
         List<SysLogLoginEntity> entities = baseMapper.selectList(new QueryWrapper<SysLogLoginEntity>().between("login_time", DateUtil.beginOfDay(new Date()), DateUtil.endOfDay(new Date())));
            return BeanUtil.copyToList(entities, SysLogLoginVo.class);
     }
 
-    public QueryWrapper<SysLogLoginEntity> getWrapper(SysLogLoginQueryParams sysLogLoginQueryParams) {
+    @NotNull
+    public QueryWrapper<SysLogLoginEntity> getWrapper(@NotNull SysLogLoginQueryParams sysLogLoginQueryParams) {
         QueryWrapper<SysLogLoginEntity> wrapper = new QueryWrapper<>();
         wrapper.eq(Objects.nonNull(sysLogLoginQueryParams.getLoginStatus()), "login_status", sysLogLoginQueryParams.getLoginStatus());
         wrapper.eq(Strings.isNotEmpty(sysLogLoginQueryParams.getUsername()), "username", sysLogLoginQueryParams.getUsername());
         wrapper.eq(Strings.isNotEmpty(sysLogLoginQueryParams.getIpAddress()), "ip_address", sysLogLoginQueryParams.getIpAddress());
+        wrapper.orderByDesc("login_time");
 
         return wrapper;
     }

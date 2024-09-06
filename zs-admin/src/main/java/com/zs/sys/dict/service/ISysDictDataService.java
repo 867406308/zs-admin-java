@@ -6,6 +6,7 @@ import com.zs.sys.dict.domain.entity.SysDictDataEntity;
 import com.zs.sys.dict.domain.params.SysDictDataAddParams;
 import com.zs.sys.dict.domain.params.SysDictDataQueryParams;
 import com.zs.sys.dict.domain.vo.SysDictDataVo;
+import jakarta.annotation.Nullable;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public interface ISysDictDataService extends IService<SysDictDataEntity> {
 
     PageResult<SysDictDataVo> page(SysDictDataQueryParams sysDictDataQueryParams);
 
+    @Nullable
     List<SysDictDataVo> list(SysDictDataQueryParams sysDictDataQueryParams);
 
     SysDictDataVo getById(Long id);
@@ -26,6 +28,9 @@ public interface ISysDictDataService extends IService<SysDictDataEntity> {
     void update(SysDictDataAddParams sysDictDataAddParams);
 
     void deleteById(Long id);
+
+    /** 批量删除 **/
+    void batchDelById(Long[] sysDictDataIds);
 
 
     /**

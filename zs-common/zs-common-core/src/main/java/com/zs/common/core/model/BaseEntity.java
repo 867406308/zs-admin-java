@@ -4,11 +4,13 @@ import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * @author 86740
  */
 @Data
-public class BaseEntity {
+public class BaseEntity implements Serializable {
 
     @TableField(fill = FieldFill.INSERT)
     private Long creator;

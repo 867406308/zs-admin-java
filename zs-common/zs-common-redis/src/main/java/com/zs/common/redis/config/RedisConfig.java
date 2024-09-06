@@ -1,6 +1,10 @@
 package com.zs.common.redis.config;
 
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,6 +13,7 @@ import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceClientConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 
@@ -27,6 +32,7 @@ public class RedisConfig {
     @Value("${spring.data.redis.password}")
     private String password;
 
+    @NotNull
     @Bean
     LettuceConnectionFactory redisConnectionFactory() {
         RedisStandaloneConfiguration redisConfig = new RedisStandaloneConfiguration();
@@ -40,21 +46,33 @@ public class RedisConfig {
     }
 
 
+    @NotNull
     @Bean
-    RedisTemplate<String, String> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
+    RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
 
-        RedisTemplate<String, String> template = new RedisTemplate<>();
+        RedisTemplate<String, Object> template = new RedisTemplate<>();
         template.setConnectionFactory(redisConnectionFactory);
-        // 定义 String 序列化器
-        StringRedisSerializer keySerializer = new StringRedisSerializer();
 
 
-        FastJson2JsonRedisSerializer<Object> valueSerializer = new FastJson2JsonRedisSerializer<>(Object.class);
+        //Json序列化配置
+        Jackson2JsonRedisSerializer<Object> valueSerializer = new Jackson2JsonRedisSerializer<>(Object.class);
+        ObjectMapper mp = new ObjectMapper();
+        mp.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
+        mp.activateDefaultTyping(mp.getPolymorphicTypeValidator());
+        valueSerializer.serialize(mp);
 
-        template.setKeySerializer(keySerializer);
+        // Spring的序列化
+        StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
+        // key采用String的序列化方式
+        template.setKeySerializer(stringRedisSerializer);
+        // value的序列化方式采用的是jackson
         template.setValueSerializer(valueSerializer);
-        template.setHashKeySerializer(keySerializer);
+
+        // hash的key也采用string的序列化方式
+        template.setHashKeySerializer(stringRedisSerializer);
+        // hash的value序列化方式采用jackson
         template.setHashValueSerializer(valueSerializer);
+        // 启用自动转换
         template.afterPropertiesSet();
 
         return template;

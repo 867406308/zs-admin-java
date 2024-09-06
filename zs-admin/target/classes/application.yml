@@ -22,6 +22,14 @@ spring:
           max-wait: -1
           max-idle: 5
           min-idle: 0
+  quartz:
+    job-store-type: jdbc
+    jdbc:
+      initialize-schema: always
+    auto-startup: true
+
+file:
+  upload-path: D:/upload/
 # mybatis-plus
 mybatis-plus:
   type-aliases-package: com.zs.modules.*.entity
@@ -49,6 +57,8 @@ security:
       - /druid/**
       - /doc.html
       - /websocket/**
+      - /jmreport/**
+      - /favicon.ico
 jwt:
   # 密钥 长度256
   secret: QxXJ18vaaiH0781h6rzMurcyJNzcGtsWYfzc/OyqKBI=
@@ -64,3 +74,14 @@ knife4j:
     enable-version: true
     # 开启动态请求参数，true-开启，false-关闭
     enable-dynamic-parameter: true
+
+logging:
+  level:
+    root: WARN
+    org.jeecgframework.minidao: ERROR
+    org.quartz: ERROR
+    org:
+      springframework:
+        scheduling:
+          quartz: ERROR
+

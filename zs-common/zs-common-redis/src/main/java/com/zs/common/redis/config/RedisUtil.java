@@ -1,6 +1,8 @@
 package com.zs.common.redis.config;
 
+import jakarta.annotation.Nullable;
 import jakarta.annotation.Resource;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -23,7 +25,7 @@ public class RedisUtil {
      * @param value value
      * @param time  过期时间
      */
-    public void setObject(String key, Object value, long time, TimeUnit timeUnit) {
+    public void setObject(@NotNull String key, @NotNull Object value, long time, @NotNull TimeUnit timeUnit) {
         redisTemplate.opsForValue().set(key, value, time, timeUnit);
     }
 
@@ -33,7 +35,7 @@ public class RedisUtil {
      * @param key   key
      * @param value value
      */
-    public void setObject(String key, Object value) {
+    public void setObject(@NotNull String key, @NotNull Object value) {
         redisTemplate.opsForValue().set(key, value);
     }
 
@@ -42,7 +44,7 @@ public class RedisUtil {
      *
      * @param map key和value的集合
      */
-    public void setMultiObject(Map<String, Object> map) {
+    public void setMultiObject(@NotNull Map<String, Object> map) {
         redisTemplate.opsForValue().multiSet(map);
     }
 
@@ -53,7 +55,8 @@ public class RedisUtil {
      * @param value value
      * @return 返回是否成功
      */
-    public Boolean setKey(String key, Object value) {
+    @Nullable
+    public Boolean setKey(@NotNull String key, @NotNull Object value) {
         return redisTemplate.opsForValue().setIfAbsent(key, value);
     }
 
@@ -63,7 +66,8 @@ public class RedisUtil {
      * @param map key和value的集合
      * @return 是否成功
      */
-    public Boolean setMultiKey(Map<String, Object> map) {
+    @Nullable
+    public Boolean setMultiKey(@NotNull Map<String, Object> map) {
         return redisTemplate.opsForValue().multiSetIfAbsent(map);
     }
 
@@ -73,11 +77,13 @@ public class RedisUtil {
      * @param key key
      * @return 返回value对应的对象
      */
-    public Object get(String key) {
+    @Nullable
+    public Object get(@NotNull String key) {
         return redisTemplate.opsForValue().get(key);
     }
 
-    public List<Object> getMulti(Collection<String> keys) {
+    @Nullable
+    public List<Object> getMulti(@NotNull Collection<String> keys) {
         return redisTemplate.opsForValue().multiGet(keys);
     }
 
@@ -87,7 +93,8 @@ public class RedisUtil {
      * @param key key
      * @return 返回是否删除成功
      */
-    public Boolean del(String key) {
+    @Nullable
+    public Boolean del(@NotNull String key) {
         return redisTemplate.delete(key);
     }
 
@@ -97,7 +104,8 @@ public class RedisUtil {
      * @param keys key的集合
      * @return 返回删除成功的个数
      */
-    public Long del(List<String> keys) {
+    @Nullable
+    public Long del(@NotNull List<String> keys) {
         return redisTemplate.delete(keys);
     }
 
@@ -108,7 +116,8 @@ public class RedisUtil {
      * @param time 过期时间
      * @return 返回是否设置成功
      */
-    public Boolean expire(String key, long time) {
+    @Nullable
+    public Boolean expire(@NotNull String key, long time) {
         return redisTemplate.expire(key, time, TimeUnit.SECONDS);
     }
 
@@ -118,7 +127,8 @@ public class RedisUtil {
      * @param key key
      * @return 返回key剩余的过期时间
      */
-    public Long getExpire(String key) {
+    @Nullable
+    public Long getExpire(@NotNull String key) {
         return redisTemplate.getExpire(key);
     }
 
@@ -128,7 +138,8 @@ public class RedisUtil {
      * @param key key
      * @return 是否存在该key
      */
-    public Boolean exists(String key) {
+    @Nullable
+    public Boolean exists(@NotNull String key) {
         return redisTemplate.hasKey(key);
     }
 
@@ -139,7 +150,8 @@ public class RedisUtil {
      * @param delta 参数
      * @return 返回key+delta的值
      */
-    public Long increment(String key, long delta) {
+    @Nullable
+    public Long increment(@NotNull String key, long delta) {
         return redisTemplate.opsForValue().increment(key, delta);
     }
 
@@ -150,7 +162,8 @@ public class RedisUtil {
      * @param delta 参数
      * @return 返回key - delta的值
      */
-    public Long decrement(String key, long delta) {
+    @Nullable
+    public Long decrement(@NotNull String key, long delta) {
         return redisTemplate.opsForValue().decrement(key, delta);
     }
 
@@ -162,7 +175,7 @@ public class RedisUtil {
      * @param hashKey hashKey
      * @param value   value
      */
-    public void hashKey(String key, String hashKey, Object value) {
+    public void hashKey(@NotNull String key, @NotNull String hashKey, @NotNull Object value) {
         redisTemplate.opsForHash().put(key, hashKey, value);
     }
 
@@ -176,7 +189,7 @@ public class RedisUtil {
      * @param time    过期时间
      * @return 返回是否成功
      */
-    public Boolean setHash(String key, String hashKey, Object value, long time) {
+    public Boolean setHash(@NotNull String key, @NotNull String hashKey, @NotNull Object value, long time) {
         hashKey(key, hashKey, value);
         return expire(key, time);
     }
@@ -189,7 +202,7 @@ public class RedisUtil {
      * @param time 过期时间
      * @return 是否成功
      */
-    public Boolean setHash(String key, Map<String, Object> map, long time) {
+    public Boolean setHash(@NotNull String key, @NotNull Map<String, Object> map, long time) {
         redisTemplate.opsForHash().putAll(key, map);
         return expire(key, time);
     }
@@ -201,7 +214,8 @@ public class RedisUtil {
      * @param hashKey hashKey
      * @return 返回对应的value
      */
-    public Object getHash(String key, String hashKey) {
+    @Nullable
+    public Object getHash(@NotNull String key, @NotNull String hashKey) {
         return redisTemplate.opsForHash().get(key, hashKey);
     }
 
@@ -211,7 +225,8 @@ public class RedisUtil {
      * @param key key
      * @return 返回数据
      */
-    public Map<Object, Object> entries(String key) {
+    @NotNull
+    public Map<Object, Object> entries(@NotNull String key) {
         return redisTemplate.opsForHash().entries(key);
     }
 
@@ -221,7 +236,7 @@ public class RedisUtil {
      * @param key     key
      * @param hashKey hashKey数组集合
      */
-    public void deleteKeys(String key, Object... hashKey) {
+    public void deleteKeys(@NotNull String key, Object... hashKey) {
         redisTemplate.opsForHash().delete(key, hashKey);
     }
 
@@ -232,7 +247,8 @@ public class RedisUtil {
      * @param hashKey hashKey
      * @return 是否存在
      */
-    public Boolean hasKey(String key, String hashKey) {
+    @NotNull
+    public Boolean hasKey(@NotNull String key, @NotNull String hashKey) {
         return redisTemplate.opsForHash().hasKey(key, hashKey);
     }
 

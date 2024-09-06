@@ -80,4 +80,30 @@ public class AssetsInfoQueryParams extends BasePageParams {
 
     private String saveState;
 
+
+    /**
+     * RFID编码
+     */
+    private String rfid;
+    /**
+     * 发票号
+     */
+    private String invoiceNumber;
+    /**
+     * 项目代码
+     */
+    private String projectCode;
+    /**
+     * 会计凭证号
+     */
+    private String accountingVoucher;
+    /**
+     * 资产状态
+     */
+    private String assetsStatusCode;
+    /**
+     * 使用状态
+     */
+    private String useStatusCode;
+
 }

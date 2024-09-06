@@ -15,16 +15,14 @@ import com.zs.assets.depreciation.domain.vo.AssetsDepreciationVo;
 import com.zs.assets.depreciation.mapper.AssetsDepreciationMapper;
 import com.zs.assets.depreciation.service.IAssetsDepreciationDetailsService;
 import com.zs.assets.depreciation.service.IAssetsDepreciationService;
-import com.zs.assets.info.domain.dto.AssetsInfoDTO;
 import com.zs.assets.info.domain.entity.AssetsInfoEntity;
 import com.zs.assets.info.service.AssetsInfoService;
-import com.zs.common.core.config.ThreadPoolConfig;
 import com.zs.common.core.exception.ZsException;
 import com.zs.common.core.page.PageInfo;
 import com.zs.common.core.page.PageResult;
 import jakarta.annotation.Resource;
-import org.apache.commons.compress.utils.Lists;
 import org.apache.logging.log4j.util.Strings;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
@@ -34,7 +32,6 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -56,15 +53,17 @@ public class AssetsDepreciationServiceImpl extends ServiceImpl<AssetsDepreciatio
     @Resource
     private ThreadPoolTaskExecutor threadPoolTaskExecutor;
 
+    @NotNull
     @Override
-    public PageResult<AssetsDepreciationVo> page(AssetsDepreciationQueryParams assetsDepreciationQueryParams) {
+    public PageResult<AssetsDepreciationVo> page(@NotNull AssetsDepreciationQueryParams assetsDepreciationQueryParams) {
         Page<AssetsDepreciationEntity> page = new PageInfo<>(assetsDepreciationQueryParams);
         IPage<AssetsDepreciationEntity> iPage = baseMapper.selectPage(page, getWrapper(assetsDepreciationQueryParams));
 
         return new PageResult<>(BeanUtil.copyToList(iPage.getRecords(), AssetsDepreciationVo.class), page.getTotal(), AssetsDepreciationVo.class);
     }
 
-    public QueryWrapper<AssetsDepreciationEntity> getWrapper(AssetsDepreciationQueryParams assetsDepreciationQueryParams) {
+    @NotNull
+    public QueryWrapper<AssetsDepreciationEntity> getWrapper(@NotNull AssetsDepreciationQueryParams assetsDepreciationQueryParams) {
         QueryWrapper<AssetsDepreciationEntity> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq(Strings.isNotEmpty(assetsDepreciationQueryParams.getName()), "name", assetsDepreciationQueryParams.getName());
         return queryWrapper;
@@ -105,6 +104,7 @@ public class AssetsDepreciationServiceImpl extends ServiceImpl<AssetsDepreciatio
 
     }
 
+    @NotNull
     public AssetsDepreciationEntity saveAssetsDepreciation(Integer detailsSize, BigDecimal amountPrice){
         AssetsDepreciationEntity assetsDepreciationEntity = new AssetsDepreciationEntity();
         assetsDepreciationEntity.setName(DateUtil.format(new Date(), "yyyyMM"));
@@ -115,7 +115,7 @@ public class AssetsDepreciationServiceImpl extends ServiceImpl<AssetsDepreciatio
     }
 
 
-    public BigDecimal saveAssetsDepreciationDetails(Long depreciationId, List<AssetsInfoEntity> list) {
+    public BigDecimal saveAssetsDepreciationDetails(Long depreciationId, @NotNull List<AssetsInfoEntity> list) {
         // 初始化累计折旧金额
         AtomicReference<BigDecimal> amountPrice = new AtomicReference<>(BigDecimal.ZERO);
 
@@ -133,7 +133,8 @@ public class AssetsDepreciationServiceImpl extends ServiceImpl<AssetsDepreciatio
 
 
 
-    private static AssetsDepreciationDetailsEntity saveAssetsDepreciationDetailsEntity(Long depreciationId, AssetsInfoEntity dto, AtomicReference<BigDecimal> amountPrice) {
+    @NotNull
+    private static AssetsDepreciationDetailsEntity saveAssetsDepreciationDetailsEntity(Long depreciationId, @NotNull AssetsInfoEntity dto, @NotNull AtomicReference<BigDecimal> amountPrice) {
         AssetsDepreciationDetailsEntity detailsEntity = new AssetsDepreciationDetailsEntity();
         detailsEntity.setDepreciationId(depreciationId);
         detailsEntity.setAssetsSerialNo(dto.getSerialNo());
@@ -158,7 +159,7 @@ public class AssetsDepreciationServiceImpl extends ServiceImpl<AssetsDepreciatio
     }
 
 
-    private static BigDecimal calculateDepreciation(AssetsInfoEntity dto) {
+    private static BigDecimal calculateDepreciation(@NotNull AssetsInfoEntity dto) {
 
         // 如果已折旧月数和可折旧月数相等，直接不参加折旧，返回0
         if(dto.getDepreciatedMonths().compareTo(dto.getDepreciationMonths()) == 0){
@@ -173,7 +174,8 @@ public class AssetsDepreciationServiceImpl extends ServiceImpl<AssetsDepreciatio
         return dto.getBuyPrice().subtract(dto.getDepreciatedPrice());
     }
 
-    private List<AssetsInfoEntity> updateAssetsInfoDTOs(List<AssetsInfoEntity> assetsInfoDTOList) {
+    @NotNull
+    private List<AssetsInfoEntity> updateAssetsInfoDTOs(@NotNull List<AssetsInfoEntity> assetsInfoDTOList) {
         return assetsInfoDTOList.stream()
                 .peek(dto -> {
                     // 计算当月折旧金额
@@ -192,11 +194,12 @@ public class AssetsDepreciationServiceImpl extends ServiceImpl<AssetsDepreciatio
                 .collect(Collectors.toList());
     }
 
-    private <T> void batchSave(List<T> list, Consumer<List<T>> batchConsumer) {
+    private <T> void batchSave(@NotNull List<T> list, Consumer<List<T>> batchConsumer) {
         List<List<T>> partitions = partition(list, 1000);
         partitions.forEach(batchConsumer);
     }
-    public static <T> List<List<T>> partition(List<T> list, int size) {
+    @NotNull
+    public static <T> List<List<T>> partition(@NotNull List<T> list, int size) {
         List<List<T>> partitions = new ArrayList<>();
         for (int i = 0; i < list.size(); i += size) {
             partitions.add(new ArrayList<>(list.subList(i, Math.min(i + size, list.size()))));

@@ -19,6 +19,8 @@ import com.zs.sys.notice.mapper.SysNoticeMapper;
 import com.zs.sys.notice.service.SysNoticeDetailsService;
 import com.zs.sys.notice.service.SysNoticeService;
 import jakarta.annotation.Resource;
+import jakarta.validation.constraints.NotNull;
+import jakarta.annotation.Nullable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,7 +38,7 @@ public class SysNoticeServiceImpl extends ServiceImpl<SysNoticeMapper, SysNotice
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public void save(SysNoticeAddParams sysNoticeAddParams) {
+    public void save(@NotNull SysNoticeAddParams sysNoticeAddParams) {
         SysNoticeEntity sysNoticeEntity = BeanUtil.copyProperties(sysNoticeAddParams, SysNoticeEntity.class);
         if (sysNoticeAddParams.getStatus() == 2) {
             sysNoticeEntity.setReleaseTime(DateUtil.now());
@@ -50,7 +52,7 @@ public class SysNoticeServiceImpl extends ServiceImpl<SysNoticeMapper, SysNotice
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public void update(SysNoticeUpdateParams sysNoticeUpdateParams) {
+    public void update(@NotNull SysNoticeUpdateParams sysNoticeUpdateParams) {
         SysNoticeEntity sysNoticeEntity = BeanUtil.copyProperties(sysNoticeUpdateParams, SysNoticeEntity.class);
         this.baseMapper.updateById(sysNoticeEntity);
         // 修改接收人
@@ -72,6 +74,7 @@ public class SysNoticeServiceImpl extends ServiceImpl<SysNoticeMapper, SysNotice
         this.baseMapper.deleteById(sysNoticeId);
     }
 
+    @NotNull
     @Override
     public SysNoticeVo get(Long sysNoticeId) {
         SysNoticeEntity sysNoticeEntity = this.baseMapper.get(sysNoticeId);
@@ -81,8 +84,9 @@ public class SysNoticeServiceImpl extends ServiceImpl<SysNoticeMapper, SysNotice
         return sysNoticeVo;
     }
 
+    @NotNull
     @Override
-    public PageResult<SysNoticeVo> page(SysNoticeQueryParams sysNoticeQueryParams) {
+    public PageResult<SysNoticeVo> page(@NotNull SysNoticeQueryParams sysNoticeQueryParams) {
         Page<SysNoticeEntity> pageResult = new PageInfo<>(sysNoticeQueryParams);
         Map<String, Object> params = BeanUtil.beanToMap(sysNoticeQueryParams);
         IPage<SysNoticeEntity> page = this.baseMapper.page(pageResult, params);
@@ -90,6 +94,7 @@ public class SysNoticeServiceImpl extends ServiceImpl<SysNoticeMapper, SysNotice
         return new PageResult<>(list, page.getTotal());
     }
 
+    @Nullable
     @Override
     public List<SysNoticeVo> getLimit(Integer num) {
         List<SysNoticeEntity> list =  this.baseMapper.selectList(new QueryWrapper<SysNoticeEntity>()

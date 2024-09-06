@@ -4,11 +4,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.zs.assets.allot.domain.entity.AssetsAllotEntity;
 import com.zs.assets.allot.domain.params.AssetsAllotAddParams;
 import com.zs.assets.allot.domain.params.AssetsAllotQueryParams;
-import com.zs.assets.allot.domain.vo.AssetsAllotDetailsVo;
 import com.zs.assets.allot.domain.vo.AssetsAllotVo;
 import com.zs.common.core.page.PageResult;
-
-import java.util.List;
 
 /**
  * @author 86740

@@ -1,18 +1,23 @@
 package com.zs.sys.role.controller;
 
 
+import cn.hutool.core.bean.BeanUtil;
 import com.zs.common.aop.annotation.Log;
 import com.zs.common.core.core.Result;
 import com.zs.common.core.enums.OperationTypeEnum;
+import com.zs.common.core.excel.ExcelUtils;
 import com.zs.common.core.page.PageResult;
+import com.zs.sys.role.domain.excel.SysRoleExcel;
 import com.zs.sys.role.domain.params.SysRoleAddParams;
 import com.zs.sys.role.domain.params.SysRoleQueryParams;
 import com.zs.sys.role.domain.vo.SysRoleVo;
 import com.zs.sys.role.service.ISysRoleService;
 import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -34,8 +39,8 @@ public class SysRoleController {
 
     @GetMapping("list")
     @PreAuthorize("hasAuthority('sys:role:list')")
-    public Result<List<SysRoleVo>> list() {
-        List<SysRoleVo> list = iSysRoleService.getList();
+    public Result<List<SysRoleVo>> list(SysRoleQueryParams sysRoleQueryParams) {
+        List<SysRoleVo> list = iSysRoleService.getList(sysRoleQueryParams);
         return new Result<List<SysRoleVo>>().ok(list);
     }
 
@@ -71,5 +76,22 @@ public class SysRoleController {
     public Result<?> delete(@PathVariable("id") Long id) {
         iSysRoleService.deleteById(id);
         return new Result<>().ok();
+    }
+
+    @Log(module = "角色管理-批量删除", type = OperationTypeEnum.DELETE_BATCH, description = "批量删除角色信息")
+    @DeleteMapping
+    @PreAuthorize("hasAuthority('sys:role:batchDelete')")
+    public Result<?> batchDelete(@RequestBody Long[] ids) {
+        iSysRoleService.batchDelById(ids);
+        return new Result<>().ok();
+    }
+    @Log(module = "角色管理-导出", type = OperationTypeEnum.EXPORT, description = "导出角色信息")
+    @GetMapping("export")
+    @PreAuthorize("hasAuthority('sys:role:export')")
+    public void export(HttpServletResponse response, SysRoleQueryParams sysRoleQueryParams) throws IOException {
+        List<SysRoleVo> list = iSysRoleService.getList(sysRoleQueryParams);
+        List<SysRoleExcel> excelList = BeanUtil.copyToList(list, SysRoleExcel.class);
+        ExcelUtils.exportExcel(response, "角色信息.xlsx", SysRoleExcel.class, excelList);
+
     }
 }

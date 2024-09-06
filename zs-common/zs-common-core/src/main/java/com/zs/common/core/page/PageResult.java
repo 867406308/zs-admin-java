@@ -2,7 +2,9 @@ package com.zs.common.core.page;
 
 import cn.hutool.core.convert.Convert;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
 
@@ -17,7 +19,11 @@ public class PageResult<T> {
 
     private List<T> list;
 
-    public PageResult(IPage<T> page) {
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private Object  data;
+
+
+    public PageResult(@NotNull IPage<T> page) {
         this.total = (int) page.getTotal();
         this.list = page.getRecords();
     }
@@ -27,7 +33,7 @@ public class PageResult<T> {
         this.total = (int) total;
     }
 
-    public PageResult(IPage<T> page, Class<T> target) {
+    public PageResult(@NotNull IPage<T> page, Class<T> target) {
         this.total = (int) page.getTotal();
         this.list = Convert.toList(target, page.getRecords());
     }
@@ -36,4 +42,11 @@ public class PageResult<T> {
         this.list = Convert.toList(target, list);
         this.total = (int) total;
     }
+
+    public PageResult(List<T> list, long total,Object data, Class<T> target) {
+        this.list = Convert.toList(target, list);
+        this.total = (int) total;
+        this.data = data;
+    }
+
 }

@@ -17,6 +17,7 @@ import com.zs.common.core.page.PageInfo;
 import com.zs.common.core.page.PageResult;
 import jakarta.annotation.Resource;
 import org.apache.logging.log4j.util.Strings;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,15 +34,17 @@ public class AssetsScrapServiceImpl extends ServiceImpl<AssetsScrapMapper, Asset
     @Resource
     private AssetsScrapDetailsService assetsScrapDetailsService;
 
+    @NotNull
     @Override
-    public PageResult<AssetsScrapVo> page(AssetsScrapQueryParams assetsScrapQueryParams) {
+    public PageResult<AssetsScrapVo> page(@NotNull AssetsScrapQueryParams assetsScrapQueryParams) {
         Page<AssetsScrapEntity> page = new PageInfo<>(assetsScrapQueryParams);
         IPage<AssetsScrapEntity> iPage = baseMapper.selectPage(page, getWrapper(assetsScrapQueryParams));
 
         return new PageResult<>(BeanUtil.copyToList(iPage.getRecords(), AssetsScrapVo.class), page.getTotal(), AssetsScrapVo.class);
     }
 
-    public QueryWrapper<AssetsScrapEntity> getWrapper(AssetsScrapQueryParams assetsScrapQueryParams) {
+    @NotNull
+    public QueryWrapper<AssetsScrapEntity> getWrapper(@NotNull AssetsScrapQueryParams assetsScrapQueryParams) {
         QueryWrapper<AssetsScrapEntity> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq(Strings.isNotEmpty(assetsScrapQueryParams.getSerialNo()), "serial_no", assetsScrapQueryParams.getSerialNo());
         return queryWrapper;
@@ -49,7 +52,7 @@ public class AssetsScrapServiceImpl extends ServiceImpl<AssetsScrapMapper, Asset
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void save(AssetsScrapAddParams assetsScrapAddParams) {
+    public void save(@NotNull AssetsScrapAddParams assetsScrapAddParams) {
         AssetsScrapEntity assetsScrapEntity = BeanUtil.copyProperties(assetsScrapAddParams, AssetsScrapEntity.class);
         assetsScrapEntity.setSerialNo(getMaxSerialNo());
         assetsScrapEntity.setScrapDate(new Date());

@@ -9,6 +9,8 @@ import com.zs.assets.info.domain.query.AssetsInfoSerialNoImportParams;
 import com.zs.assets.info.domain.query.AssetsInfoStockInParams;
 import com.zs.assets.info.domain.vo.AssetsInfoVo;
 import com.zs.common.core.page.PageResult;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.annotation.Nullable;
 
 import java.util.List;
 
@@ -21,10 +23,19 @@ public interface AssetsInfoService extends IService<AssetsInfoEntity> {
 
     PageResult<AssetsInfoVo> page(AssetsInfoQueryParams assetsInfoQueryParams);
 
+    @Nullable
+    List<AssetsInfoVo> list(AssetsInfoQueryParams assetsInfoQueryParams);
+
     /**
      * 根据资产编号批量查询资产信息
      **/
+    @Nullable
     List<AssetsInfoVo> getBySerialNoList(AssetsInfoSerialNoImportParams assetsInfoSerialNoImportParams);
+
+    /**
+     * 获取所有资产总价
+     */
+    String getTotalPrice();
 
     void save(AssetsInfoAddParams assetsInfoAddParams);
 
@@ -41,11 +52,13 @@ public interface AssetsInfoService extends IService<AssetsInfoEntity> {
     /**
      * 根据使用部门、资产级别查询资产信息
      */
+    @Nullable
     List<AssetsInfoVo> getList(Long useOrgId, Long levelId);
 
     /**
      * 根据资产编号列表查询资产信息
      */
+    @Nullable
     List<AssetsInfoVo> getList(List<String> serialNoList);
 
     /**
@@ -58,4 +71,5 @@ public interface AssetsInfoService extends IService<AssetsInfoEntity> {
      */
     void updateAssetsInfoBySerialNo(AssetsInfoDTO assetsInfoDTO);
 
+    void export(HttpServletResponse response, AssetsInfoQueryParams assetsInfoQueryParams);
 }

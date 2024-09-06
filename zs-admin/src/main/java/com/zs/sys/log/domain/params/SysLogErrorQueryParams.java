@@ -14,4 +14,5 @@ public class SysLogErrorQueryParams extends BasePageParams {
 
     private String username;
     private String ipAddress;
+    private String module;
 }

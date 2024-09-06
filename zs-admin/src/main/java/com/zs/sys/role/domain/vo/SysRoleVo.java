@@ -16,10 +16,14 @@ public class SysRoleVo extends BaseVo implements Serializable {
 
     private Long sysRoleId;
     private String roleName;
+    private String roleCode;
     private Integer dataScope;
     private Integer sort;
     private Integer status;
     private String remark;
 
+    // 菜单ID集合
     private List<Long> menuList;
+    // 部门ID集合
+    private List<Long> deptList;
 }

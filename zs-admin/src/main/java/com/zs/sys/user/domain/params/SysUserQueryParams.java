@@ -38,6 +38,5 @@ public class SysUserQueryParams extends BasePageParams {
     private Long sysDeptId;
     @Schema(description = "岗位id")
     private Long sysPostId;
-    @Schema(description = "角色id")
-    private Long sysRoleId;
+
 }

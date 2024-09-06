@@ -12,6 +12,7 @@ import com.zs.assets.classify.mapper.AssetsClassifySchoolMapper;
 import com.zs.assets.classify.service.IAssetsClassifySchoolService;
 import com.zs.common.core.exception.ZsException;
 import com.zs.common.core.utils.TreeUtil;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -24,6 +25,7 @@ import java.util.stream.Collectors;
 @Service
 public class AssetsClassifySchoolServiceImpl extends ServiceImpl<AssetsClassifySchoolMapper, AssetsClassifySchoolEntity>
         implements IAssetsClassifySchoolService {
+    @NotNull
     @Override
     public List<AssetsClassifySchoolVo> getList(AssetsClassifySchoolQueryParams assetsClassifySchoolQueryParams) {
 
@@ -47,7 +49,7 @@ public class AssetsClassifySchoolServiceImpl extends ServiceImpl<AssetsClassifyS
     }
 
     @Override
-    public void save(AssetsClassifySchoolAddParams assetsClassifySchoolAddParams) {
+    public void save(@NotNull AssetsClassifySchoolAddParams assetsClassifySchoolAddParams) {
         AssetsClassifySchoolEntity assetsClassifySchoolEntity = new AssetsClassifySchoolEntity();
         assetsClassifySchoolEntity.setPids(StrUtil.join(",", getTree(assetsClassifySchoolAddParams)));
         baseMapper.insert(assetsClassifySchoolEntity);
@@ -68,7 +70,8 @@ public class AssetsClassifySchoolServiceImpl extends ServiceImpl<AssetsClassifyS
         baseMapper.deleteById(id);
     }
 
-    public List<AssetsClassifySchoolEntity> getTreeParent(AssetsClassifySchoolEntity assetsClassifySchoolEntity, List<AssetsClassifySchoolEntity> deptList) {
+    @NotNull
+    public List<AssetsClassifySchoolEntity> getTreeParent(@NotNull AssetsClassifySchoolEntity assetsClassifySchoolEntity, @NotNull List<AssetsClassifySchoolEntity> deptList) {
         Map<Long, AssetsClassifySchoolEntity> map = deptList.stream().collect(Collectors.toMap(AssetsClassifySchoolEntity::getId, Function.identity()));
         List<AssetsClassifySchoolEntity> pidList = new ArrayList<>();
         getTreePid(assetsClassifySchoolEntity.getPid(), map, pidList);
@@ -76,7 +79,7 @@ public class AssetsClassifySchoolServiceImpl extends ServiceImpl<AssetsClassifyS
         return pidList;
     }
 
-    public void getTreePid(Long pid, Map<Long, AssetsClassifySchoolEntity> map, List<AssetsClassifySchoolEntity> pidList) {
+    public void getTreePid(Long pid, @NotNull Map<Long, AssetsClassifySchoolEntity> map, @NotNull List<AssetsClassifySchoolEntity> pidList) {
         AssetsClassifySchoolEntity parent = map.get(pid);
         if (parent != null) {
             pidList.add(parent);
@@ -85,7 +88,8 @@ public class AssetsClassifySchoolServiceImpl extends ServiceImpl<AssetsClassifyS
     }
 
 
-    public List<Long> getTree(AssetsClassifySchoolAddParams assetsClassifySchoolAddParams) {
+    @NotNull
+    public List<Long> getTree(@NotNull AssetsClassifySchoolAddParams assetsClassifySchoolAddParams) {
         List<AssetsClassifySchoolEntity> deptList = baseMapper.selectList(new QueryWrapper<>());
         Map<Long, AssetsClassifySchoolEntity> map = new HashMap<>(deptList.size());
         for (AssetsClassifySchoolEntity entity : deptList) {
@@ -96,7 +100,7 @@ public class AssetsClassifySchoolServiceImpl extends ServiceImpl<AssetsClassifyS
         return pidList;
     }
 
-    public void getPid(Long pid, Map<Long, AssetsClassifySchoolEntity> map, List<Long> pidList) {
+    public void getPid(Long pid, @NotNull Map<Long, AssetsClassifySchoolEntity> map, @NotNull List<Long> pidList) {
         AssetsClassifySchoolEntity parent = map.get(pid);
         if (Objects.nonNull(parent)) {
             pidList.add(parent.getId());

@@ -8,6 +8,7 @@ import com.zs.sys.post.domain.entity.SysPostEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,4 +18,6 @@ import java.util.Map;
 public interface SysPostMapper extends BaseMapper<SysPostEntity> {
 
     IPage<SysPostEntity> page(Page<SysPostEntity> page, @Param("params") Map<String, Object> params);
+
+    List<SysPostEntity> getList(@Param("params") Map<String, Object> params);
 }

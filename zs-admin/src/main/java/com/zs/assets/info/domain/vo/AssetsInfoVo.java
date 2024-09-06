@@ -100,15 +100,29 @@ public class AssetsInfoVo implements Serializable {
      * 采购组织形式
      */
     private String formOfProcurementCode;
+
+    /**
+     * 采购组织形式字典标签
+     */
+    private String formOfProcurementCodeDictLabel;
+
     /**
      * 采购部门编码
      */
     private Long buyOrgId;
+    /**
+     * 采购部门名称
+     */
+    private String buyOrgName;
 
     /**
      * 采购人
      */
     private Long buyUserId;
+    /**
+     * 采购人名称
+     */
+    private String buyUserName;
 
     /**
      * 采购日期
@@ -156,9 +170,18 @@ public class AssetsInfoVo implements Serializable {
     private Long acceptOrgId;
 
     /**
+     * 验收部门名称
+     */
+    private String acceptOrgName;
+
+    /**
      * 验收人
      */
     private Long acceptUserId;
+    /**
+     * 验收人名称
+     */
+    private String acceptUserName;
 
     /**
      * 验收日期

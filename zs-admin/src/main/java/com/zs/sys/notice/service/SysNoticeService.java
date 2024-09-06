@@ -7,6 +7,7 @@ import com.zs.sys.notice.domain.params.SysNoticeAddParams;
 import com.zs.sys.notice.domain.params.SysNoticeQueryParams;
 import com.zs.sys.notice.domain.params.SysNoticeUpdateParams;
 import com.zs.sys.notice.domain.vo.SysNoticeVo;
+import jakarta.annotation.Nullable;
 
 import java.util.List;
 
@@ -25,5 +26,6 @@ public interface SysNoticeService extends IService<SysNoticeEntity>{
 
     PageResult<SysNoticeVo> page(SysNoticeQueryParams sysNoticeQueryParams);
 
+    @Nullable
     List<SysNoticeVo>  getLimit(Integer num);
 }

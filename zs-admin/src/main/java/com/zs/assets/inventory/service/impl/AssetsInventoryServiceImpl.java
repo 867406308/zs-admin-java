@@ -18,6 +18,7 @@ import com.zs.common.core.exception.ZsException;
 import com.zs.common.core.page.PageInfo;
 import com.zs.common.core.page.PageResult;
 import jakarta.annotation.Resource;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,8 +39,9 @@ public class AssetsInventoryServiceImpl extends ServiceImpl<AssetsInventoryMappe
     private AssetsInventoryDetailsService assetsInventoryDetailsService;
 
 
+    @NotNull
     @Override
-    public PageResult<AssetsInventoryVo> page(AssetsInventoryQueryParams assetsInventoryQueryParams) {
+    public PageResult<AssetsInventoryVo> page(@NotNull AssetsInventoryQueryParams assetsInventoryQueryParams) {
         Page<AssetsInventoryEntity> page = new PageInfo<>(assetsInventoryQueryParams);
         Map<String, Object> params = BeanUtil.beanToMap(assetsInventoryQueryParams);
         IPage<AssetsInventoryEntity> iPage = baseMapper.page(page, params);
@@ -51,7 +53,7 @@ public class AssetsInventoryServiceImpl extends ServiceImpl<AssetsInventoryMappe
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void createInventoryTask(AssetsInventoryAddParams assetsInventoryAddParams) {
+    public void createInventoryTask(@NotNull AssetsInventoryAddParams assetsInventoryAddParams) {
         // 根据盘点部门、资产级别查询所有资产。盘点争对使用部门进行盘点
 
         List<AssetsInfoVo> list = assetsInfoService.getList(assetsInventoryAddParams.getOrgId(), assetsInventoryAddParams.getLevelId());
@@ -82,7 +84,7 @@ public class AssetsInventoryServiceImpl extends ServiceImpl<AssetsInventoryMappe
         return BeanUtil.copyProperties(assetsInventoryEntity, AssetsInventoryVo.class);
     }
 
-    private void extracted(List<AssetsInventoryDetailsEntity> detailsList) {
+    private void extracted(@NotNull List<AssetsInventoryDetailsEntity> detailsList) {
 
         // 每次批量插入的数据量
         int batchSize = 1000;

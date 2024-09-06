@@ -1,8 +1,10 @@
 package com.zs.common.core.model;
 
-import com.alibaba.fastjson2.annotation.JSONField;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,7 +26,8 @@ public class LoginUserInfo implements UserDetails {
     @Getter
     private Set<String> permissions;
 
-    @JSONField(serialize = false)
+
+    @JsonIgnore
     private Collection<GrantedAuthority> authorities;
 
 
@@ -34,6 +37,7 @@ public class LoginUserInfo implements UserDetails {
     }
 
 
+    @NotNull
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         if (authorities != null) {
@@ -44,13 +48,13 @@ public class LoginUserInfo implements UserDetails {
 
     }
 
-    @JSONField(serialize = false)
+    @JsonIgnore
     @Override
     public String getPassword() {
         return sysUser.getPassword();
     }
 
-    @JSONField(serialize = false)
+    @JsonIgnore
     @Override
     public String getUsername() {
         return sysUser.getUsername();
@@ -81,11 +85,11 @@ public class LoginUserInfo implements UserDetails {
     }
 
     /**
-     * 用户凭据(通常为密码)没过期返回true，反之则false
+     *
      */
     @Override
     public boolean isEnabled() {
-        return false;
+        return sysUser.getStatus() == 1;
     }
 
 }

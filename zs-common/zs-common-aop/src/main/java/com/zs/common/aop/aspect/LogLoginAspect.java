@@ -14,6 +14,8 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import jakarta.validation.constraints.NotNull;
+import jakarta.annotation.Nullable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -22,8 +24,6 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.lang.reflect.Method;
-import java.util.Map;
-import java.util.Objects;
 
 /**
  * @author 86740
@@ -46,14 +46,14 @@ public class LogLoginAspect {
      * 用于目标方法的整个调用流程
      */
     @Around("loginPointCut()")
-    public Object around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+    public Object around(@NotNull ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         Object object = proceedingJoinPoint.proceed();
         saveLoginLog(proceedingJoinPoint);
         return object;
     }
 
     @Async
-    void saveLoginLog(ProceedingJoinPoint proceedingJoinPoint) {
+    void saveLoginLog(@NotNull ProceedingJoinPoint proceedingJoinPoint) {
         Object[] objects = proceedingJoinPoint.getArgs();
         Throwable failureReason = null;
         if (objects[2] instanceof BadCredentialsException) {
@@ -79,6 +79,7 @@ public class LogLoginAspect {
     }
 
 
+    @NotNull
     private HttpServletRequest getRequest() {
         return ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
     }
@@ -86,7 +87,8 @@ public class LogLoginAspect {
     /**
      * 创建登录日志参数
      */
-    private SysLogLoginAddParams createLogLoginParams(String username, String ipAddr, String city, String userAgentString, LoginLog annotation, Throwable failureReason, String browser, String os) {
+    @NotNull
+    private SysLogLoginAddParams createLogLoginParams(String username, String ipAddr, String city, String userAgentString, @NotNull LoginLog annotation, @Nullable Throwable failureReason, String browser, String os) {
         SysLogLoginAddParams sysLogLoginAddParams = new SysLogLoginAddParams();
         sysLogLoginAddParams.setUsername(username);
         sysLogLoginAddParams.setLoginTime(DateUtil.now());

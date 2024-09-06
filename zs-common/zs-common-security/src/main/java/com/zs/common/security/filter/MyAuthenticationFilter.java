@@ -7,6 +7,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -48,7 +49,7 @@ public class MyAuthenticationFilter extends AbstractAuthenticationProcessingFilt
 
 
     @Override
-    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException {
+    public Authentication attemptAuthentication(@NotNull HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException {
         if (POST_ONLY && !request.getMethod().equals(POST)) {
             throw new AuthenticationServiceException("Authentication method not supported: " + request.getMethod());
         } else {
@@ -88,12 +89,13 @@ public class MyAuthenticationFilter extends AbstractAuthenticationProcessingFilt
         super.unsuccessfulAuthentication(request, response, failed);
     }
 
-    protected void setDetails(HttpServletRequest request, UsernamePasswordAuthenticationToken token) {
+    protected void setDetails(HttpServletRequest request, @NotNull UsernamePasswordAuthenticationToken token) {
         token.setDetails(this.authenticationDetailsSource.buildDetails(request));
     }
 
 
-    public JSONObject getBodyParams(HttpServletRequest request) throws IOException {
+    @NotNull
+    public JSONObject getBodyParams(@NotNull HttpServletRequest request) throws IOException {
         InputStream inputStream = request.getInputStream();
         String requestBody = IoUtil.read(inputStream, StandardCharsets.UTF_8);
         return JSONUtil.parseObj(requestBody);

@@ -6,7 +6,6 @@ import com.zs.assets.allot.domain.vo.AssetsAllotDetailsVo;
 import com.zs.assets.allot.domain.vo.AssetsAllotVo;
 import com.zs.assets.allot.service.AssetsAllotDetailsService;
 import com.zs.assets.allot.service.AssetsAllotService;
-import com.zs.assets.scrap.domain.params.AssetsScrapAddParams;
 import com.zs.common.core.core.Result;
 import com.zs.common.core.page.PageResult;
 import jakarta.annotation.Resource;

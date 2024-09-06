@@ -5,6 +5,7 @@ import com.zs.common.websocket.utils.UserTypeEnum;
 import com.zs.sys.user.domain.vo.SysUserVo;
 import com.zs.sys.websocket.service.IWebsocketService;
 import jakarta.annotation.Resource;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class WebsocketServiceImpl implements IWebsocketService {
     @Resource
     private WebsocketServer websocketService;
 
+    @NotNull
     @Override
     public List<SysUserVo> getOnlineUserList(UserTypeEnum userType) {
         List<String> userIds = websocketService.getOnlineUserList(userType);

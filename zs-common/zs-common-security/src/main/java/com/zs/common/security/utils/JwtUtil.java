@@ -9,6 +9,8 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.Resource;
+import jakarta.validation.constraints.NotNull;
+import jakarta.annotation.Nullable;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -48,7 +50,7 @@ public class JwtUtil {
      *
      * @return String
      */
-    public String createToken(LoginUserInfo loginUserInfo) {
+    public String createToken(@NotNull LoginUserInfo loginUserInfo) {
         //header参数
         final Map<String, Object> headerMap = new HashMap<>();
         headerMap.put("alg", "HS256");
@@ -74,6 +76,7 @@ public class JwtUtil {
      * @param token token
      * @return Claims
      */
+    @Nullable
     public Claims parseToken(String token) {
         Claims claims;
         try {

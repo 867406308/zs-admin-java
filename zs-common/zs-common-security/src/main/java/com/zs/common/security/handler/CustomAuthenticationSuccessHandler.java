@@ -2,7 +2,7 @@ package com.zs.common.security.handler;
 
 import cn.hutool.http.useragent.UserAgent;
 import cn.hutool.http.useragent.UserAgentUtil;
-import com.alibaba.fastjson2.JSON;
+import cn.hutool.json.JSONUtil;
 import com.zs.common.aop.annotation.LoginLog;
 import com.zs.common.core.constant.RedisConstants;
 import com.zs.common.core.core.Result;
@@ -14,6 +14,7 @@ import com.zs.common.security.utils.JwtUtil;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.http.HttpHeaders;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.core.Authentication;
@@ -40,19 +41,19 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 
     @LoginLog
     @Override
-    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
+    public void onAuthenticationSuccess(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response, @NotNull Authentication authentication) throws IOException {
         LoginUserInfo loginUserInfo = (LoginUserInfo) authentication.getPrincipal();
         // 登录成功把用户信息存入redis,用来表示在线用户。
         setUserInfoToRedis(request, loginUserInfo.getSysUser());
 
         response.setContentType("application/json;charset=UTF-8");
-        String s = JSON.toJSONString(new Result<>().ok(200, "登录成功", jwtUtil.createToken(loginUserInfo)));
+        String s = JSONUtil.toJsonStr(new Result<>().ok(200, "登录成功", jwtUtil.createToken(loginUserInfo)));
         response.getWriter().println(s);
 
     }
 
     @Async
-    public void setUserInfoToRedis(HttpServletRequest request, SysUser sysUser){
+    public void setUserInfoToRedis(@NotNull HttpServletRequest request, @NotNull SysUser sysUser){
         String userAgentString = request.getHeader(HttpHeaders.USER_AGENT);
         UserAgent userAgent = UserAgentUtil.parse(userAgentString);
         String ipAddr = IpUtils.getIpAddr(request);

@@ -22,7 +22,7 @@ public enum HttpEnum {
     /**
      * 用户发出的请求有错误，服务器没有进行新建或修改数据的操作
      */
-    INVALID_REQUEST(400, "非法请求"),
+    BAD_REQUEST(400, "非法请求"),
     /**
      * 表示用户没有权限（令牌、用户名、密码错误）
      */
@@ -34,7 +34,7 @@ public enum HttpEnum {
     /**
      * 访问内容不存在
      */
-    NOTFOUND(404, "访问内容不存在"),
+    NOT_FOUND(404, "访问内容不存在"),
 
     METHOD_NOT_ALLOWED(405, "资源被禁止"),
     /**

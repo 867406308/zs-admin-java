@@ -13,4 +13,5 @@ public class SysLogOperationQueryParams extends BasePageParams {
 
     private String username;
     private String ipAddress;
+    private String module;
 }

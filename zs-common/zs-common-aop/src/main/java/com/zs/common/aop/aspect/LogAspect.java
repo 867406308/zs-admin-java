@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -56,7 +57,7 @@ public class LogAspect {
      * 记录操作日志
      */
     @AfterReturning(value = "logOperationPointCut()", returning = "obj")
-    public void afterReturning(JoinPoint point, Object obj) {
+    public void afterReturning(@NotNull JoinPoint point, Object obj) {
         saveLogOperation(point, obj);
     }
 
@@ -68,7 +69,7 @@ public class LogAspect {
      * 常用场景：处理异常、回滚事务
      */
     @AfterThrowing(value = "logOperationPointCut()", throwing = "e")
-    public void afterThrowing(JoinPoint point, Exception e) {
+    public void afterThrowing(@NotNull JoinPoint point, @NotNull Exception e) {
         saveLogError(point, e);
     }
 
@@ -76,6 +77,7 @@ public class LogAspect {
     /**
      * 获取HttpServletRequest
      */
+    @NotNull
     private HttpServletRequest getRequest() {
         return ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
     }
@@ -83,7 +85,7 @@ public class LogAspect {
     /**
      * 获取请求体参数
      */
-    private String getRequestBody(JoinPoint point) {
+    private String getRequestBody(@NotNull JoinPoint point) {
         Object[] args = point.getArgs();
         return JSONUtil.toJsonStr(args[0]);
     }
@@ -93,7 +95,7 @@ public class LogAspect {
      * 操作日志
      */
     @Async
-    public void saveLogOperation(JoinPoint point, Object obj) {
+    public void saveLogOperation(@NotNull JoinPoint point, Object obj) {
         HttpServletRequest request = getRequest();
         String params = getRequestBody(point);
 
@@ -111,7 +113,7 @@ public class LogAspect {
      * 错误日志
      */
     @Async
-    public void saveLogError(JoinPoint point, Exception e) {
+    public void saveLogError(@NotNull JoinPoint point, @NotNull Exception e) {
         HttpServletRequest request = getRequest();
         String params = getRequestBody(point);
 
@@ -127,7 +129,8 @@ public class LogAspect {
     /**
      * 创建操作日志参数
      */
-    private SysLogOperationAddParams createLogOperationParams(Log annotation, HttpServletRequest request, String params, Result<?> result) {
+    @NotNull
+    private SysLogOperationAddParams createLogOperationParams(@NotNull Log annotation, @NotNull HttpServletRequest request, String params, @NotNull Result<?> result) {
         SysLogOperationAddParams addParams = new SysLogOperationAddParams();
         addParams.setUsername(SecurityUtil.getUserInfo().getSysUser().getUsername());
         addParams.setModule(annotation.module());
@@ -147,7 +150,8 @@ public class LogAspect {
     /**
      * 创建异常日志参数
      */
-    private SysLogErrorAddParams createLogErrorParams(Log annotation, HttpServletRequest request, String params, Exception e) {
+    @NotNull
+    private SysLogErrorAddParams createLogErrorParams(@NotNull Log annotation, @NotNull HttpServletRequest request, String params, @NotNull Exception e) {
         SysLogErrorAddParams addParams = new SysLogErrorAddParams();
         addParams.setUsername(SecurityUtil.getUserInfo().getSysUser().getUsername());
         addParams.setModule(annotation.module());

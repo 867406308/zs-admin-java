@@ -1,17 +1,22 @@
 package com.zs.sys.dict.controller;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.zs.common.aop.annotation.Log;
 import com.zs.common.core.core.Result;
 import com.zs.common.core.enums.OperationTypeEnum;
+import com.zs.common.core.excel.ExcelUtils;
 import com.zs.common.core.page.PageResult;
+import com.zs.sys.dict.domain.excel.SysDictDataExcel;
 import com.zs.sys.dict.domain.params.SysDictDataAddParams;
 import com.zs.sys.dict.domain.params.SysDictDataQueryParams;
 import com.zs.sys.dict.domain.vo.SysDictDataVo;
 import com.zs.sys.dict.service.ISysDictDataService;
 import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -68,5 +73,22 @@ public class SysDictDataController {
     public Result<?> delete(@PathVariable("id") Long id) {
         sysDictDataService.deleteById(id);
         return new Result<>().ok();
+    }
+
+    @Log(module = "字典数据-批量删除", type = OperationTypeEnum.DELETE_BATCH, description = "批量删除字典数据")
+    @DeleteMapping
+    @PreAuthorize("hasAuthority('sys:dict:batchDelete')")
+    public Result<?> batchDelete(@RequestBody Long[] ids) {
+        sysDictDataService.batchDelById(ids);
+        return new Result<>().ok();
+    }
+    @Log(module = "字典数据-导出", type = OperationTypeEnum.EXPORT, description = "导出字典数据信息")
+    @GetMapping("export")
+    @PreAuthorize("hasAuthority('sys:post:export')")
+    public void export(HttpServletResponse response, SysDictDataQueryParams sysDictDataQueryParams) throws IOException {
+        List<SysDictDataVo> list = sysDictDataService.list(sysDictDataQueryParams);
+        List<SysDictDataExcel> excelList = BeanUtil.copyToList(list, SysDictDataExcel.class);
+        ExcelUtils.exportExcel(response, "字典信息.xlsx", SysDictDataExcel.class, excelList);
+
     }
 }

@@ -1,10 +1,11 @@
 package com.zs.common.security.provider;
 
 
+import com.zs.common.core.model.LoginUserInfo;
 import com.zs.common.security.service.CustomUserDetailsService;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -36,19 +37,21 @@ public class UserNameAuthenticationProvider implements AuthenticationProvider {
 
 
     @Override
-    public boolean supports(Class<?> authentication) {
+    public boolean supports(@NotNull Class<?> authentication) {
         return UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication);
     }
 
 
+    @NotNull
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
 
+    @NotNull
     @Override
-    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+    public Authentication authenticate(@NotNull Authentication authentication) throws AuthenticationException {
 
 
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
@@ -57,7 +60,7 @@ public class UserNameAuthenticationProvider implements AuthenticationProvider {
         String password = (String) authentication.getCredentials();
         // 1、去调用自己实现的UserDetailsService，返回UserDetails
         UserDetails userDetails = customUserDetailsService.loadUserByUsername(username);
-
+        LoginUserInfo loginUserInfo = (LoginUserInfo) userDetails;
 
         // 2、密码进行检查，这里调用了PasswordEncoder，检查 UserDetails 是否可用。
         if (Objects.isNull(userDetails) || !passwordEncoder().matches(password, userDetails.getPassword())) {
@@ -66,6 +69,11 @@ public class UserNameAuthenticationProvider implements AuthenticationProvider {
 
             throw new BadCredentialsException("账号或密码错误");
         }
+
+        if(!loginUserInfo.isEnabled()){
+            throw  new BadCredentialsException("您的账号已被禁用");
+        }
+
         // 将用户名存储在HttpServletRequest的属性中
         request.setAttribute("username", username);
         // 3、返回经过认证的Authentication

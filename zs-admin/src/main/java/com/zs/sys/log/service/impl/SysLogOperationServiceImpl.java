@@ -15,7 +15,11 @@ import com.zs.sys.log.domain.vo.SysLogOperationVo;
 import com.zs.sys.log.mapper.SysLogOperationMapper;
 import com.zs.sys.log.service.ISysLogOperationService;
 import org.apache.logging.log4j.util.Strings;
+import jakarta.validation.constraints.NotNull;
+import jakarta.annotation.Nullable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author 86740
@@ -29,19 +33,28 @@ public class SysLogOperationServiceImpl extends ServiceImpl<SysLogOperationMappe
         baseMapper.insert(sysLogOperationEntity);
     }
 
+    @NotNull
     @Override
-    public PageResult<SysLogOperationVo> page(SysLogOperationQueryParams sysLogOperationQueryParams) {
+    public PageResult<SysLogOperationVo> page(@NotNull SysLogOperationQueryParams sysLogOperationQueryParams) {
         Page<SysLogOperationEntity> page = new PageInfo<>(sysLogOperationQueryParams);
         IPage<SysLogOperationEntity> iPage = baseMapper.selectPage(page, getWrapper(sysLogOperationQueryParams));
 
         return new PageResult<>(BeanUtil.copyToList(iPage.getRecords(), SysLogOperationVo.class), page.getTotal(), SysLogOperationVo.class);
     }
 
-    public QueryWrapper<SysLogOperationEntity> getWrapper(SysLogOperationQueryParams sysLogOperationQueryParams) {
+    @Nullable
+    @Override
+    public List<SysLogOperationVo> list(@NotNull SysLogOperationQueryParams sysLogOperationQueryParams) {
+        return BeanUtil.copyToList(baseMapper.selectList(getWrapper(sysLogOperationQueryParams)), SysLogOperationVo.class);
+    }
+
+    @NotNull
+    public QueryWrapper<SysLogOperationEntity> getWrapper(@NotNull SysLogOperationQueryParams sysLogOperationQueryParams) {
         QueryWrapper<SysLogOperationEntity> wrapper = new QueryWrapper<>();
         wrapper.eq(Strings.isNotEmpty(sysLogOperationQueryParams.getUsername()), "username", sysLogOperationQueryParams.getUsername());
         wrapper.eq(Strings.isNotEmpty(sysLogOperationQueryParams.getIpAddress()), "ip_address", sysLogOperationQueryParams.getIpAddress());
-
+        wrapper.like(Strings.isNotEmpty(sysLogOperationQueryParams.getModule()), "module", sysLogOperationQueryParams.getModule());
+        wrapper.orderByDesc("create_time");
         return wrapper;
     }
 }

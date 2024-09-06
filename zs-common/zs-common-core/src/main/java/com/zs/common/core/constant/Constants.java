@@ -27,4 +27,6 @@ public class Constants {
     public static final String LOGIN_INFO = "login_info";
 
     public static final String TOKEN_PREFIX = "Bearer ";
+
+    public static final String FILE_UPLOAD = "file_upload";
 }

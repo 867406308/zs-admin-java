@@ -6,13 +6,15 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zs.common.core.exception.ZsException;
 import com.zs.common.core.utils.TreeUtil;
+import com.zs.common.mp.service.MpSysDeptService;
 import com.zs.sys.dept.domain.entity.SysDeptEntity;
 import com.zs.sys.dept.domain.params.SysDeptAddParams;
 import com.zs.sys.dept.domain.params.SysDeptQueryParams;
-import com.zs.sys.dept.domain.vo.SysDeptUserVo;
 import com.zs.sys.dept.domain.vo.SysDeptVo;
 import com.zs.sys.dept.mapper.SysDeptMapper;
 import com.zs.sys.dept.service.ISysDeptService;
+import jakarta.validation.constraints.NotNull;
+import jakarta.annotation.Nullable;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -20,10 +22,12 @@ import java.util.*;
 /**
  * @author 86740
  */
+
 @Service
-public class SysDeptServiceImpl extends ServiceImpl<SysDeptMapper, SysDeptEntity> implements ISysDeptService {
+public class SysDeptServiceImpl extends ServiceImpl<SysDeptMapper, SysDeptEntity> implements ISysDeptService, MpSysDeptService {
 
 
+    @NotNull
     @Override
     public List<SysDeptVo> getTree(SysDeptQueryParams sysDeptQueryParams) {
 
@@ -34,6 +38,7 @@ public class SysDeptServiceImpl extends ServiceImpl<SysDeptMapper, SysDeptEntity
 
     }
 
+    @Nullable
     @Override
     public List<SysDeptVo> getList(SysDeptQueryParams sysDeptQueryParams) {
         List<SysDeptEntity> entityList = baseMapper.getList(sysDeptQueryParams);
@@ -42,13 +47,14 @@ public class SysDeptServiceImpl extends ServiceImpl<SysDeptMapper, SysDeptEntity
 
 
     @Override
-    public void save(SysDeptAddParams sysOrgAddParams) {
+    public void save(@NotNull SysDeptAddParams sysOrgAddParams) {
         SysDeptEntity sysDeptEntity = BeanUtil.copyProperties(sysOrgAddParams, SysDeptEntity.class);
         sysDeptEntity.setPids(StrUtil.join(",", getTree(sysOrgAddParams)));
         baseMapper.insert(sysDeptEntity);
     }
 
-    public List<Long> getTree(SysDeptAddParams sysOrgAddParams) {
+    @NotNull
+    public List<Long> getTree(@NotNull SysDeptAddParams sysOrgAddParams) {
         List<SysDeptEntity> deptList = baseMapper.selectList(new QueryWrapper<>());
         Map<Long, SysDeptEntity> map = new HashMap<>(deptList.size());
         for (SysDeptEntity entity : deptList) {
@@ -59,7 +65,7 @@ public class SysDeptServiceImpl extends ServiceImpl<SysDeptMapper, SysDeptEntity
         return pidList;
     }
 
-    public void getPid(Long pid, Map<Long, SysDeptEntity> map, List<Long> pidList) {
+    public void getPid(Long pid, @NotNull Map<Long, SysDeptEntity> map, @NotNull List<Long> pidList) {
         SysDeptEntity parent = map.get(pid);
         if (Objects.nonNull(parent)) {
             pidList.add(parent.getSysDeptId());
@@ -89,6 +95,7 @@ public class SysDeptServiceImpl extends ServiceImpl<SysDeptMapper, SysDeptEntity
         baseMapper.deleteById(sysDeptId);
     }
 
+    @NotNull
     @Override
     public List<Long> getSubDeptIdList(Long sysDeptId) {
 
@@ -102,6 +109,9 @@ public class SysDeptServiceImpl extends ServiceImpl<SysDeptMapper, SysDeptEntity
     }
 
 
-
-
+    @NotNull
+    @Override
+    public Set<Long> getDeptAndChildrenDeptIds(Long deptId) {
+        return new HashSet<>(this.getSubDeptIdList(deptId));
+    }
 }

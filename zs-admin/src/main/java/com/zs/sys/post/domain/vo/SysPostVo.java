@@ -17,4 +17,5 @@ public class SysPostVo implements Serializable {
     private Integer sort;
     private Integer status;
     private String remark;
+    private String deptName;
 }

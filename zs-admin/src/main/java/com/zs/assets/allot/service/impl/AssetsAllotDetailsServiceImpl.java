@@ -14,6 +14,8 @@ import com.zs.common.core.model.domain.SysUserDTO;
 import com.zs.sys.dept.service.ISysDeptService;
 import com.zs.sys.user.service.ISysUserService;
 import jakarta.annotation.Resource;
+import jakarta.validation.constraints.NotNull;
+import jakarta.annotation.Nullable;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +40,7 @@ public class AssetsAllotDetailsServiceImpl extends ServiceImpl<AssetsAllotDetail
     @Resource
     private ThreadPoolTaskExecutor threadPoolTaskExecutor;
 
+    @Nullable
     @Override
     public List<AssetsAllotDetailsVo> getAllotDetails(Long allotId) {
 
@@ -51,7 +54,7 @@ public class AssetsAllotDetailsServiceImpl extends ServiceImpl<AssetsAllotDetail
     }
 
     @Override
-    public void saveAllotDetails(Long allotId, List<AssetsAllotDetailsAddParams> assetsAllotDetailsEntityList) {
+    public void saveAllotDetails(Long allotId, @NotNull List<AssetsAllotDetailsAddParams> assetsAllotDetailsEntityList) {
         threadPoolTaskExecutor.execute(() -> {
             assetsAllotDetailsEntityList.forEach(item -> {
                 item.setAllotId(allotId);
@@ -68,12 +71,12 @@ public class AssetsAllotDetailsServiceImpl extends ServiceImpl<AssetsAllotDetail
         });
     }
 
-    private void updateItemsWithDetails(List<AssetsAllotDetailsVo> list) {
+    private void updateItemsWithDetails(@NotNull List<AssetsAllotDetailsVo> list) {
         updateItemsWithUser(list);
         updateItemsWithDept(list);
     }
 
-    private void updateItemsWithUser(List<AssetsAllotDetailsVo> list) {
+    private void updateItemsWithUser(@NotNull List<AssetsAllotDetailsVo> list) {
         List<SysUserDTO> sysUserDTOList = BeanUtil.copyToList(iSysUserService.list(), SysUserDTO.class);
         Map<Long, SysUserDTO> userMap = sysUserDTOList.stream().collect(Collectors.toMap(SysUserDTO::getSysUserId, Function.identity()));
         list.forEach(item -> {
@@ -88,7 +91,7 @@ public class AssetsAllotDetailsServiceImpl extends ServiceImpl<AssetsAllotDetail
         });
     }
 
-    private void updateItemsWithDept(List<AssetsAllotDetailsVo> list) {
+    private void updateItemsWithDept(@NotNull List<AssetsAllotDetailsVo> list) {
         List<SysDeptDTO> sysDeptDTOList = BeanUtil.copyToList(iSysDeptService.list(), SysDeptDTO.class);
         Map<Long, SysDeptDTO> deptMap = sysDeptDTOList.stream().collect(Collectors.toMap(SysDeptDTO::getSysDeptId, Function.identity()));
         list.forEach(item -> {

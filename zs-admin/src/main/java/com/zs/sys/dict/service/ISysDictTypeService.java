@@ -6,6 +6,7 @@ import com.zs.sys.dict.domain.entity.SysDictTypeEntity;
 import com.zs.sys.dict.domain.params.SysDictTypeAddParams;
 import com.zs.sys.dict.domain.params.SysDictTypeQueryParams;
 import com.zs.sys.dict.domain.vo.SysDictTypeVo;
+import jakarta.annotation.Nullable;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public interface ISysDictTypeService extends IService<SysDictTypeEntity> {
 
     PageResult<SysDictTypeVo> page(SysDictTypeQueryParams sysDictTypeQueryParams);
 
+    @Nullable
     List<SysDictTypeVo> list(SysDictTypeQueryParams sysDictTypeQueryParams);
 
     SysDictTypeVo getById(Long id);

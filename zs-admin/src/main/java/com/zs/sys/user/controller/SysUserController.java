@@ -98,10 +98,17 @@ public class SysUserController {
     @DeleteMapping("{id}")
     @PreAuthorize("hasAuthority('sys:user:delete')")
     public Result<?> delete(@PathVariable("id") Long id) {
-        iSysUserService.removeById(id);
+        iSysUserService.delById(id);
         return new Result<>().ok();
     }
 
+    @Log(module = "用户管理-批量删除", type = OperationTypeEnum.DELETE_BATCH, description = "批量删除用户信息")
+    @DeleteMapping
+    @PreAuthorize("hasAuthority('sys:user:batchDelete')")
+    public Result<?> batchDelete(@RequestBody Long[] ids) {
+        iSysUserService.batchDelById(ids);
+        return new Result<>().ok();
+    }
 
     @GetMapping("list")
     @PreAuthorize("hasAuthority('sys:user:list')")
@@ -110,6 +117,7 @@ public class SysUserController {
         return new Result<List<SysUserVo>>().ok(sysUserVos);
     }
 
+    @Log(module = "用户管理-导出", type = OperationTypeEnum.EXPORT, description = "导出用户信息")
     @GetMapping("export")
     @PreAuthorize("hasAuthority('sys:user:export')")
     public void export(HttpServletResponse response, SysUserQueryParams sysUserQueryParams) throws IOException {

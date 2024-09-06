@@ -19,6 +19,10 @@ public enum OperationTypeEnum {
      */
     DELETE,
     /**
+     * 批量删除
+     */
+    DELETE_BATCH,
+    /**
      * 导出
      */
     EXPORT,

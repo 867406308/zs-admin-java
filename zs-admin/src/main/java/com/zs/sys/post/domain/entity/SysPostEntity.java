@@ -1,5 +1,6 @@
 package com.zs.sys.post.domain.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.zs.common.core.model.BaseEntity;
@@ -23,4 +24,6 @@ public class SysPostEntity extends BaseEntity {
     private Integer status;
     private String remark;
 
+    @TableField(exist = false)
+    private String deptName;
 }

@@ -17,6 +17,8 @@ import com.zs.common.core.page.PageResult;
 import com.zs.sys.dept.service.ISysDeptService;
 import com.zs.sys.user.service.ISysUserService;
 import jakarta.annotation.Resource;
+import jakarta.validation.constraints.NotNull;
+import jakarta.annotation.Nullable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,8 +39,9 @@ public class AssetsScrapDetailsServiceImpl extends ServiceImpl<AssetsScrapDetail
     @Resource
     private ISysDeptService iSysDeptService;
 
+    @NotNull
     @Override
-    public PageResult<AssetsScrapDetailsVo> page(AssetsScrapDetailsQueryParams assetsScrapDetailsQueryParams) {
+    public PageResult<AssetsScrapDetailsVo> page(@NotNull AssetsScrapDetailsQueryParams assetsScrapDetailsQueryParams) {
         Page<AssetsScrapDetailsEntity> page = new PageInfo<>(assetsScrapDetailsQueryParams);
         Map<String, Object> params = BeanUtil.beanToMap(assetsScrapDetailsQueryParams);
         IPage<AssetsScrapDetailsEntity> iPage = baseMapper.page(page, params);
@@ -47,6 +50,7 @@ public class AssetsScrapDetailsServiceImpl extends ServiceImpl<AssetsScrapDetail
         return new PageResult<>(list, page.getTotal(), AssetsScrapDetailsVo.class);
     }
 
+    @Nullable
     @Override
     public List<AssetsScrapDetailsVo> list(AssetsScrapDetailsQueryParams assetsScrapDetailsQueryParams) {
         List<AssetsScrapDetailsEntity> entityList = baseMapper.list(assetsScrapDetailsQueryParams);
@@ -56,7 +60,7 @@ public class AssetsScrapDetailsServiceImpl extends ServiceImpl<AssetsScrapDetail
     }
 
     @Override
-    public void saveBatch(List<AssetsScrapDetailsEntity> list) {
+    public void saveBatch(@NotNull List<AssetsScrapDetailsEntity> list) {
         for (AssetsScrapDetailsEntity assetsScrapDetailsEntity : list) {
             baseMapper.insert(assetsScrapDetailsEntity);
         }
@@ -65,18 +69,18 @@ public class AssetsScrapDetailsServiceImpl extends ServiceImpl<AssetsScrapDetail
         assetInfoService.updateUseStatusCode(serialNoList);
     }
 
-    private void updateItemsWithDetails(List<AssetsScrapDetailsVo> list) {
+    private void updateItemsWithDetails(@NotNull List<AssetsScrapDetailsVo> list) {
         updateItemsWithUser(list);
         updateItemsWithDept(list);
     }
 
-    private void updateItemsWithUser(List<AssetsScrapDetailsVo> list) {
+    private void updateItemsWithUser(@NotNull List<AssetsScrapDetailsVo> list) {
         List<SysUserDTO> sysUserDTOList = BeanUtil.copyToList(iSysUserService.list(), SysUserDTO.class);
         Map<Long, SysUserDTO> userMap = sysUserDTOList.stream().collect(Collectors.toMap(SysUserDTO::getSysUserId, Function.identity()));
         list.forEach(item -> item.setManageUserName(userMap.getOrDefault(item.getManageUserId(), new SysUserDTO()).getRealName()));
     }
 
-    private void updateItemsWithDept(List<AssetsScrapDetailsVo> list) {
+    private void updateItemsWithDept(@NotNull List<AssetsScrapDetailsVo> list) {
         List<SysDeptDTO> sysDeptDTOList = BeanUtil.copyToList(iSysDeptService.list(), SysDeptDTO.class);
         Map<Long, SysDeptDTO> deptMap = sysDeptDTOList.stream().collect(Collectors.toMap(SysDeptDTO::getSysDeptId, Function.identity()));
         list.forEach(item -> item.setManageOrgName(deptMap.getOrDefault(item.getManageOrgId(), new SysDeptDTO()).getDeptName()));

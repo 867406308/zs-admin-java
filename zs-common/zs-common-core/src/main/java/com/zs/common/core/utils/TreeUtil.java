@@ -1,5 +1,7 @@
 package com.zs.common.core.utils;
 
+import jakarta.validation.constraints.NotNull;
+
 import java.util.*;
 
 /**
@@ -11,7 +13,8 @@ public class TreeUtil {
     /**
      * 根据pid，构建树节点
      */
-    public static <T extends TreeNode<T>> List<T> build(List<T> treeNodes, Long pid) {
+    @NotNull
+    public static <T extends TreeNode<T>> List<T> build(@NotNull List<T> treeNodes, @NotNull Long pid) {
         List<T> treeList = new ArrayList<>();
         for (T treeNode : treeNodes) {
             if (pid.equals(treeNode.getPid())) {
@@ -24,7 +27,7 @@ public class TreeUtil {
     /**
      * 查找子节点
      */
-    private static <T extends TreeNode<T>> T findChildren(List<T> treeNodes, T rootNode) {
+    private static <T extends TreeNode<T>> T findChildren(@NotNull List<T> treeNodes, @NotNull T rootNode) {
         for (T treeNode : treeNodes) {
             if (rootNode.getId().equals(treeNode.getPid())) {
                 rootNode.getChildren().add(findChildren(treeNodes, treeNode));
@@ -33,7 +36,8 @@ public class TreeUtil {
         return rootNode;
     }
 
-    public static <T extends TreeNode<T>> List<T> build(List<T> treeNodes) {
+    @NotNull
+    public static <T extends TreeNode<T>> List<T> build(@NotNull List<T> treeNodes) {
         List<T> result = new ArrayList<>();
 
         Map<Long, T> nodeMap = new LinkedHashMap<>(treeNodes.size());
@@ -52,7 +56,7 @@ public class TreeUtil {
     }
 
 
-    public static <T extends TreeNode<T>> List<T> getTreeParentEntity(List<T> elements, Long id, List<T> newList) {
+    public static <T extends TreeNode<T>> List<T> getTreeParentEntity(@NotNull List<T> elements, Long id, @NotNull List<T> newList) {
 
         //找到父节点
         Optional<T> first = elements.stream().filter(

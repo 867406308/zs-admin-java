@@ -1,17 +1,22 @@
 package com.zs.sys.post.controller;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.zs.common.aop.annotation.Log;
 import com.zs.common.core.core.Result;
 import com.zs.common.core.enums.OperationTypeEnum;
+import com.zs.common.core.excel.ExcelUtils;
 import com.zs.common.core.page.PageResult;
+import com.zs.sys.post.domain.excel.SysPostExcel;
 import com.zs.sys.post.domain.params.SysPostAddParams;
 import com.zs.sys.post.domain.params.SysPostQueryParams;
 import com.zs.sys.post.domain.vo.SysPostVo;
 import com.zs.sys.post.service.ISysPostService;
 import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -67,7 +72,24 @@ public class SysPostController {
     @DeleteMapping("{id}")
     @PreAuthorize("hasAuthority('sys:post:delete')")
     public Result<?> delete(@PathVariable("id") Long id) {
-        iSysPostService.removeById(id);
+        iSysPostService.delById(id);
         return new Result<>().ok();
+    }
+
+    @Log(module = "岗位管理-批量删除", type = OperationTypeEnum.DELETE_BATCH, description = "批量删除岗位信息")
+    @DeleteMapping
+    @PreAuthorize("hasAuthority('sys:post:batchDelete')")
+    public Result<?> batchDelete(@RequestBody Long[] ids) {
+        iSysPostService.batchDelById(ids);
+        return new Result<>().ok();
+    }
+    @Log(module = "岗位管理-导出", type = OperationTypeEnum.EXPORT, description = "导出岗位信息")
+    @GetMapping("export")
+    @PreAuthorize("hasAuthority('sys:post:export')")
+    public void export(HttpServletResponse response, SysPostQueryParams sysPostQueryParams) throws IOException {
+        List<SysPostVo> list = iSysPostService.getList(sysPostQueryParams);
+        List<SysPostExcel> excelList = BeanUtil.copyToList(list, SysPostExcel.class);
+        ExcelUtils.exportExcel(response, "岗位信息.xlsx", SysPostExcel.class, excelList);
+
     }
 }

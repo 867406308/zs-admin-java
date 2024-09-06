@@ -7,6 +7,7 @@ import com.zs.common.security.handler.*;
 import com.zs.common.security.propetties.WhiteUrlProperties;
 import com.zs.common.security.provider.UserNameAuthenticationProvider;
 import jakarta.annotation.Resource;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -18,7 +19,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
@@ -62,16 +62,18 @@ public class WebSecurityConfig {
 
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+    public AuthenticationManager authenticationManager(@NotNull AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
     //加入token验证过滤器
+    @NotNull
     @Bean
     public JwtAuthenticationTokenFilter jwtAuthorizationFilter() {
         return new JwtAuthenticationTokenFilter();
     }
 
+    @NotNull
     @Bean
     public MyAuthenticationFilter myAuthenticationFilter(AuthenticationManager authenticationManager) {
         MyAuthenticationFilter myAuthenticationFilter = new MyAuthenticationFilter("/auth/login");
@@ -82,11 +84,12 @@ public class WebSecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(@NotNull HttpSecurity http) throws Exception {
 
         List<String> whiteUrl = whiteUrlProperties.getUrl();
         String[] urls = whiteUrl.toArray(new String[0]);
         http
+
 
                 // 禁用csrf
                 .csrf(AbstractHttpConfigurer::disable)
@@ -97,14 +100,14 @@ public class WebSecurityConfig {
                 .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
                 // 白名单url，匿名访问
                 .authorizeHttpRequests(auth -> auth
-//                        .requestMatchers("/**").permitAll() // 允许对其他端点进行公共访问
-                                .requestMatchers("/webjars/**", "/swagger-resources/**", "/v3/**").permitAll()
-                                .requestMatchers(urls).permitAll()
                                 .requestMatchers(HttpMethod.OPTIONS).permitAll() // 对option不校验
+                                .requestMatchers("/favicon.ico", "/webjars/**", "/swagger-resources/**", "/v3/**","/jmreport/**").permitAll()
+                                .requestMatchers(urls).permitAll()
                                 // 不在白名单的请求都需要身份认证
                                 .anyRequest().authenticated()
 
                 )
+                .authenticationProvider(userNameAuthenticationProvider)
                 // 自定义异常处理
                 .exceptionHandling(exception -> exception
                         // 认证失败
@@ -116,12 +119,14 @@ public class WebSecurityConfig {
                 // 把token校验过滤器添加到过滤器链中
                 .addFilterBefore(jwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(myAuthenticationFilter(http.getSharedObject(AuthenticationManager.class)), UsernamePasswordAuthenticationFilter.class)
-                .authenticationProvider(userNameAuthenticationProvider)
+
 
         ;
         return http.build();
     }
 
+
+    @NotNull
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();

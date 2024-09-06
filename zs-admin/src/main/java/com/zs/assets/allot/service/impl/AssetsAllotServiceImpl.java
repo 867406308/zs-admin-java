@@ -18,6 +18,7 @@ import com.zs.common.core.page.PageInfo;
 import com.zs.common.core.page.PageResult;
 import jakarta.annotation.Resource;
 import org.apache.logging.log4j.util.Strings;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,8 +35,9 @@ public class AssetsAllotServiceImpl extends ServiceImpl<AssetsAllotMapper, Asset
     private AssetsAllotDetailsService assetsAllotDetailsService;
 
 
+    @NotNull
     @Override
-    public PageResult<AssetsAllotVo> page(AssetsAllotQueryParams assetsAllotQueryParams) {
+    public PageResult<AssetsAllotVo> page(@NotNull AssetsAllotQueryParams assetsAllotQueryParams) {
         Page<AssetsAllotEntity> page = new PageInfo<>(assetsAllotQueryParams);
         IPage<AssetsAllotEntity> iPage = baseMapper.selectPage(page, getWrapper(assetsAllotQueryParams));
 
@@ -45,7 +47,8 @@ public class AssetsAllotServiceImpl extends ServiceImpl<AssetsAllotMapper, Asset
     }
 
 
-    public QueryWrapper<AssetsAllotEntity> getWrapper(AssetsAllotQueryParams assetsAllotQueryParams) {
+    @NotNull
+    public QueryWrapper<AssetsAllotEntity> getWrapper(@NotNull AssetsAllotQueryParams assetsAllotQueryParams) {
         QueryWrapper<AssetsAllotEntity> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq(Strings.isNotEmpty(assetsAllotQueryParams.getSerialNo()), "serial_no", assetsAllotQueryParams.getSerialNo());
         return queryWrapper;
@@ -53,7 +56,7 @@ public class AssetsAllotServiceImpl extends ServiceImpl<AssetsAllotMapper, Asset
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void save(AssetsAllotAddParams assetsAllotAddParams) {
+    public void save(@NotNull AssetsAllotAddParams assetsAllotAddParams) {
 
         AssetsAllotEntity entity = new AssetsAllotEntity();
         entity.setSerialNo(generateSerialNumber());
@@ -66,6 +69,7 @@ public class AssetsAllotServiceImpl extends ServiceImpl<AssetsAllotMapper, Asset
         assetsAllotDetailsService.saveAllotDetails(entity.getId(), assetsAllotAddParams.getAssetsAllotDetails());
     }
 
+    @NotNull
     private  String generateSerialNumber() {
         String datePart = DateUtil.format(new Date(), "yyyyMMdd");
         String maxSerialNo = this.baseMapper.getMaxSerialNo(datePart);

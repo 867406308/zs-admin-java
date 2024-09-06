@@ -2,7 +2,6 @@ package com.zs.assets.depreciation.controller;
 
 import com.zs.assets.depreciation.domain.params.AssetsDepreciationAddParams;
 import com.zs.assets.depreciation.domain.params.AssetsDepreciationQueryParams;
-import com.zs.assets.depreciation.domain.vo.AssetsDepreciationDetailsVo;
 import com.zs.assets.depreciation.domain.vo.AssetsDepreciationVo;
 import com.zs.assets.depreciation.service.IAssetsDepreciationService;
 import com.zs.common.aop.annotation.Log;
@@ -12,8 +11,6 @@ import com.zs.common.core.page.PageResult;
 import jakarta.annotation.Resource;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * 资产折旧

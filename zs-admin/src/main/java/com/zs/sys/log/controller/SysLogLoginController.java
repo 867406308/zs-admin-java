@@ -1,17 +1,21 @@
 package com.zs.sys.log.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import cn.hutool.core.bean.BeanUtil;
 import com.zs.common.core.core.Result;
+import com.zs.common.core.excel.ExcelUtils;
 import com.zs.common.core.log.params.SysLogLoginAddParams;
 import com.zs.common.core.page.PageResult;
+import com.zs.sys.log.domain.excel.SysLogLoginExcel;
 import com.zs.sys.log.domain.params.SysLogLoginQueryParams;
 import com.zs.sys.log.domain.vo.SysLogLoginVo;
 import com.zs.sys.log.service.ISysLogLoginService;
 import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 
@@ -35,7 +39,6 @@ public class SysLogLoginController {
 
 
     @GetMapping("todayList")
-    @PreAuthorize("hasAuthority('sys:loglogin:list')")
     public Result<List<SysLogLoginVo>> todayList() {
         List<SysLogLoginVo> list = iSysLogLoginService.todayList();
         return new Result<List<SysLogLoginVo>>().ok(list);
@@ -46,5 +49,14 @@ public class SysLogLoginController {
         iSysLogLoginService.save(sysLogLoginAddParams);
         return new Result<>().ok();
     }
+
+    @GetMapping("export")
+    @PreAuthorize("hasAuthority('sys:loglogin:export')")
+    public void export(HttpServletResponse response, SysLogLoginQueryParams sysLogLoginQueryParams) throws IOException {
+        List<SysLogLoginVo> list = iSysLogLoginService.list(sysLogLoginQueryParams);
+        List<SysLogLoginExcel> excelList = BeanUtil.copyToList(list, SysLogLoginExcel.class);
+        ExcelUtils.exportExcel(response, "登录日志.xlsx", SysLogLoginExcel.class, excelList);
+    }
+
 
 }

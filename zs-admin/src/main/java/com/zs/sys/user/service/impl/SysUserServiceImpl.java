@@ -24,6 +24,8 @@ import com.zs.sys.user.service.ISysUserDeptPostService;
 import com.zs.sys.user.service.ISysUserRoleService;
 import com.zs.sys.user.service.ISysUserService;
 import jakarta.annotation.Resource;
+import jakarta.validation.constraints.NotNull;
+import jakarta.annotation.Nullable;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -53,8 +55,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
     @Resource
     private ISysUserDeptPostService iSysUserDeptPostService;
 
+    @NotNull
     @Override
-    public PageResult<SysUserVo> page(SysUserQueryParams sysUserQueryParams) {
+    public PageResult<SysUserVo> page(@NotNull SysUserQueryParams sysUserQueryParams) {
         Page<SysUserEntity> page = new PageInfo<>(sysUserQueryParams);
         Map<String, Object> params = BeanUtil.beanToMap(sysUserQueryParams);
         List<Long> deptList = iSysDeptService.getSubDeptIdList(sysUserQueryParams.getSysDeptId());
@@ -65,8 +68,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
         return new PageResult<>(list, page.getTotal(), SysUserVo.class);
     }
 
+    @Nullable
     @Override
-    public List<SysUserVo> list(SysUserQueryParams sysUserQueryParams) {
+    public List<SysUserVo> list(@NotNull SysUserQueryParams sysUserQueryParams) {
         List<Long> deptList = iSysDeptService.getSubDeptIdList(sysUserQueryParams.getSysDeptId());
 
         Map<String, Object> params = BeanUtil.beanToMap(sysUserQueryParams);
@@ -77,9 +81,10 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
         return BeanUtil.copyToList(list, SysUserVo.class);
     }
 
+
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void save(SysUserAddParams sysUserAddParams) {
+    public void save(@NotNull SysUserAddParams sysUserAddParams) {
         SysUserEntity sysUserEntity = BeanUtil.copyProperties(sysUserAddParams, SysUserEntity.class);
         sysUserEntity.setPassword(new BCryptPasswordEncoder().encode(sysUserEntity.getPassword()));
         this.baseMapper.insert(sysUserEntity);
@@ -91,18 +96,46 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void update(SysUserUpdateParams sysUserUpdateParams) {
+    public void update(@NotNull SysUserUpdateParams sysUserUpdateParams) {
         SysUserEntity sysUserEntity = BeanUtil.copyProperties(sysUserUpdateParams, SysUserEntity.class);
         this.baseMapper.updateById(sysUserEntity);
 
-        // 保存用户与部门关系
-        iSysUserDeptPostService.saveOrUpdate(sysUserEntity.getSysUserId(), sysUserUpdateParams.getDeptPostList());
-        // 先删除用户与角色关系
-        iSysUserRoleService.saveOrUpdate(sysUserEntity.getSysUserId(), sysUserUpdateParams.getRoleIdList());
+        if (sysUserUpdateParams.getDeptPostList() != null && !sysUserUpdateParams.getDeptPostList().isEmpty()) {
+            // 保存用户与部门关系
+            iSysUserDeptPostService.saveOrUpdate(sysUserEntity.getSysUserId(), sysUserUpdateParams.getDeptPostList());
+        }
+        if(  sysUserUpdateParams.getRoleIdList() != null && !sysUserUpdateParams.getRoleIdList().isEmpty()){
+            // 先删除用户与角色关系
+            iSysUserRoleService.saveOrUpdate(sysUserEntity.getSysUserId(), sysUserUpdateParams.getRoleIdList());
+        }
+
     }
 
     @Override
-    public void resetPassword(SysUserPasswordParams sysUserPasswordParams) {
+    @Transactional(rollbackFor = Exception.class)
+    public void batchDelById(@NotNull Long[] ids) {
+        for (Long id : ids) {
+            // 删除用户与部门职位关系
+            iSysUserDeptPostService.delByUserId(id);
+            // 删除用户与角色关系
+            iSysUserRoleService.delByUserId(id);
+            this.baseMapper.updateDeleted(id);
+        }
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void delById(Long id) {
+        // 删除用户与部门职位关系
+        iSysUserDeptPostService.delByUserId(id);
+        // 删除用户与角色关系
+        iSysUserRoleService.delByUserId(id);
+        this.baseMapper.updateDeleted(id);
+    }
+
+
+    @Override
+    public void resetPassword(@NotNull SysUserPasswordParams sysUserPasswordParams) {
         SysUserEntity sysUserEntity = new SysUserEntity();
         sysUserEntity.setSysUserId(sysUserPasswordParams.getSysUserId());
         sysUserEntity.setPassword(new BCryptPasswordEncoder().encode(sysUserPasswordParams.getPassword()));
@@ -110,6 +143,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
         this.baseMapper.updateById(sysUserEntity);
     }
 
+    @NotNull
     @Override
     public SysUserInfoVo getById(Long id) {
         SysUserEntity sysUserEntity = baseMapper.selectById(id);
@@ -125,7 +159,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
     }
 
 
-    public Set<String> getPermissions(SysUserEntity sysUserEntity) {
+    public Set<String> getPermissions(@NotNull SysUserEntity sysUserEntity) {
         // 超级管理员获取全部,其他根据角色获取
         if (sysUserEntity.getIsAdmin() == 1) {
             return iSysMenuService.getAllPermissions();
@@ -135,6 +169,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
     }
 
 
+    @NotNull
     @Override
     public UserDetails loadUserByUsername(String username) {
         SysUserEntity sysUserEntity = baseMapper.selectByUserName(username);
@@ -144,4 +179,6 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUserEntity
         }
         return new LoginUserInfo(BeanUtil.toBean(sysUserEntity, SysUser.class), getPermissions(sysUserEntity));
     }
+
+
 }

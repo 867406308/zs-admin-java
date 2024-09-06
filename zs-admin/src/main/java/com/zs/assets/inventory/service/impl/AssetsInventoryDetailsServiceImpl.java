@@ -14,8 +14,9 @@ import com.zs.common.core.constant.RedisConstants;
 import com.zs.common.core.model.domain.SysDictDataDTO;
 import com.zs.common.core.page.PageInfo;
 import com.zs.common.core.page.PageResult;
-import com.zs.common.redis.utils.DictRedisUtil;
+import com.zs.common.core.utils.DictRedisUtil;
 import jakarta.annotation.Resource;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,8 +35,9 @@ public class AssetsInventoryDetailsServiceImpl extends ServiceImpl<AssetsInvento
     @Resource
     private AssetsInfoService assetsInfoService;
 
+    @NotNull
     @Override
-    public PageResult<AssetsInventoryDetailsVo> page(AssetsInventoryDetailsQueryParams assetsInventoryDetailsQueryParams) {
+    public PageResult<AssetsInventoryDetailsVo> page(@NotNull AssetsInventoryDetailsQueryParams assetsInventoryDetailsQueryParams) {
         Page<AssetsInventoryDetailsEntity> page = new PageInfo<>(assetsInventoryDetailsQueryParams);
 
         Map<String, Object> params = BeanUtil.beanToMap(assetsInventoryDetailsQueryParams);
@@ -48,7 +50,7 @@ public class AssetsInventoryDetailsServiceImpl extends ServiceImpl<AssetsInvento
         return new PageResult<>(list, page.getTotal(), AssetsInventoryDetailsVo.class);
     }
 
-    private void updateItemsWithDictLabels(List<AssetsInventoryDetailsVo> list) {
+    private void updateItemsWithDictLabels(@NotNull List<AssetsInventoryDetailsVo> list) {
         // 获取字典使用状态
         List<SysDictDataDTO> sysDictDataDTOList = DictRedisUtil.getMulti(List.of(RedisConstants.SYS_DICT_KEY + "assets_status"));
         Map<String, SysDictDataDTO> dictMap = sysDictDataDTOList.stream().collect(Collectors.toMap(SysDictDataDTO::getDictValue, Function.identity()));

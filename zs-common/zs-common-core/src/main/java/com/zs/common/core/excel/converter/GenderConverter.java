@@ -7,26 +7,30 @@ import com.alibaba.excel.converters.ReadConverterContext;
 import com.alibaba.excel.converters.WriteConverterContext;
 import com.alibaba.excel.enums.CellDataTypeEnum;
 import com.alibaba.excel.metadata.data.WriteCellData;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * @author 86740
  */
 public class GenderConverter implements Converter<Integer> {
 
+    @NotNull
     @Override
     public Class<?> supportJavaTypeKey() {
         //对象属性类型
         return Integer.class;
     }
 
+    @NotNull
     @Override
     public CellDataTypeEnum supportExcelTypeKey() {
         //CellData属性类型
         return CellDataTypeEnum.STRING;
     }
 
+
     @Override
-    public Integer convertToJavaData(ReadConverterContext<?> context) throws Exception {
+    public Integer convertToJavaData(@NotNull ReadConverterContext<?> context) throws Exception {
         //CellData转对象属性
         String cellStr = context.getReadCellData().getStringValue();
         if (StrUtil.isEmpty(cellStr)) {
@@ -41,8 +45,9 @@ public class GenderConverter implements Converter<Integer> {
         }
     }
 
+    @NotNull
     @Override
-    public WriteCellData<?> convertToExcelData(WriteConverterContext<Integer> context) throws Exception {
+    public WriteCellData<?> convertToExcelData(@NotNull WriteConverterContext<Integer> context) throws Exception {
         //对象属性转CellData
         Integer cellValue = context.getValue();
         if (cellValue == null) {

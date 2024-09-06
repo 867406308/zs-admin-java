@@ -10,6 +10,7 @@ import com.zs.common.core.excel.ExcelUtils;
 import com.zs.common.core.page.PageResult;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +38,7 @@ public class AssetsScrapDetailsController {
 
     @GetMapping("export")
     @PreAuthorize("hasAuthority('assets:scrap:export')")
-    public void export(HttpServletResponse response, AssetsScrapDetailsQueryParams assetsScrapDetailsQueryParams) throws IOException {
+    public void export(HttpServletResponse response, @NotNull AssetsScrapDetailsQueryParams assetsScrapDetailsQueryParams) throws IOException {
         List<AssetsScrapDetailsVo> list = assetsScrapDetailsService.list(assetsScrapDetailsQueryParams);
         List<AssetsScrapDetailsExcel> excelList = BeanUtil.copyToList(list, AssetsScrapDetailsExcel.class);
         ExcelUtils.exportExcel(response, assetsScrapDetailsQueryParams.getExcelName(), AssetsScrapDetailsExcel.class, excelList);

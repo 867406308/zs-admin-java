@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
+import jakarta.validation.constraints.NotNull;
 import org.lionsoul.ip2region.xdb.Searcher;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
@@ -12,8 +13,6 @@ import org.springframework.util.FileCopyUtils;
 import java.io.InputStream;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author 86740
@@ -44,7 +43,7 @@ public class IpUtils {
      * 使用Nginx等反向代理软件， 则不能通过request.getRemoteAddr()获取IP地址
      * 如果使用了多级反向代理的话，X-Forwarded-For的值并不止一个，而是一串IP地址，X-Forwarded-For中第一个非unknown的有效IP字符串，则为真实IP地址
      */
-    public static String getIpAddr(HttpServletRequest request) {
+    public static String getIpAddr(@NotNull HttpServletRequest request) {
         String[] headers = {"x-forwarded-for", "Proxy-Client-IP", "WL-Proxy-Client-IP", "HTTP_CLIENT_IP", "HTTP_X_FORWARDED_FOR"};
         for (String header : headers) {
             String ip = request.getHeader(header);
@@ -59,7 +58,7 @@ public class IpUtils {
         return remoteAddr;
     }
 
-    private static String getFirstValidIpAddress(String ipAddress) {
+    private static String getFirstValidIpAddress(@NotNull String ipAddress) {
         if (StringUtils.isNotBlank(ipAddress)) {
             String[] ipAddresses = ipAddress.split(",");
             for (String ip : ipAddresses) {
@@ -74,6 +73,7 @@ public class IpUtils {
     private static boolean isValidIpAddress(String ipAddress) {
         return StringUtils.isNotBlank(ipAddress) && !"unknown".equalsIgnoreCase(ipAddress);
     }
+
 
     private static String getLocalIpAddress() {
         try {
@@ -97,6 +97,7 @@ public class IpUtils {
      * @return map
      */
 
+    @NotNull
     public static String getCityInfo(String ip) {
         try {
             String searchIpInfo = searcher.search(ip);

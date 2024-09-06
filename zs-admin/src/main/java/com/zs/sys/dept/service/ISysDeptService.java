@@ -6,6 +6,7 @@ import com.zs.sys.dept.domain.entity.SysDeptEntity;
 import com.zs.sys.dept.domain.params.SysDeptAddParams;
 import com.zs.sys.dept.domain.params.SysDeptQueryParams;
 import com.zs.sys.dept.domain.vo.SysDeptVo;
+import jakarta.annotation.Nullable;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ public interface ISysDeptService extends IService<SysDeptEntity> {
 
     List<SysDeptVo> getTree(SysDeptQueryParams sysDeptQueryParams);
 
+    @Nullable
     List<SysDeptVo> getList(SysDeptQueryParams sysDeptQueryParams);
 
     void save(SysDeptAddParams sysOrgAddParams);

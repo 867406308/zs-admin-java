@@ -1,6 +1,7 @@
 package com.zs.common.core.utils;
 
 import lombok.Data;
+import jakarta.validation.constraints.NotNull;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -16,5 +17,6 @@ public class TreeNode<T> implements Serializable {
 
     private Long pid;
 
+    @NotNull
     private List<T> children = new ArrayList<>();
 }

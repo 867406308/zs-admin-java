@@ -1,7 +1,6 @@
 package com.zs.sys.notice.controller;
 
-import com.zs.assets.inventory.domain.params.AssetsInventoryQueryParams;
-import com.zs.assets.inventory.domain.vo.AssetsInventoryVo;
+
 import com.zs.common.aop.annotation.Log;
 import com.zs.common.core.core.Result;
 import com.zs.common.core.enums.OperationTypeEnum;
@@ -54,7 +53,7 @@ public class SysNoticeController {
     }
 
     @Log(module = "通知公告-删除", type = OperationTypeEnum.DELETE, description = "删除通知公告信息")
-    @DeleteMapping("delete/{sysNoticeId}")
+    @DeleteMapping("{sysNoticeId}")
     @PreAuthorize("hasAuthority('sys:notice:delete')")
     public Result<?> delete(@PathVariable Long sysNoticeId) {
         sysNoticeService.delete(sysNoticeId);
@@ -80,7 +79,7 @@ public class SysNoticeController {
 
 
     @GetMapping("/limit/{num}")
-    @PreAuthorize("hasAuthority('sys:notice:info')")
+//    @PreAuthorize("hasAuthority('sys:notice:info')")
     public Result<List<SysNoticeVo>>  getLimit(@PathVariable Integer num) {
         List<SysNoticeVo> sysNoticeVoList = sysNoticeService.getLimit(num);
         return new Result<List<SysNoticeVo>>().ok(sysNoticeVoList);

@@ -1,15 +1,22 @@
 package com.zs.sys.log.controller;
 
 
+import cn.hutool.core.bean.BeanUtil;
 import com.zs.common.core.core.Result;
+import com.zs.common.core.excel.ExcelUtils;
 import com.zs.common.core.log.params.SysLogOperationAddParams;
 import com.zs.common.core.page.PageResult;
+import com.zs.sys.log.domain.excel.SysLogOperationExcel;
 import com.zs.sys.log.domain.params.SysLogOperationQueryParams;
 import com.zs.sys.log.domain.vo.SysLogOperationVo;
 import com.zs.sys.log.service.ISysLogOperationService;
 import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
+import java.util.List;
 
 
 /**
@@ -34,5 +41,13 @@ public class SysLogOperationController {
     public Result<?> save(@RequestBody SysLogOperationAddParams sysLogOperationAddParams) {
         iSysLogOperationService.save(sysLogOperationAddParams);
         return new Result<>().ok();
+    }
+
+    @GetMapping("export")
+    @PreAuthorize("hasAuthority('sys:logOperation:export')")
+    public void export(HttpServletResponse response, SysLogOperationQueryParams sysLogOperationQueryParams) throws IOException {
+        List<SysLogOperationVo> list = iSysLogOperationService.list(sysLogOperationQueryParams);
+        List<SysLogOperationExcel> excelList = BeanUtil.copyToList(list, SysLogOperationExcel.class);
+        ExcelUtils.exportExcel(response, "操作日志.xlsx", SysLogOperationExcel.class, excelList);
     }
 }

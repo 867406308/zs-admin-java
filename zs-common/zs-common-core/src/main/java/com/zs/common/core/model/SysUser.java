@@ -1,6 +1,6 @@
 package com.zs.common.core.model;
 
-import com.alibaba.fastjson2.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import java.util.Date;
@@ -15,7 +15,7 @@ public class SysUser {
     private Long sysUserId;
     private String username;
 
-    @JSONField(serialize = false)
+    @JsonIgnore
     private String password;
     private String realName;
     private String avatar;
@@ -27,4 +27,8 @@ public class SysUser {
     private String ip;
     private String ipAddress;
     private Date lastLoginTime;
+    private Integer status;
+
+    private Long sysDeptId;
+    private Long sysPostId;
 }
