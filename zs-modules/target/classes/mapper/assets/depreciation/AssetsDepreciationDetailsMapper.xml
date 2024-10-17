@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zs.modules.assets.depreciation.mapper.AssetsDepreciationDetailsMapper">
+
+
+    <select id="page" resultType="com.zs.modules.assets.depreciation.domain.entity.AssetsDepreciationDetailsEntity">
+        SELECT a.*,b.name assetsName,c.`name` topClassifyName,
+        d.`name` classifyName
+        FROM assets_depreciation_details a
+        JOIN assets_info b ON b.serial_no = a.assets_serial_no
+        LEFT JOIN assets_classify_gb c ON c.id = b.top_level_gb_classic_id
+        LEFT JOIN assets_classify_school d ON d.id = b.classic_id
+        <where>
+            a.depreciation_id = #{params.depreciationId}
+            <if test="params.assetsSerialNo != null and params.assetsSerialNo != ''">
+                AND a.assets_serial_no = #{params.assetsSerialNo}
+            </if>
+            <if test="params.assetsName != null and params.assetsName != ''">
+                AND b.assets_name LIKE CONCAT('%', #{params.assetsName}, '%')
+            </if>
+            <if test="params.manageOrgId != null and params.manageOrgId != ''">
+                AND a.manage_org_id = #{params.manageOrgId}
+            </if>
+            <if test="params.useOrgId != null and params.useOrgId != ''">
+                AND a.use_org_id = #{params.useOrgId}
+            </if>
+            <if test="params.topLevelGbClassicCode != null and params.topLevelGbClassicCode != ''">
+                AND a.top_level_gb_classic_code = #{params.topLevelGbClassicCode}
+            </if>
+            <if test="params.schoolClassicId != null and params.schoolClassicId != ''">
+                AND a.school_classic_id = #{schoolClassicId}
+            </if>
+            <if test="params.depreciationCode != null and params.depreciationCode != ''">
+                AND a.depreciation_code = #{depreciationCode}
+            </if>
+            <if test="params.isCurrentPeriod != null and params.isCurrentPeriod != ''">
+                AND a.is_current_period = #{isCurrentPeriod}
+            </if>
+        </where>
+    </select>
+</mapper>

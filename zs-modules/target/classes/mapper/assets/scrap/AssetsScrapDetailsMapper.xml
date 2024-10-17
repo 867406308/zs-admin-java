@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zs.modules.assets.scrap.mapper.AssetsScrapDetailsMapper">
+
+
+    <select id="page" resultType="com.zs.modules.assets.scrap.domain.entity.AssetsScrapDetailsEntity">
+
+        SELECT b.assets_serial_no,
+               c.`name` as assetsName,
+               c.buy_price,
+               c.unit,
+               c.manage_org_id,
+               c.manage_user_id,
+               c.spec,
+               c.entry_date,
+               c.depreciated_price
+        FROM `assets_scrap` a
+                 LEFT JOIN assets_scrap_details b ON b.scrap_id = a.id
+                 JOIN assets_info c ON b.assets_serial_no = c.serial_no
+        WHERE a.id = #{params.scrapId}
+    </select>
+    <select id="list" resultType="com.zs.modules.assets.scrap.domain.entity.AssetsScrapDetailsEntity">
+        SELECT b.assets_serial_no,
+               c.`name` assetsName,
+               c.buy_price,
+               c.unit,
+               c.manage_org_id,
+               c.manage_user_id,
+               c.spec,
+               c.entry_date,
+               c.depreciated_price
+        FROM `assets_scrap` a
+                 LEFT JOIN assets_scrap_details b ON b.scrap_id = a.id
+                 JOIN assets_info c ON b.assets_serial_no = c.serial_no
+        WHERE a.id = #{scrapId}
+    </select>
+</mapper>

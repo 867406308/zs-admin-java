@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://172.27.159.121:3306/fixed_assets?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: zs-admin
+    password: Zs@123..
+    druid:
+      initial-size: 5 # 初始化连接数
+      min-idle: 5 # 最小空闲连接数
+      max-active: 20 # 最大连接数
+      test-on-borrow: true # 测试连接是否可用
+      validation-query: SELECT 1
+      use-global-data-source-stat: true # 合并多个DruidDataSource的监控数据
+      web-stat-filter:
+        enabled: true # 是否开启web监控
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" # 排除监控的URL路径
+      stat-view-servlet:
+        enabled: true # 是否开启监控页面
+        url-pattern: /druid/* # 监控页面的访问路径
+        #        login-username: admin
+        #        login-password: admin
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 2000
