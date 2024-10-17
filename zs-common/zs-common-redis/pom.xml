@@ -10,11 +10,6 @@
     <artifactId>zs-common-redis</artifactId>
     <description>redis</description>
 
-    <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>com.zs</groupId>-->
-<!--            <artifactId>zs-common-core</artifactId>-->
-<!--        </dependency>-->
-    </dependencies>
+
 
 </project>

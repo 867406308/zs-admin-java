@@ -23,11 +23,11 @@ public class WebsocketServer {
     /**
      * 以用户的userId为key，WebSocket为对象保存起来
      */
-    private static final Map<String, WebsocketServer> pcClients = new ConcurrentHashMap<String, WebsocketServer>();
+    private static final Map<String, WebsocketServer> pcClients = new ConcurrentHashMap<>();
     /**
      * B端用户
      */
-    private static final Map<String, WebsocketServer> bClients = new ConcurrentHashMap<String, WebsocketServer>();
+    private static final Map<String, WebsocketServer> bClients = new ConcurrentHashMap<>();
     /**
      * PC端在线人数
      */

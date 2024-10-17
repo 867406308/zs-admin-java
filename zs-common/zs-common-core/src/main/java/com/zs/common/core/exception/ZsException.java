@@ -33,4 +33,9 @@ public class ZsException extends RuntimeException {
         this.code = httpEnum.getCode();
         this.msg = httpEnum.getMsg();
     }
+
+    public ZsException(HttpEnum httpEnum) {
+        this.code = httpEnum.getCode();
+        this.msg = httpEnum.getMsg();
+    }
 }

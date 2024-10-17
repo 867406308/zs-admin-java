@@ -22,14 +22,15 @@
     </modules>
 
     <properties>
-        <hutool-all.version>5.8.25</hutool-all.version>
+        <hutool-all.version>5.8.26</hutool-all.version>
         <jjwt.version>0.12.6</jjwt.version>
         <fastjson2.version>2.0.49</fastjson2.version>
         <ip2region.version>2.7.0</ip2region.version>
         <lettuce-core.version>6.3.2.RELEASE</lettuce-core.version>
         <mybatisplus.version>3.5.7</mybatisplus.version>
-        <easyexcel.version>4.0.1</easyexcel.version>
-        <springdoc-openapi-starter-webmvc-ui.version>2.5.0</springdoc-openapi-starter-webmvc-ui.version>
+        <easyexcel.version>4.0.3</easyexcel.version>
+        <knife4j.version>4.5.0</knife4j.version>
+        <bcpkix-jdk18on.version>1.78.1</bcpkix-jdk18on.version>
     </properties>
 
     <dependencyManagement>
@@ -75,8 +76,6 @@
         </dependency>
 
 
-
-
         <!-- jwt -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
@@ -95,25 +94,6 @@
             <version>${jjwt.version}</version>
             <scope>runtime</scope>
         </dependency>
-
-
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.fastjson2</groupId>-->
-<!--            <artifactId>fastjson2</artifactId>-->
-<!--            <version>${fastjson2.version}</version>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.fastjson2</groupId>-->
-<!--            <artifactId>fastjson2-extension</artifactId>-->
-<!--            <version>${fastjson2.version}</version>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba.fastjson2</groupId>-->
-<!--            <artifactId>fastjson2-extension-spring5</artifactId>-->
-<!--            <version>${fastjson2.version}</version>-->
-<!--        </dependency>-->
 
         <!-- redis -->
         <dependency>
@@ -175,16 +155,17 @@
         </dependency>
 
 
-        <!--        <dependency>-->
-        <!--            <groupId>org.springdoc</groupId>-->
-        <!--            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>-->
-        <!--            <version>${springdoc-openapi-starter-webmvc-ui.version}</version>-->
-        <!--        </dependency>-->
-
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
-            <version>4.5.0</version>
+            <version>${knife4j.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcpkix-jdk18on</artifactId>
+            <version>${bcpkix-jdk18on.version}</version>
         </dependency>
 
 

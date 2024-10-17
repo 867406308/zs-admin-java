@@ -2,7 +2,9 @@ package com.zs.common.security.config;
 
 
 import com.zs.common.security.filter.JwtAuthenticationTokenFilter;
-import com.zs.common.security.filter.MyAuthenticationFilter;
+//import com.zs.common.security.filter.MyAuthenticationFilter;
+import com.zs.common.security.filter.RequestFilter;
+import com.zs.common.security.filter.ResponseFilter;
 import com.zs.common.security.handler.*;
 import com.zs.common.security.propetties.WhiteUrlProperties;
 import com.zs.common.security.provider.UserNameAuthenticationProvider;
@@ -21,9 +23,11 @@ import org.springframework.security.config.annotation.web.configurers.HeadersCon
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.util.List;
 
@@ -41,12 +45,9 @@ public class WebSecurityConfig {
      */
     @Resource
     private CustomLogoutSuccessHandler logoutSuccessHandler;
-
-
     // 无权限失败处理
     @Resource
     private CustomAccessDeniedHandler customAccessDeniedHandler;
-
     // 用户名密码登录成功处理
     @Resource
     private CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
@@ -61,6 +62,7 @@ public class WebSecurityConfig {
     private WhiteUrlProperties whiteUrlProperties;
 
 
+
     @Bean
     public AuthenticationManager authenticationManager(@NotNull AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
@@ -73,15 +75,25 @@ public class WebSecurityConfig {
         return new JwtAuthenticationTokenFilter();
     }
 
-    @NotNull
-    @Bean
-    public MyAuthenticationFilter myAuthenticationFilter(AuthenticationManager authenticationManager) {
-        MyAuthenticationFilter myAuthenticationFilter = new MyAuthenticationFilter("/auth/login");
-        myAuthenticationFilter.setAuthenticationManager(authenticationManager);
-        myAuthenticationFilter.setAuthenticationSuccessHandler(customAuthenticationSuccessHandler);
-        myAuthenticationFilter.setAuthenticationFailureHandler(customAuthenticationFailureHandler);
-        return myAuthenticationFilter;
-    }
+//    @Bean
+//    public RequestFilter requestFilter() {
+//        return new RequestFilter();
+//    }
+//
+//    @Bean
+//    public ResponseFilter responseFilter() {
+//        return new ResponseFilter();
+//    }
+
+//    @NotNull
+//    @Bean
+//    public MyAuthenticationFilter myAuthenticationFilter(AuthenticationManager authenticationManager) {
+//        MyAuthenticationFilter myAuthenticationFilter = new MyAuthenticationFilter("/auth/login");
+//        myAuthenticationFilter.setAuthenticationManager(authenticationManager);
+//        myAuthenticationFilter.setAuthenticationSuccessHandler(customAuthenticationSuccessHandler);
+//        myAuthenticationFilter.setAuthenticationFailureHandler(customAuthenticationFailureHandler);
+//        return myAuthenticationFilter;
+//    }
 
     @Bean
     public SecurityFilterChain filterChain(@NotNull HttpSecurity http) throws Exception {
@@ -116,9 +128,11 @@ public class WebSecurityConfig {
                         .accessDeniedHandler(customAccessDeniedHandler)
                 )
                 .logout(logout -> logout.logoutUrl("/auth/logout").permitAll().logoutSuccessHandler(logoutSuccessHandler))
+//                .addFilterBefore(requestFilter(), BasicAuthenticationFilter.class)
+//                .addFilterAfter(responseFilter(), BasicAuthenticationFilter.class)
                 // 把token校验过滤器添加到过滤器链中
                 .addFilterBefore(jwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(myAuthenticationFilter(http.getSharedObject(AuthenticationManager.class)), UsernamePasswordAuthenticationFilter.class)
+//                .addFilterBefore(myAuthenticationFilter(http.getSharedObject(AuthenticationManager.class)), UsernamePasswordAuthenticationFilter.class)
 
 
         ;

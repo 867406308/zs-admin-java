@@ -18,7 +18,6 @@ import com.zs.quartz.utils.QuartzUtils;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.Resource;
 import jakarta.validation.constraints.NotNull;
-import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.util.Strings;
 import org.quartz.*;
 import org.springframework.stereotype.Service;
@@ -90,10 +89,9 @@ public class SysJobServiceImpl extends ServiceImpl<SysJobMapper, SysJobEntity> i
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void del(Long sysJobId) {
-        SysJobEntity sysJobEntity = this.baseMapper.selectById(sysJobId);
-        QuartzUtils.delScheduleJob(scheduler, sysJobEntity.getSysJobId(), sysJobEntity.getJobGroup());
-        this.baseMapper.deleteById(sysJobId);
+    public void del(SysJobUpdateParams sysJobUpdateParams) {
+        QuartzUtils.delScheduleJob(scheduler, sysJobUpdateParams.getSysJobId(), sysJobUpdateParams.getJobGroup());
+        this.baseMapper.deleteById(sysJobUpdateParams.getSysJobId());
     }
 
     @Override
@@ -103,7 +101,7 @@ public class SysJobServiceImpl extends ServiceImpl<SysJobMapper, SysJobEntity> i
 
     @Override
     public SysJobVo get(Long sysJobId) {
-        return null;
+        return BeanUtil.copyProperties(this.baseMapper.selectById(sysJobId), SysJobVo.class);
     }
 
     @Override

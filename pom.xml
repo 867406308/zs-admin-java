@@ -27,31 +27,37 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- aop -->
             <dependency>
                 <groupId>com.zs</groupId>
                 <artifactId>zs-common-aop</artifactId>
                 <version>${zs.version}</version>
             </dependency>
+            <!-- 通用 -->
             <dependency>
                 <groupId>com.zs</groupId>
                 <artifactId>zs-common-core</artifactId>
                 <version>${zs.version}</version>
             </dependency>
+            <!-- mybatis -->
             <dependency>
                 <groupId>com.zs</groupId>
                 <artifactId>zs-common-mybatis</artifactId>
                 <version>${zs.version}</version>
             </dependency>
+            <!-- 缓存 -->
             <dependency>
                 <groupId>com.zs</groupId>
                 <artifactId>zs-common-redis</artifactId>
                 <version>${zs.version}</version>
             </dependency>
+            <!-- 权限 -->
             <dependency>
                 <groupId>com.zs</groupId>
                 <artifactId>zs-common-security</artifactId>
                 <version>${zs.version}</version>
             </dependency>
+            <!-- websocket -->
             <dependency>
                 <groupId>com.zs</groupId>
                 <artifactId>zs-common-websocket</artifactId>
@@ -64,9 +70,16 @@
                 <artifactId>zs-quartz</artifactId>
                 <version>${zs.version}</version>
             </dependency>
+            <!-- 管理 -->
             <dependency>
                 <groupId>com.zs</groupId>
                 <artifactId>zs-admin</artifactId>
+                <version>${zs.version}</version>
+            </dependency>
+            <!-- 业务模块 -->
+            <dependency>
+                <groupId>com.zs</groupId>
+                <artifactId>zs-modules</artifactId>
                 <version>${zs.version}</version>
             </dependency>
         </dependencies>
@@ -83,13 +96,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <exclusions>
-                <!-- 去掉Jackson依赖，用fastjson -->
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-json</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <!-- actuator 监控中心 -->
@@ -104,12 +110,13 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -141,12 +148,15 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
+
+
     </dependencies>
     <!-- 子模块 -->
     <modules>
         <module>zs-admin</module>
         <module>zs-common</module>
         <module>zs-quartz</module>
+        <module>zs-modules</module>
     </modules>
 
 

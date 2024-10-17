@@ -40,7 +40,7 @@ public interface ISysJobService extends IService<SysJobEntity> {
     /**
      * 删除定时任务
      */
-    void del(Long sysJobId);
+    void del(SysJobUpdateParams sysJobUpdateParams);
 
     /**
      * 暂停定时任务

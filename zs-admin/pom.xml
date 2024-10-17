@@ -16,29 +16,10 @@
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>com.zs</groupId>
-            <artifactId>zs-common-aop</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.zs</groupId>
-            <artifactId>zs-common-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.zs</groupId>
-            <artifactId>zs-common-mybatis</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.zs</groupId>
-            <artifactId>zs-common-redis</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.zs</groupId>
-            <artifactId>zs-common-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.zs</groupId>
-            <artifactId>zs-common-websocket</artifactId>
+            <artifactId>zs-quartz</artifactId>
         </dependency>
 
         <dependency>
@@ -46,6 +27,7 @@
             <artifactId>jimureport-spring-boot3-starter-fastjson2</artifactId>
             <version>1.8.0</version>
         </dependency>
+
     </dependencies>
 
     <build>

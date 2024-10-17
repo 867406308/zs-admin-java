@@ -54,10 +54,10 @@ public class SysJobController {
     }
 
     @Log(module = "定时任务-删除定时任务", type = OperationTypeEnum.DELETE, description = "删除定时任务信息")
-    @DeleteMapping("{id}")
+    @PostMapping("delete")
     @PreAuthorize("hasAuthority('sys:job:delete')")
-    public Result<?> delete(@PathVariable("id") Long id) {
-        isSysJobService.del(id);
+    public Result<?> delete(@RequestBody SysJobUpdateParams sysJobUpdateParams) {
+        isSysJobService.del(sysJobUpdateParams);
         return new Result<>().ok();
     }
 

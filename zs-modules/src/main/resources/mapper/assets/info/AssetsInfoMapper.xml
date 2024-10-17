@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zs.modules.assets.info.mapper.AssetsInfoMapper">
+    <update id="updateUseStatusCodeBySerialNo">
+        update assets_info
+        set use_status_code = #{useStatusCode}
+        where serial_no = #{serialNo}
+    </update>
+
+    <select id="page" resultType="com.zs.modules.assets.info.domain.entity.AssetsInfoEntity">
+
+        SELECT
+        a.*,
+        b.`name` AS levelName,
+        c.`name` topClassifyName,
+        d.`name` classifyName
+        FROM `assets_info` a
+        LEFT JOIN assets_level b ON b.assets_level_id = a.level_id
+        LEFT JOIN assets_classify_gb c ON c.id = a.top_level_gb_classic_id
+        LEFT JOIN assets_classify_school d ON d.id = a.classic_id
+        <where>
+            <!-- 保存状态 -->
+            <if test="params.saveState != null and params.saveState != ''">
+                and a.save_state = #{params.saveState}
+            </if>
+            <!-- 资产名称 -->
+            <if test="params.name!= null and params.name!= ''">
+                and a.`name` like CONCAT('%',#{params.name},'%')
+            </if>
+            <!-- 资产级别 -->
+            <if test="params.levelId != null and params.levelId != ''">
+                and a.level_id = #{params.levelId}
+            </if>
+            <!-- 资产分类 -->
+            <if test="params.classicIdList != null and params.classicIdList.size > 0">
+                and a.classic_id in
+                <foreach collection="params.classicIdList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <!-- 资产编号范围 -->
+            <if test="params.serialNoStart != null and params.serialNoStart != '' and params.serialNoEnd != null and params.serialNoEnd != ''">
+                and a.serial_no between #{params.serialNoStart} and #{params.serialNoEnd}
+            </if>
+            <!-- rfid编码 -->
+            <if test="params.rfid != null and params.rfid != ''">
+                and a.rfid = #{params.rfid}
+            </if>
+            <!-- 发票号 -->
+            <if test="params.invoiceNumber != null and params.invoiceNumber != ''">
+                and a.invoice_number = #{params.invoiceNumber}
+            </if>
+            <!-- 项目代码 -->
+            <if test="params.projectCode != null and params.projectCode != ''">
+                and a.project_code = #{params.projectCode}
+            </if>
+            <!-- 会计凭证号 -->
+            <if test="params.accountingVoucher != null and params.accountingVoucher != ''">
+                and a.accounting_voucher = #{params.accountingVoucher}
+            </if>
+            <!-- 价格范围 -->
+            <if test="params.priceStart!= null and params.priceStart!= '' and params.priceEnd!= null and params.priceEnd!= ''">
+                and a.buy_price between #{params.priceStart} and #{params.priceEnd}
+            </if>
+            <!-- 管理部门 -->
+            <if test="params.manageOrgId!= null and params.manageOrgId!= ''">
+                and a.manage_org_id = #{params.manageOrgId}
+            </if>
+            <!-- 管理部门负责人 -->
+            <if test="params.manageUserId!= null and params.manageUserId!= ''">
+                and a.manage_user_id = #{params.manageUserId}
+            </if>
+            <!-- 使用部门 -->
+            <if test="params.useOrgId!= null and params.useOrgId!= ''">
+                and a.use_org_id = #{params.useOrgId}
+            </if>
+            <!-- 使用人 -->
+            <if test="params.useUserId!= null and params.useUserId!= ''">
+                and a.use_user_id = #{params.useUserId}
+            </if>
+            <!-- 资产状态 -->
+            <if test="params.assetsStatusCode!= null and params.assetsStatusCode!= ''">
+                and a.assets_status_code = #{params.assetsStatusCode}
+            </if>
+            <!-- 资产使用状态 -->
+            <if test="params.useStatusCode!= null and params.useStatusCode!= ''">
+                and a.use_status_code = #{params.useStatusCode}
+            </if>
+            <!-- 资产存放位置 -->
+            <if test="params.storageLocationDescription!= null and params.storageLocationDescription!= ''">
+                and a.storage_location_description like CONCAT('%',#{params.storageLocationDescription},'%')
+            </if>
+            <!-- 入库日期范围 -->
+            <if test="params.entryDateStart!= null and params.entryDateStart!= '' and params.entryDateEnd!= null and params.entryDateEnd!= ''">
+                and a.entry_date between #{params.entryDateStart} and #{params.entryDateEnd}
+            </if>
+            <!-- 供应商 -->
+            <if test="params.manufacturer!= null and params.manufacturer!= ''">
+                and a.manufacturer like CONCAT('%',#{params.manufacturer},'%')
+            </if>
+        </where>
+        order by a.entry_date DESC
+    </select>
+    <select id="getBySerialNoList" resultType="com.zs.modules.assets.info.domain.entity.AssetsInfoEntity">
+        SELECT a.*,
+        b.`name` AS levelName,
+        c.`name` topClassifyName,
+        d.`name` classifyName
+        FROM `assets_info` a
+        LEFT JOIN assets_level b ON b.assets_level_id = a.level_id
+        LEFT JOIN assets_classify_gb c ON c.id = a.top_level_gb_classic_id
+        LEFT JOIN assets_classify_school d ON d.id = a.classic_id
+        <where>
+            <if test="serialNoList != null and serialNoList.size > 0">
+                and a.serial_no in
+                <foreach collection="serialNoList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+    </select>
+    <!-- 获取最大的入库单号 -->
+    <select id="getMaxInNo" resultType="java.lang.String">
+        SELECT in_no
+        FROM assets_info
+        ORDER BY CAST(in_no AS UNSIGNED) DESC
+        LIMIT 1;
+    </select>
+    <select id="getById" resultType="com.zs.modules.assets.info.domain.entity.AssetsInfoEntity">
+        SELECT a.*,
+               b.`name` AS levelName,
+               c.`name`    topClassifyName,
+               d.`name`    classifyName
+        FROM `assets_info` a
+                 LEFT JOIN assets_level b ON b.assets_level_id = a.level_id
+                 LEFT JOIN assets_classify_gb c ON c.id = a.top_level_gb_classic_id
+                 LEFT JOIN assets_classify_school d ON d.id = a.classic_id
+        WHERE a.id = #{id}
+
+    </select>
+    <select id="getTotalPrice" resultType="java.math.BigDecimal">
+        SELECT
+        sum(buy_price)
+        FROM `assets_info` a
+        LEFT JOIN assets_level b ON b.assets_level_id = a.level_id
+        LEFT JOIN assets_classify_gb c ON c.id = a.top_level_gb_classic_id
+        LEFT JOIN assets_classify_school d ON d.id = a.classic_id
+        <where>
+            <!-- 保存状态 -->
+            <if test="params.saveState != null and params.saveState != ''">
+                and a.save_state = #{params.saveState}
+            </if>
+            <!-- 资产名称 -->
+            <if test="params.name!= null and params.name!= ''">
+                and a.`name` like CONCAT('%',#{params.name},'%')
+            </if>
+            <!-- 资产级别 -->
+            <if test="params.levelId != null and params.levelId != ''">
+                and a.level_id = #{params.levelId}
+            </if>
+            <!-- 资产分类 -->
+            <if test="params.classicIdList != null and params.classicIdList.size > 0">
+                and a.classic_id in
+                <foreach collection="params.classicIdList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <!-- 资产编号范围 -->
+            <if test="params.serialNoStart != null and params.serialNoStart != '' and params.serialNoEnd != null and params.serialNoEnd != ''">
+                and a.serial_no between #{params.serialNoStart} and #{params.serialNoEnd}
+            </if>
+            <!-- rfid编码 -->
+            <if test="params.rfid != null and params.rfid != ''">
+                and a.rfid = #{params.rfid}
+            </if>
+            <!-- 发票号 -->
+            <if test="params.invoiceNumber != null and params.invoiceNumber != ''">
+                and a.invoice_number = #{params.invoiceNumber}
+            </if>
+            <!-- 项目代码 -->
+            <if test="params.projectCode != null and params.projectCode != ''">
+                and a.project_code = #{params.projectCode}
+            </if>
+            <!-- 会计凭证号 -->
+            <if test="params.accountingVoucher != null and params.accountingVoucher != ''">
+                and a.accounting_voucher = #{params.accountingVoucher}
+            </if>
+            <!-- 价格范围 -->
+            <if test="params.priceStart!= null and params.priceStart!= '' and params.priceEnd!= null and params.priceEnd!= ''">
+                and a.buy_price between #{params.priceStart} and #{params.priceEnd}
+            </if>
+            <!-- 管理部门 -->
+            <if test="params.manageOrgId!= null and params.manageOrgId!= ''">
+                and a.manage_org_id = #{params.manageOrgId}
+            </if>
+            <!-- 管理部门负责人 -->
+            <if test="params.manageUserId!= null and params.manageUserId!= ''">
+                and a.manage_user_id = #{params.manageUserId}
+            </if>
+            <!-- 使用部门 -->
+            <if test="params.useOrgId!= null and params.useOrgId!= ''">
+                and a.use_org_id = #{params.useOrgId}
+            </if>
+            <!-- 使用人 -->
+            <if test="params.useUserId!= null and params.useUserId!= ''">
+                and a.use_user_id = #{params.useUserId}
+            </if>
+            <!-- 资产状态 -->
+            <if test="params.assetsStatusCode!= null and params.assetsStatusCode!= ''">
+                and a.assets_status_code = #{params.assetsStatusCode}
+            </if>
+            <!-- 资产使用状态 -->
+            <if test="params.useStatusCode!= null and params.useStatusCode!= ''">
+                and a.use_status_code = #{params.useStatusCode}
+            </if>
+            <!-- 资产存放位置 -->
+            <if test="params.storageLocationDescription!= null and params.storageLocationDescription!= ''">
+                and a.storage_location_description like CONCAT('%',#{params.storageLocationDescription},'%')
+            </if>
+            <!-- 入库日期范围 -->
+            <if test="params.entryDateStart!= null and params.entryDateStart!= '' and params.entryDateEnd!= null and params.entryDateEnd!= ''">
+                and a.entry_date between #{params.entryDateStart} and #{params.entryDateEnd}
+            </if>
+            <!-- 供应商 -->
+            <if test="params.manufacturer!= null and params.manufacturer!= ''">
+                and a.manufacturer like CONCAT('%',#{params.manufacturer},'%')
+            </if>
+        </where>
+    </select>
+    <select id="list" resultType="com.zs.modules.assets.info.domain.entity.AssetsInfoEntity">
+
+        SELECT
+        a.*,
+        b.`name` AS levelName,
+        c.`name` topClassifyName,
+        d.`name` classifyName
+        FROM `assets_info` a
+        LEFT JOIN assets_level b ON b.assets_level_id = a.level_id
+        LEFT JOIN assets_classify_gb c ON c.id = a.top_level_gb_classic_id
+        LEFT JOIN assets_classify_school d ON d.id = a.classic_id
+        <where>
+            <!-- 保存状态 -->
+            <if test="params.saveState != null and params.saveState != ''">
+                and a.save_state = #{params.saveState}
+            </if>
+            <!-- 资产名称 -->
+            <if test="params.name!= null and params.name!= ''">
+                and a.`name` like CONCAT('%',#{params.name},'%')
+            </if>
+            <!-- 资产级别 -->
+            <if test="params.levelId != null and params.levelId != ''">
+                and a.level_id = #{params.levelId}
+            </if>
+            <!-- 资产分类 -->
+            <if test="params.classicIdList != null and params.classicIdList.size > 0">
+                and a.classic_id in
+                <foreach collection="params.classicIdList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <!-- 资产编号范围 -->
+            <if test="params.serialNoStart != null and params.serialNoStart != '' and params.serialNoEnd != null and params.serialNoEnd != ''">
+                and a.serial_no between #{params.serialNoStart} and #{params.serialNoEnd}
+            </if>
+            <!-- rfid编码 -->
+            <if test="params.rfid != null and params.rfid != ''">
+                and a.rfid = #{params.rfid}
+            </if>
+            <!-- 发票号 -->
+            <if test="params.invoiceNumber != null and params.invoiceNumber != ''">
+                and a.invoice_number = #{params.invoiceNumber}
+            </if>
+            <!-- 项目代码 -->
+            <if test="params.projectCode != null and params.projectCode != ''">
+                and a.project_code = #{params.projectCode}
+            </if>
+            <!-- 会计凭证号 -->
+            <if test="params.accountingVoucher != null and params.accountingVoucher != ''">
+                and a.accounting_voucher = #{params.accountingVoucher}
+            </if>
+            <!-- 价格范围 -->
+            <if test="params.priceStart!= null and params.priceStart!= '' and params.priceEnd!= null and params.priceEnd!= ''">
+                and a.buy_price between #{params.priceStart} and #{params.priceEnd}
+            </if>
+            <!-- 管理部门 -->
+            <if test="params.manageOrgId!= null and params.manageOrgId!= ''">
+                and a.manage_org_id = #{params.manageOrgId}
+            </if>
+            <!-- 管理部门负责人 -->
+            <if test="params.manageUserId!= null and params.manageUserId!= ''">
+                and a.manage_user_id = #{params.manageUserId}
+            </if>
+            <!-- 使用部门 -->
+            <if test="params.useOrgId!= null and params.useOrgId!= ''">
+                and a.use_org_id = #{params.useOrgId}
+            </if>
+            <!-- 使用人 -->
+            <if test="params.useUserId!= null and params.useUserId!= ''">
+                and a.use_user_id = #{params.useUserId}
+            </if>
+            <!-- 资产状态 -->
+            <if test="params.assetsStatusCode!= null and params.assetsStatusCode!= ''">
+                and a.assets_status_code = #{params.assetsStatusCode}
+            </if>
+            <!-- 资产使用状态 -->
+            <if test="params.useStatusCode!= null and params.useStatusCode!= ''">
+                and a.use_status_code = #{params.useStatusCode}
+            </if>
+            <!-- 资产存放位置 -->
+            <if test="params.storageLocationDescription!= null and params.storageLocationDescription!= ''">
+                and a.storage_location_description like CONCAT('%',#{params.storageLocationDescription},'%')
+            </if>
+            <!-- 入库日期范围 -->
+            <if test="params.entryDateStart!= null and params.entryDateStart!= '' and params.entryDateEnd!= null and params.entryDateEnd!= ''">
+                and a.entry_date between #{params.entryDateStart} and #{params.entryDateEnd}
+            </if>
+            <!-- 供应商 -->
+            <if test="params.manufacturer!= null and params.manufacturer!= ''">
+                and a.manufacturer like CONCAT('%',#{params.manufacturer},'%')
+            </if>
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zs.modules.assets.allot.mapper.AssetsAllotDetailsMapper">
+
+    <select id="getAllotDetails" resultType="com.zs.modules.assets.allot.domain.entity.AssetsAllotDetailsEntity">
+        SELECT a.*,b.name assetsName FROM `assets_allot_details` a
+                            JOIN assets_info b ON b.serial_no = a.assets_serial_no
+        WHERE a.allot_id = #{allotId}
+    </select>
+</mapper>

@@ -12,6 +12,11 @@ import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 public class WebsocketConfig {
 
 
+    /**
+     * ServerEndpointExporter类的作用是，会扫描所有的服务器端点，
+     * 把带有@ServerEndpoint 注解的所有类都添加进来
+     *
+     */
     @Bean
     public ServerEndpointExporter serverEndpointExporter() {
         return new ServerEndpointExporter();

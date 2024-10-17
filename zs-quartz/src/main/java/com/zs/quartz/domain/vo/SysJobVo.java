@@ -15,4 +15,5 @@ public class SysJobVo {
     private String cronExpression;
     private Integer status;
     private String remark;
+    private String createTime;
 }

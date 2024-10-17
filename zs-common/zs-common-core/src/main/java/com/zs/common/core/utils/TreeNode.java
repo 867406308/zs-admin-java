@@ -14,7 +14,7 @@ import java.util.List;
 public class TreeNode<T> implements Serializable {
 
     private Long id;
-
+    private String name;
     private Long pid;
 
     @NotNull

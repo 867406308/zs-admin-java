@@ -3,6 +3,8 @@ package com.zs.common.core.core;
 import jakarta.annotation.Nullable;
 import lombok.Data;
 import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.http.HttpStatus;
 
 import java.io.Serializable;
@@ -15,7 +17,7 @@ public class Result<T> implements Serializable {
 
     private Integer code;
     private String msg;
-    private T data;
+    private Object data;
     private long timestamp = System.currentTimeMillis();
 
     public Result() {

@@ -3,6 +3,7 @@ package com.zs.common.security.handler;
 import cn.hutool.http.useragent.UserAgent;
 import cn.hutool.http.useragent.UserAgentUtil;
 import cn.hutool.json.JSONUtil;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zs.common.aop.annotation.LoginLog;
 import com.zs.common.core.constant.RedisConstants;
 import com.zs.common.core.core.Result;
@@ -16,10 +17,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -38,6 +41,8 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     private JwtUtil jwtUtil;
     @Resource
     private RedisUtil redisUtil;
+    @Resource
+    private ObjectMapper objectMapper;
 
     @LoginLog
     @Override
@@ -46,9 +51,13 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         // 登录成功把用户信息存入redis,用来表示在线用户。
         setUserInfoToRedis(request, loginUserInfo.getSysUser());
 
+        Result<Object> result = new Result<>().ok(200, "登录成功", jwtUtil.createToken(loginUserInfo));
+        String responseBody = objectMapper.writeValueAsString(result);
+
+        // Write to the response
         response.setContentType("application/json;charset=UTF-8");
-        String s = JSONUtil.toJsonStr(new Result<>().ok(200, "登录成功", jwtUtil.createToken(loginUserInfo)));
-        response.getWriter().println(s);
+        response.setStatus(HttpStatus.OK.value());
+        response.getWriter().write(responseBody);
 
     }
 
