@@ -1,7 +1,7 @@
 #基础镜像
 #FROM openjdk:8 
 # 镜像加速
-FROM registry.cn-zhangjiakou.aliyuncs.com/my-admin/openjdk:17-jdk-alpine
+FROM registry.cn-beijing.aliyuncs.com/my-admin/zs-openjdk-17:17
 
 #RUN mvn clean package
 WORKDIR /app
