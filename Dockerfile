@@ -7,8 +7,6 @@ FROM  registry.cn-beijing.aliyuncs.com/my-admin/zs-openjdk-17:17
 WORKDIR /app
 COPY ./zs-admin/target/zs-admin.jar /app/
 
-COPY src/main/resources/logback.xml /app/
-
 CMD ["java", "-jar", "zs-admin.jar","--spring.profiles.active=prod"]
 
 #指定暴露端口
