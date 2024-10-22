@@ -8,24 +8,24 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
   main:
     allow-bean-definition-overriding: true
-  data:
-    redis:
-      host: 127.0.0.1 #39.101.195.100
-      port: 6379
-      password: #Zs@123..
-      database: 0
-      # 毫秒
-      timeout: 10000
-      lettuce:
-        pool:
-          max-active: 10
-          max-wait: -1
-          max-idle: 5
-          min-idle: 0
+#  data:
+#    redis:
+#      host: 127.0.0.1 #39.101.195.100
+#      port: 6379
+#      password: #Zs@123..
+#      database: 0
+#      # 毫秒
+#      timeout: 10000
+#      lettuce:
+#        pool:
+#          max-active: 10
+#          max-wait: -1
+#          max-idle: 5
+#          min-idle: 0
   quartz:
     job-store-type: jdbc
     jdbc:
-      initialize-schema: always
+      initialize-schema: never
     auto-startup: true
 
 file:

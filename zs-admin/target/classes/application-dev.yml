@@ -24,4 +24,17 @@ spring:
         stat:
           log-slow-sql: true
           slow-sql-millis: 2000
-
+  data:
+    redis:
+      host: 127.0.0.1 #39.101.195.100
+      port: 6379
+      password: #Zs@123..
+      database: 0
+      # 毫秒
+      timeout: 10000
+      lettuce:
+        pool:
+          max-active: 10
+          max-wait: -1
+          max-idle: 5
+          min-idle: 0
