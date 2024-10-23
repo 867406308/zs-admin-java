@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/zs_admin?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false
+    url: jdbc:mysql://112.126.82.82:3306/zs_admin?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false
     username: zsAdmin
     password: zsAdmin
     druid:
@@ -25,7 +25,7 @@ spring:
           slow-sql-millis: 2000
   data:
     redis:
-      host: 127.0.0.1 #39.101.195.100
+      host: 127.0.0.1
       port: 6379
       password: Zs@123..
       database: 0
