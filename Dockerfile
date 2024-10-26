@@ -10,4 +10,4 @@ COPY ./zs-admin/target/zs-admin.jar /app/
 CMD ["java", "-jar", "zs-admin.jar","--spring.profiles.active=prod"]
 
 #指定暴露端口
-EXPOSE 8085
+EXPOSE 80
