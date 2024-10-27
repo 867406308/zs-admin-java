@@ -9,6 +9,7 @@ import com.zs.domain.params.LoginParams;
 import com.zs.service.ILoginService;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +27,7 @@ public class LoginController {
 
     @Decryption(value = CryptoTypeEnum.SM2)
     @PostMapping("login")
-    public Result<TokenVo> login(@RequestBody LoginParams loginParams, HttpServletRequest request) {
-         return new Result<TokenVo>().ok(loginService.login(loginParams, request));
+    public void login(@RequestBody LoginParams loginParams, HttpServletRequest request, HttpServletResponse response) {
+         loginService.login(loginParams, request, response);
     }
 }

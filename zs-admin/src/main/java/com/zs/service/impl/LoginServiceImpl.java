@@ -3,26 +3,33 @@ package com.zs.service.impl;
 import cn.hutool.http.useragent.UserAgent;
 import cn.hutool.http.useragent.UserAgentUtil;
 import com.zs.common.core.constant.RedisConstants;
+import com.zs.common.core.exception.ZsException;
 import com.zs.common.core.model.LoginUserInfo;
 import com.zs.common.core.model.SysUser;
 import com.zs.common.core.utils.CryptoUtil;
 import com.zs.common.core.utils.IpUtils;
 import com.zs.common.redis.config.RedisUtil;
+import com.zs.common.security.handler.CustomAuthenticationFailureHandler;
+import com.zs.common.security.handler.CustomAuthenticationSuccessHandler;
 import com.zs.common.security.model.TokenVo;
 import com.zs.common.security.utils.JwtUtil;
 import com.zs.domain.params.LoginParams;
 import com.zs.service.ILoginService;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.http.HttpHeaders;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,59 +45,52 @@ public class LoginServiceImpl implements ILoginService {
     private JwtUtil jwtUtil;
     @Resource
     private RedisUtil redisUtil;
+    @Resource
+    private CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
+    @Resource
+    private CustomAuthenticationFailureHandler customAuthenticationFailureHandler;
 
     @Override
-    public TokenVo login(LoginParams loginParams, HttpServletRequest request) {
+    public void login(LoginParams loginParams, HttpServletRequest request, HttpServletResponse response) {
 
         if (!StringUtils.hasText(loginParams.getUsername())) {
-            throw new RuntimeException("用户名不能为空!");
+            throw new ZsException("用户名不能为空!");
         }
         if (!StringUtils.hasText(loginParams.getPassword())) {
-            throw new RuntimeException("密码不能为空!");
+            throw new ZsException("密码不能为空!");
         }
 
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(loginParams.getUsername(), loginParams.getPassword());
 
-        Authentication authentication = authenticationManager.authenticate(token);
-        LoginUserInfo loginUserInfo = (LoginUserInfo) authentication.getPrincipal();
+        try {
+            Authentication authentication = authenticationManager.authenticate(token);
+            // 认证成功处理
+            processAuthenticationSuccess(authentication, request, response);
 
-
-        TokenVo tokenVo = new TokenVo();
-        tokenVo.setAccessToken(jwtUtil.createToken(loginUserInfo));
-
-        // 登录成功把用户信息存入redis,用来表示在线用户。
-        setUserInfoToRedis(request, loginUserInfo.getSysUser());
-
-        // redis中保存登录成功后的sm4密钥
-        String cryptoKey = request.getHeader("cryptoKey");
-        if (cryptoKey == null) {
-            // 处理 cryptoKey 为 null 的情况，例如抛出异常或返回默认值
-            throw new IllegalArgumentException("请求头cryptoKey 不能为空");
+        } catch (AuthenticationException e) {
+            // 认证失败处理
+            processAuthenticationFailure(request, response, e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-
-        String decryptedKey = CryptoUtil.sm2Decrypt(cryptoKey).replace("\"", "");
-        redisUtil.setObject(RedisConstants.SM4_KEY + loginUserInfo.getSysUser().getSysUserId(), decryptedKey);
-
-        return tokenVo;
     }
 
-    @Async
-    public void setUserInfoToRedis(@NotNull HttpServletRequest request, @NotNull SysUser sysUser){
-        String userAgentString = request.getHeader(HttpHeaders.USER_AGENT);
-        UserAgent userAgent = UserAgentUtil.parse(userAgentString);
-        String ipAddr = IpUtils.getIpAddr(request);
-
-        Map<String, Object> map = new HashMap<>();
-        map.put("sysUserId", sysUser.getSysUserId());
-        map.put("username", sysUser.getUsername());
-        map.put("realName", sysUser.getRealName());
-        map.put("avatar", sysUser.getAvatar());
-        map.put("lastLoginTime", sysUser.getLastLoginTime());
-        map.put("ip", ipAddr);
-        map.put("city", IpUtils.getCityInfo(ipAddr));
-        map.put("browser", userAgent.getBrowser().toString());
-        map.put("os", userAgent.getOs().toString());
-
-        redisUtil.setObject(RedisConstants.ONLINE_USER + sysUser.getSysUserId(), map);
+    private void processAuthenticationSuccess(Authentication authentication, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        customAuthenticationSuccessHandler.onAuthenticationSuccess(request, response, authentication);
     }
+
+    private void processAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException e) {
+        try {
+            customAuthenticationFailureHandler.onAuthenticationFailure(request, response, e);
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+
+
+
+
+
 }

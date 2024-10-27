@@ -103,6 +103,7 @@ public class WebSecurityConfig {
         http
 
 
+                .formLogin(formLogin -> formLogin.successHandler(customAuthenticationSuccessHandler).failureHandler(customAuthenticationFailureHandler))
                 // 禁用csrf
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
