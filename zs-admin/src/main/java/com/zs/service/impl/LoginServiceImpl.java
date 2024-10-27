@@ -62,7 +62,14 @@ public class LoginServiceImpl implements ILoginService {
         setUserInfoToRedis(request, loginUserInfo.getSysUser());
 
         // redis中保存登录成功后的sm4密钥
-        redisUtil.setObject(RedisConstants.SM4_KEY + loginUserInfo.getSysUser().getSysUserId(), CryptoUtil.sm2Decrypt(request.getHeader("cryptoKey")).replace("\"", ""));
+        String cryptoKey = request.getHeader("cryptoKey");
+        if (cryptoKey == null) {
+            // 处理 cryptoKey 为 null 的情况，例如抛出异常或返回默认值
+            throw new IllegalArgumentException("请求头cryptoKey 不能为空");
+        }
+
+        String decryptedKey = CryptoUtil.sm2Decrypt(cryptoKey).replace("\"", "");
+        redisUtil.setObject(RedisConstants.SM4_KEY + loginUserInfo.getSysUser().getSysUserId(), decryptedKey);
 
         return tokenVo;
     }
