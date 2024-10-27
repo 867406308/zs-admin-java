@@ -24,7 +24,7 @@ public class LoginController {
     @Resource
     private ILoginService loginService;
 
-    @Decryption(value = CryptoTypeEnum.SM2)
+//    @Decryption(value = CryptoTypeEnum.SM2)
     @PostMapping("login")
     public Result<TokenVo> login(@RequestBody LoginParams loginParams, HttpServletRequest request) {
          return new Result<TokenVo>().ok(loginService.login(loginParams, request));
