@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.plugins.handler.MultiDataPermissionHan
 import com.baomidou.mybatisplus.extension.plugins.inner.DataPermissionInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.InnerInterceptor;
 import com.zs.common.mp.handler.MyDataPermissionHandler;
+import jakarta.validation.constraints.NotNull;
 import net.sf.jsqlparser.expression.Expression;
 import net.sf.jsqlparser.statement.select.PlainSelect;
 import net.sf.jsqlparser.statement.select.Select;
@@ -17,7 +18,6 @@ import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
-import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
 

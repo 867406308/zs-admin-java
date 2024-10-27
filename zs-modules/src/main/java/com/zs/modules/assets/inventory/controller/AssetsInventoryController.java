@@ -1,11 +1,11 @@
 package com.zs.modules.assets.inventory.controller;
 
+import com.zs.common.core.core.Result;
+import com.zs.common.core.page.PageResult;
 import com.zs.modules.assets.inventory.domain.params.AssetsInventoryAddParams;
 import com.zs.modules.assets.inventory.domain.params.AssetsInventoryQueryParams;
 import com.zs.modules.assets.inventory.domain.vo.AssetsInventoryVo;
 import com.zs.modules.assets.inventory.service.AssetsInventoryService;
-import com.zs.common.core.core.Result;
-import com.zs.common.core.page.PageResult;
 import jakarta.annotation.Resource;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;

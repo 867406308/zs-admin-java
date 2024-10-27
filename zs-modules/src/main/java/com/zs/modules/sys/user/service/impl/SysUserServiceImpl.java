@@ -23,9 +23,9 @@ import com.zs.modules.sys.user.mapper.SysUserMapper;
 import com.zs.modules.sys.user.service.ISysUserDeptPostService;
 import com.zs.modules.sys.user.service.ISysUserRoleService;
 import com.zs.modules.sys.user.service.ISysUserService;
+import jakarta.annotation.Nullable;
 import jakarta.annotation.Resource;
 import jakarta.validation.constraints.NotNull;
-import jakarta.annotation.Nullable;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -34,7 +34,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * @author 86740

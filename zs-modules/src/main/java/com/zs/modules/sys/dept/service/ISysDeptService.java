@@ -3,12 +3,10 @@ package com.zs.modules.sys.dept.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.zs.common.core.utils.MyTreeNode;
-import com.zs.common.core.utils.TreeNode;
 import com.zs.modules.sys.dept.domain.entity.SysDeptEntity;
 import com.zs.modules.sys.dept.domain.params.SysDeptAddParams;
 import com.zs.modules.sys.dept.domain.params.SysDeptQueryParams;
 import com.zs.modules.sys.dept.domain.vo.SysDeptVo;
-import jakarta.annotation.Nullable;
 
 import java.util.List;
 

@@ -8,8 +8,8 @@ import com.zs.modules.sys.user.domain.entity.SysUserDeptPostEntity;
 import com.zs.modules.sys.user.domain.params.SysUserDeptPostAddParams;
 import com.zs.modules.sys.user.mapper.SysUserDeptPostMapper;
 import com.zs.modules.sys.user.service.ISysUserDeptPostService;
-import jakarta.validation.constraints.NotNull;
 import jakarta.annotation.Nullable;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

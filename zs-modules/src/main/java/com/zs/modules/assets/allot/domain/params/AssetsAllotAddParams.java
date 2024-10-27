@@ -1,6 +1,5 @@
 package com.zs.modules.assets.allot.domain.params;
 
-import com.zs.modules.assets.allot.domain.params.AssetsAllotDetailsAddParams;
 import lombok.Data;
 
 import java.util.List;

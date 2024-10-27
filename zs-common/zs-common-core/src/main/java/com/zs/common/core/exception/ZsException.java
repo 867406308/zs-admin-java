@@ -2,9 +2,9 @@ package com.zs.common.core.exception;
 
 
 import com.zs.common.core.core.HttpEnum;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import jakarta.validation.constraints.NotNull;
 
 /**
  * @author 86740

@@ -1,6 +1,5 @@
 package com.zs.modules.sys.notice.domain.vo;
 
-import com.zs.modules.sys.notice.domain.vo.SysNoticeDetailsVo;
 import lombok.Data;
 
 import java.io.Serializable;

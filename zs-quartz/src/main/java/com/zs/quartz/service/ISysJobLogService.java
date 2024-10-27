@@ -6,8 +6,6 @@ import com.zs.quartz.domain.entity.SysJobLogEntity;
 import com.zs.quartz.domain.params.SysJobLogQueryParams;
 import com.zs.quartz.domain.vo.SysJobLogVo;
 
-import java.util.List;
-
 /**
  * 定时任务日志service
  */

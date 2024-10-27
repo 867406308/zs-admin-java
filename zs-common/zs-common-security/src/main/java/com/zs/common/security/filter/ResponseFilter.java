@@ -1,19 +1,12 @@
 package com.zs.common.security.filter;
 
-import cn.hutool.json.JSONUtil;
-import com.zs.common.core.core.HttpEnum;
-import com.zs.common.core.core.Result;
-import io.micrometer.common.lang.NonNullApi;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import org.springframework.web.util.ContentCachingResponseWrapper;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 
 /**
  */

@@ -1,11 +1,11 @@
 package com.zs.modules.assets.scrap.controller;
 
+import com.zs.common.core.core.Result;
+import com.zs.common.core.page.PageResult;
 import com.zs.modules.assets.scrap.domain.params.AssetsScrapAddParams;
 import com.zs.modules.assets.scrap.domain.params.AssetsScrapQueryParams;
 import com.zs.modules.assets.scrap.domain.vo.AssetsScrapVo;
 import com.zs.modules.assets.scrap.service.AssetsScrapService;
-import com.zs.common.core.core.Result;
-import com.zs.common.core.page.PageResult;
 import jakarta.annotation.Resource;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;

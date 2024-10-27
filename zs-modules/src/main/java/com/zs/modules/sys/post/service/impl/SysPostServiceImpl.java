@@ -16,9 +16,9 @@ import com.zs.modules.sys.post.domain.vo.SysPostVo;
 import com.zs.modules.sys.post.mapper.SysPostMapper;
 import com.zs.modules.sys.post.service.ISysPostService;
 import com.zs.modules.sys.user.service.ISysUserDeptPostService;
+import jakarta.annotation.Nullable;
 import jakarta.annotation.Resource;
 import jakarta.validation.constraints.NotNull;
-import jakarta.annotation.Nullable;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Service;
 

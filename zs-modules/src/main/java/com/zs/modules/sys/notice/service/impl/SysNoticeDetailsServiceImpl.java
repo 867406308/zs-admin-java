@@ -7,8 +7,8 @@ import com.zs.modules.sys.notice.domain.entity.SysNoticeDetailsEntity;
 import com.zs.modules.sys.notice.domain.vo.SysNoticeDetailsVo;
 import com.zs.modules.sys.notice.mapper.SysNoticeDetailsMapper;
 import com.zs.modules.sys.notice.service.SysNoticeDetailsService;
-import jakarta.validation.constraints.NotNull;
 import jakarta.annotation.Nullable;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,12 +1,12 @@
 package com.zs.modules.assets.classify.controller;
 
+import com.zs.common.aop.annotation.Log;
+import com.zs.common.core.core.Result;
+import com.zs.common.core.enums.OperationTypeEnum;
 import com.zs.modules.assets.classify.domain.query.AssetsClassifySchoolAddParams;
 import com.zs.modules.assets.classify.domain.query.AssetsClassifySchoolQueryParams;
 import com.zs.modules.assets.classify.domain.vo.AssetsClassifySchoolVo;
 import com.zs.modules.assets.classify.service.IAssetsClassifySchoolService;
-import com.zs.common.aop.annotation.Log;
-import com.zs.common.core.core.Result;
-import com.zs.common.core.enums.OperationTypeEnum;
 import jakarta.annotation.Resource;
 import jakarta.validation.Valid;
 import org.springframework.security.access.prepost.PreAuthorize;

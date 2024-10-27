@@ -1,10 +1,10 @@
 package com.zs.modules.assets.scrap.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zs.common.core.page.PageResult;
 import com.zs.modules.assets.scrap.domain.entity.AssetsScrapDetailsEntity;
 import com.zs.modules.assets.scrap.domain.params.AssetsScrapDetailsQueryParams;
 import com.zs.modules.assets.scrap.domain.vo.AssetsScrapDetailsVo;
-import com.zs.common.core.page.PageResult;
 import jakarta.annotation.Nullable;
 
 import java.util.List;

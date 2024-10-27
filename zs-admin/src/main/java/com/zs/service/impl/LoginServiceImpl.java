@@ -1,26 +1,15 @@
 package com.zs.service.impl;
 
-import cn.hutool.http.useragent.UserAgent;
-import cn.hutool.http.useragent.UserAgentUtil;
-import com.zs.common.core.constant.RedisConstants;
 import com.zs.common.core.exception.ZsException;
-import com.zs.common.core.model.LoginUserInfo;
-import com.zs.common.core.model.SysUser;
-import com.zs.common.core.utils.CryptoUtil;
-import com.zs.common.core.utils.IpUtils;
 import com.zs.common.redis.config.RedisUtil;
 import com.zs.common.security.handler.CustomAuthenticationFailureHandler;
 import com.zs.common.security.handler.CustomAuthenticationSuccessHandler;
-import com.zs.common.security.model.TokenVo;
 import com.zs.common.security.utils.JwtUtil;
 import com.zs.domain.params.LoginParams;
 import com.zs.service.ILoginService;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.validation.constraints.NotNull;
-import org.springframework.http.HttpHeaders;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -30,8 +19,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author zs

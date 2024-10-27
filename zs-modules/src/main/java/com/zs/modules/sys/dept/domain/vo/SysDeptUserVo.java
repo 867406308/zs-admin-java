@@ -1,9 +1,9 @@
 package com.zs.modules.sys.dept.domain.vo;
 
 import com.zs.common.core.utils.TreeNode;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import jakarta.validation.constraints.NotNull;
 
 import java.io.Serializable;
 import java.util.ArrayList;

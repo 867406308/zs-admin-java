@@ -1,13 +1,13 @@
 package com.zs.modules.assets.allot.controller;
 
+import com.zs.common.core.core.Result;
+import com.zs.common.core.page.PageResult;
 import com.zs.modules.assets.allot.domain.params.AssetsAllotAddParams;
 import com.zs.modules.assets.allot.domain.params.AssetsAllotQueryParams;
 import com.zs.modules.assets.allot.domain.vo.AssetsAllotDetailsVo;
 import com.zs.modules.assets.allot.domain.vo.AssetsAllotVo;
 import com.zs.modules.assets.allot.service.AssetsAllotDetailsService;
 import com.zs.modules.assets.allot.service.AssetsAllotService;
-import com.zs.common.core.core.Result;
-import com.zs.common.core.page.PageResult;
 import jakarta.annotation.Resource;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;

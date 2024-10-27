@@ -18,9 +18,9 @@ import com.zs.modules.sys.notice.domain.vo.SysNoticeVo;
 import com.zs.modules.sys.notice.mapper.SysNoticeMapper;
 import com.zs.modules.sys.notice.service.SysNoticeDetailsService;
 import com.zs.modules.sys.notice.service.SysNoticeService;
+import jakarta.annotation.Nullable;
 import jakarta.annotation.Resource;
 import jakarta.validation.constraints.NotNull;
-import jakarta.annotation.Nullable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

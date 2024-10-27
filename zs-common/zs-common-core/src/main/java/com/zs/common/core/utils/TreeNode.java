@@ -1,7 +1,7 @@
 package com.zs.common.core.utils;
 
-import lombok.Data;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.util.ArrayList;

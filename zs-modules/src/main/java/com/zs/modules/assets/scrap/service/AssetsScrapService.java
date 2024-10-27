@@ -1,11 +1,11 @@
 package com.zs.modules.assets.scrap.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zs.common.core.page.PageResult;
 import com.zs.modules.assets.scrap.domain.entity.AssetsScrapEntity;
 import com.zs.modules.assets.scrap.domain.params.AssetsScrapAddParams;
 import com.zs.modules.assets.scrap.domain.params.AssetsScrapQueryParams;
 import com.zs.modules.assets.scrap.domain.vo.AssetsScrapVo;
-import com.zs.common.core.page.PageResult;
 
 /**
  * @author 86740

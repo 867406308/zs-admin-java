@@ -2,7 +2,6 @@ package com.zs.modules.sys.user.controller;
 
 
 import cn.hutool.core.bean.BeanUtil;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.zs.common.aop.annotation.Log;
 import com.zs.common.core.core.Result;
@@ -13,7 +12,6 @@ import com.zs.common.core.excel.ExcelUtils;
 import com.zs.common.core.model.LoginUserInfo;
 import com.zs.common.core.page.PageResult;
 import com.zs.common.core.utils.SecurityUtil;
-import com.zs.modules.sys.user.domain.entity.SysUserEntity;
 import com.zs.modules.sys.user.domain.excel.SysUserExcel;
 import com.zs.modules.sys.user.domain.params.SysUserAddParams;
 import com.zs.modules.sys.user.domain.params.SysUserPasswordParams;
@@ -30,9 +28,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 
 

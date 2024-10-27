@@ -1,10 +1,8 @@
 package com.zs.common.core.core;
 
 import jakarta.annotation.Nullable;
-import lombok.Data;
 import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import org.springframework.http.HttpStatus;
 
 import java.io.Serializable;

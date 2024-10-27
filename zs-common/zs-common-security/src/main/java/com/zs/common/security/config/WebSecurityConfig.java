@@ -2,9 +2,6 @@ package com.zs.common.security.config;
 
 
 import com.zs.common.security.filter.JwtAuthenticationTokenFilter;
-//import com.zs.common.security.filter.MyAuthenticationFilter;
-import com.zs.common.security.filter.RequestFilter;
-import com.zs.common.security.filter.ResponseFilter;
 import com.zs.common.security.handler.*;
 import com.zs.common.security.propetties.WhiteUrlProperties;
 import com.zs.common.security.provider.UserNameAuthenticationProvider;
@@ -23,11 +20,9 @@ import org.springframework.security.config.annotation.web.configurers.HeadersCon
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.util.List;
 

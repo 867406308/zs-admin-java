@@ -1,6 +1,5 @@
 package com.zs.modules.sys.user.domain.params;
 
-import com.zs.modules.sys.user.domain.params.SysUserDeptPostAddParams;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 

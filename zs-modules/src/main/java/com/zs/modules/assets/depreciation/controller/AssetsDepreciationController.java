@@ -1,13 +1,13 @@
 package com.zs.modules.assets.depreciation.controller;
 
-import com.zs.modules.assets.depreciation.domain.params.AssetsDepreciationAddParams;
-import com.zs.modules.assets.depreciation.domain.params.AssetsDepreciationQueryParams;
-import com.zs.modules.assets.depreciation.domain.vo.AssetsDepreciationVo;
-import com.zs.modules.assets.depreciation.service.IAssetsDepreciationService;
 import com.zs.common.aop.annotation.Log;
 import com.zs.common.core.core.Result;
 import com.zs.common.core.enums.OperationTypeEnum;
 import com.zs.common.core.page.PageResult;
+import com.zs.modules.assets.depreciation.domain.params.AssetsDepreciationAddParams;
+import com.zs.modules.assets.depreciation.domain.params.AssetsDepreciationQueryParams;
+import com.zs.modules.assets.depreciation.domain.vo.AssetsDepreciationVo;
+import com.zs.modules.assets.depreciation.service.IAssetsDepreciationService;
 import jakarta.annotation.Resource;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
